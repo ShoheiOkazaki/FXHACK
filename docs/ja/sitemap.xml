@@ -191,6 +191,8 @@
                 href="https://ShoheiOkazaki.github.io/FXHACK/posts/2015-02-18/"
                 />
   </url><url>
+    <loc>https://ShoheiOkazaki.github.io/FXHACK/blog/</loc>
+  </url><url>
     <loc>https://ShoheiOkazaki.github.io/FXHACK/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -202,5 +204,9 @@
                 hreflang="ja"
                 href="https://ShoheiOkazaki.github.io/FXHACK/categories/"
                 />
+  </url><url>
+    <loc>https://ShoheiOkazaki.github.io/FXHACK/search/</loc>
+  </url><url>
+    <loc>https://ShoheiOkazaki.github.io/FXHACK/profile/</loc>
   </url>
 </urlset>

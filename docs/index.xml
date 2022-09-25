@@ -324,5 +324,19 @@ int res = 100; float rad = 3; float height = 5; float freq = 10; int line = addp
 &lt;p&gt;しかしMayaから移行した人にとっては、Expressionと似ているので敷居は高くないはずです。エフェクト屋でPythonとかMelなどのScriptを、全く書けないという人はいないと思うんで、その知識も役立ちます。&lt;/p&gt;</description>
     </item>
     
+    
+    
+    <item>
+      <title>SHOHEI OKAZAKI</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/profile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/profile/</guid>
+      <description>SUMMARY I&amp;rsquo;m working at Weta FX as Effects Technical Director. I have a deep knowledge of Houdini, and more than 11 years of experience with Houdini, FX techniques, simulation and other areas of the VFX, and 3D CG.
+SKILLS Fluid and liquid simulation, rigid body, particle, procedural modeling, PDG, tool development, pipeline support, VEX, Python, render optimization, debugging.
+PROFESSIONAL EXPERIENCE Current, Weta FX
+Effects Technical Director Jun 2021 – Feb 2022, Marza Animation Planet Inc.</description>
+    </item>
+    
   </channel>
 </rss>
