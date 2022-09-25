@@ -40,7 +40,7 @@ languages:
 params:
   #    env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: FX HACK
-  description: "No Procedulat No FX."
+  description: "No Procedural No FX."
   keywords: [Blog, Portfolio, PaperMod]
   author: Shohei Okazaki
   # author: ["Me", "You"] # multiple authors
@@ -75,7 +75,7 @@ params:
     safari_pinned_tab: "Thinking_Face_Emoji_large.png"
 
   label:
-    text: "FX HACK"
+    text: "HOME"
     # icon: Thinking_Face_Emoji_large.png
     iconHeight: 35
 
@@ -137,12 +137,8 @@ menu:
       name: Blog
       url: posts
       weight: 5
-    # - identifier: Profile
-    #   name: profile
-    #   url: fixed/profile
-      weight: 10
-    - name: About
-      url: fixed/works
+    - name: Profile
+      url: profile
       weight: 51
     - name: Search
       url: search/
