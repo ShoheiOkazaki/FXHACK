@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tips on FX HACK</title>
+    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/tips/</link>
+    <description>Recent content in Tips on FX HACK</description>
+    <image>
+      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 12 Feb 2019 09:30:42 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/tips/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FX的　Height Fieldの使い方</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2019-02-12/</link>
+      <pubDate>Tue, 12 Feb 2019 09:30:42 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2019-02-12/</guid>
+      <description>今回は、Height Fieldです。 FXは、Height Fieldの恩恵は、あまりないと思いますが、個人的なFX的使い方を紹介します。
+サンプルファイルです。17.0.459で作成。
+Download
+Terrain Object Height Filedの実装にともないTerrain Object DOPにUse Heightfiledというオプションが追加されました。
+今までは、Particleと地面の詳細なコリジョン結果を得るには、このノードのVolumeに変換する所のオプションにてDivisionSizeをあげて高解像度にするか、StaticObjectをつかってSurface Collisionを使用したりしてました。どちらも、軽いものではありませんね。
+Height Filedは、どこかの軸が2000を超えてもなんてことありません。普通のVolumeのならめっちゃ重いですよね。これを使うなんて、さすがSideFX。
+さて実際の使い方は、Environment Modeler等が作ってくれた地形等を読み込み、HeightField ProjectでHeightFiledに変換します。
+シミュレーションの範囲を決めて、より効率的に作業するならHeightField Cropを使いましょう。 小さな石とかデブリがあったら、それごとProjectionしても、そこそこ使えます。 え、Displacement・Bumpを使ってたらどうするんだって？ Point CloudでUVを持ってきて、Textureをインポートして、 足し算。 それだとNormal考慮してないってか。インポートしたGeometryをSubdivisionをめっちゃかけて、SopでDisplacementするしかないですかね。
+Packでコレ使うと、めっちゃ重いからVolume Collision使わないで、普通にBulletでConcaveにしたほうが良いです。
+Boolean Cutter 続いては、別の使い方の紹介。BooleanのShatterに使ってみましょう。 そもそもBooleanを使う時の重要な点は、如何にエラーのないGeometryを作り出しレンダリングできるようにするかです。「エラー」とはManifold Topologyになっていないものが生成されたり、Alembicを使って他のツールにGeometryとしてインポートするときに起こりうる問題の要因のことを指します。Houdini内で完結する場合は、これらの問題があっても気にせずレンダリングできることが多々です。
+なぜBooleanに使うのか？それはHeightFiledの特徴が気に入ったからです。
+特徴1:軽い
+前述した通り挙動が軽いです。破壊の断面はディティールが欲しくなります。通常だったら、面を細かく分割してPointにNoiseをかけたりしますが、結構動作重いです。軽いは良いです。
+特徴2:Topology
+HeightFieldをPolygonにコンバートして、それをDisplacementした方向からTopoloyを見ると綺麗な格子状になっています。
+エラーTopologyを最も生成しやすい要因は、このNoiseのカッターを作ってる時です。GeometryのPointsに対して、強いNoiseをかけると、自身の面と干渉してしまいます。これは、あまり良くないです。 そして、綺麗なTopologyということは、ここからUVが作りやすいです。
+それでは、実際の手順の説明です。 基本的には普通よくあるやつと似てます。Point作ってHeightFiledのGridをコピーしてNoiseをかけます。 Noiseをかける前に対象Geometryより少し大きめなBoundigBoxを使ってCropしてあげれば、より効率が良くなります。 続いて、HeightFiledをMeshにコンバートし、UV ProjectでDisplacement方向からUVを転写。UV Layoutで一度整えます。このままだと高さが考慮されていないので、heightというPointAttrを使ってUVを調整します。
+Wrangleで縦横比をheihgtで乗算
+vector bsize = getbbox_size(0); float mult= bsize[0]/bsize[2]; @uv.y = point(0,&amp;#34;height&amp;#34;,@ptnum)*mult; 最後に、UV Layoutでもう一度整えておしまいです。
+Cutterの用意ができたら、あとは通常通りBooleanでShatterしましょう。
+その後は、Normal入れたり、
+Non-Manifoldを取り除くために、CleanかPolyDoctorで治しときましょう。エラーは出るときは出ます。
+ここまでUVがあれば、ModelerやLookDevにTexture・Shaderを作ってもらうために壊したものを戻しても、文句は言われないでしょう。きっと。
+ということで、今回は本来の用途とは違った使い方の紹介でした。
+他にも、こんな風に本来の目的とは違う使ってるよって方いましたら、ぜひ教えてください。</description>
+    </item>
+    
+    <item>
+      <title>H16についてのメモ</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-03-29/</link>
+      <pubDate>Wed, 29 Mar 2017 15:50:27 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-03-29/</guid>
+      <description>New Network Editor さて、賛否両論ありそうなこれ。見た目は可愛くなりましたね。 そして描画速度も速くなりました。Pythonでノードを何千と作ったり、AlembicのHierarchyを保持して展開するときなど、大きな差が出そうです。
+あのノードの形、可愛くないから使いたくないとか、デフォルトを変えたいって人はいるでしょう。僕はノードを組む上での自分なりのルールがあるためノードの色が最初から付いているのは非常に不便でデフォルトを変更してます。
+そこで、どうやってカスタマイズするかを紹介します。
+書き方は、インストール先の$HFS/houdini/OPcustomizeに記述されてるので覗いてみてください。
+Sample
+文頭がopdefaultcolorで始まるのが色の設定。 文頭がopdefaultshapeで始まるのが形の設定。 では、$HOME/houdini16.0/OPcustomizeというテキストを作って編集してみましょう。
+まず形から変更してみましょう。 SopのMergeを丸にするには
+opdefaultshape Sop merge circle 形の種類ってヘルプのどこかに書いてあるんですかね？5分位探してなかったのであきらめました。 そこでPythonで選択したのノードの形を取得してみます。
+import hou n = hou.selectedNodes()[0] ns = n.userData(&amp;#39;nodeshape&amp;#39;) ds = n.type().defaultShape() print(ns, ds) userDataに入ってるのは、NetworkViewで変えた形で、defaultShapeは名の通りです。
+続いて色です。個人的に勝手にノードに色がつくのはうっとおしかったため、すべての色の設定をクリアしました。
+opdefaultcolor -c これで、Houdini Pathの順番で、このファイルより前で設定されたopdefaultcolorはClearされます。 形の設定をクリアするには、同じく-cです
+opdefaultshape -c 色をつけるには
+opdefaultcolor Sop rop_geometry &amp;#39;RGB 0.451 0.369 0.796&amp;#39; ノードの名称、色とか形を調べるのはメンドイんで、ノードを選択して実行すれば分かるようにして、作業しました。
+import hou ns = hou.selectedNodes() for n in ns: nn = n.type().nameWithCategory() cd = n.color() ds = n.type().defaultShape() us = n.</description>
+    </item>
+    
+  </channel>
+</rss>

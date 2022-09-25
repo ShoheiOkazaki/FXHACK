@@ -1,0 +1,43 @@
+// Node Shapes!
+opdefaultshape Object hlight::2.0    light
+opdefaultshape Object envlight       light
+opdefaultshape Object indirectlight light
+
+opdefaultshape Sop merge circle
+opdefaultshape Dop merge circle
+opdefaultshape Driver merge circle
+
+
+// Node Colors! 
+//// opdefaultcolor type nodename 'RGB 1 1 1'
+
+//// clear All
+opdefaultcolor -c
+
+opdefaultcolor Object cam             'RGB .3 .3 .3'
+opdefaultcolor Object hlight::2.0    'RGB 1 .95 0'
+opdefaultcolor Object envlight       'RGB 1 .95 0'
+opdefaultcolor Object indirectlight 'RGB 1 .95 0'
+
+opdefaultcolor Sop file       'RGB 0.6 0.6 0.6'
+opdefaultcolor Sop filemerge 'RGB 0.6 0.6 0.6'
+opdefaultcolor Sop alembic 'RGB 0.6 0.6 0.6'
+opdefaultcolor Sop object_merge 'RGB 0.6 0.6 0.6'
+opdefaultcolor Sop dopimport 'RGB 0.6 0.6 0.6'
+
+opdefaultcolor Dop  file 'RGB 0.6 0.6 0.6'
+opdefaultcolor Dop  filedata 'RGB 0.6 0.6 0.6'
+opdefaultcolor Chop file 'RGB 0.6 0.6 0.6'
+
+opdefaultcolor Cop2 rop_comp     'RGB 0.451 0.369 0.796'
+opdefaultcolor Dop  rop_dop      'RGB 0.451 0.369 0.796'
+opdefaultcolor Sop  rop_geometry 'RGB 0.451 0.369 0.796'
+opdefaultcolor Sop  rop_alembic  'RGB 0.451 0.369 0.796'
+
+opdefaultcolor Vop visualize 'RGB .5 0  0'
+opdefaultcolor Vop bind       'RGB .6 .6 1'
+opdefaultcolor Vop constant  'RGB 0  0  0'
+opdefaultcolor Vop parameter 'RGB 1  1  .4
+
+
+

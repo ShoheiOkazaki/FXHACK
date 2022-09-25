@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Wrangle on FX HACK</title>
+    <link>https://ShoheiOkazaki.github.io/FXHACK/en/tags/wrangle/</link>
+    <description>Recent content in Wrangle on FX HACK</description>
+    <image>
+      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 01 Mar 2015 11:40:54 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/en/tags/wrangle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why not use Wrangle? part2</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/en/posts/2015-03-01/</link>
+      <pubDate>Sun, 01 Mar 2015 11:40:54 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/en/posts/2015-03-01/</guid>
+      <description>Wrangle is not to only create/edit attributes. It can make new points/primitive as well.
+Wrangleは、アトリビュートを作ったり編集するだけでなく、Pointを作ったりPrimitiveを作ったりもできます。初心者向けのチュートリアルで時々みるPointSopを使って、Pを編集してるやつをWrangleで置き換えてみます。こんなやつです。 まずラインの作り方 line sopできますが、wrangleでやってみます。ただの直線を作るときに、わざわざwrangleでやる必要はないかと思いますが、近くのpoint同士を結びつけるときなど普通にやろうとすると、めんどくさい時に重宝するので覚えときましょう。
+int res = 10; float height = 5.0; int line = addprim(0, &amp;#34;polyline&amp;#34;); for(int i=0; i&amp;lt;res; i++){ vector pos =set(1, height/(res-1)*i, 0); int cp = addpoint(0,pos); addvertex(0, line, cp); } 長さ(height)とポイント数(res)を決めてあげて、これらのポイントを結んでラインを作ります。なぜ、Vertexを作る必要があるかというと、Primitiveを構成するにはVertexが必要です。Pointではありません。Help: ジオメトリの作成
+もちろん、Vopでもつくれます。 ラインが作れたら、各Pointの位置を編集するだけです。簡単ですね。
+int res = 100; float rad = 3; float height = 5; float freq = 10; int line = addprim(0, &amp;#34;polyline&amp;#34;); for (int i = 0; i &amp;lt; res; i++){ vector pos; pos.</description>
+    </item>
+    
+    <item>
+      <title>Why not use Wrangle? part1</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/en/posts/2015-02-18/</link>
+      <pubDate>Wed, 18 Feb 2015 13:59:47 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/en/posts/2015-02-18/</guid>
+      <description>Wrangle has been included since 12.5, but I feel many people are avoiding it or scaring.
+Maybe you&amp;rsquo; re avoiding it because it reminds you of Maya&amp;rsquo;s Expression, which is frustrating. But people had used Maya will be familiar with it because vex is similar to Expression. And I believe all FX artists can do some coding, such as Python and Mel.. Definitely, this knowledge will help you. So don&amp;rsquo;t be scared.</description>
+    </item>
+    
+  </channel>
+</rss>

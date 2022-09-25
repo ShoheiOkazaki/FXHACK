@@ -1,0 +1,9 @@
+{{ $colour0 := .Get 0 | safeCSS }}
+{{ $colour1 := .Get 1 | safeCSS }}
+{{ $text1 := .Get 2 | safeHTML }}
+
+{{ if .Site.Params.enableDarkMode }}
+  <span style="color: {{ $colour0 }}; font-weight: bold; background-color: transparent"> {{ $text1 }} </span>
+{{ else }}
+  <span style="color: {{ $colour1 }};font-weight: bold;  background-color: transparent"> {{ $text1 }} </span>
+{{ end }}

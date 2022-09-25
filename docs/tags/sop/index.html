@@ -1,0 +1,92 @@
+<!doctype html><html lang=ja dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>SOP | FX HACK</title><meta name=keywords content><meta name=description content="No Procedulat No FX."><meta name=author content="Shohei Okazaki"><link rel=canonical href=https://ShoheiOkazaki.github.io/FXHACK/tags/sop/><link crossorigin=anonymous href=/FXHACK/assets/css/stylesheet.bdde7bb857ad3abdf871caf8647f6e680d60ed2394aa4300d0a169da82d4b137.css integrity="sha256-vd57uFetOr34ccr4ZH9uaA1g7SOUqkMA0KFp2oLUsTc=" rel="preload stylesheet" as=style><link rel=icon href=https://ShoheiOkazaki.github.io/FXHACK/Thinking_Face_Emoji_large.png><link rel=icon type=image/png sizes=16x16 href=https://ShoheiOkazaki.github.io/FXHACK/Thinking_Face_Emoji_large.png><link rel=icon type=image/png sizes=32x32 href=https://ShoheiOkazaki.github.io/FXHACK/Thinking_Face_Emoji_large.png><link rel=apple-touch-icon href=https://ShoheiOkazaki.github.io/FXHACK/Thinking_Face_Emoji_large.png><link rel=mask-icon href=https://ShoheiOkazaki.github.io/FXHACK/Thinking_Face_Emoji_large.png><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://ShoheiOkazaki.github.io/FXHACK/tags/sop/index.xml><link rel=alternate hreflang=ja href=https://ShoheiOkazaki.github.io/FXHACK/tags/sop/><link rel=alternate hreflang=en href=https://ShoheiOkazaki.github.io/FXHACK/en/tags/sop/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><meta property="og:title" content="SOP"><meta property="og:description" content="No Procedulat No FX."><meta property="og:type" content="website"><meta property="og:url" content="https://ShoheiOkazaki.github.io/FXHACK/tags/sop/"><meta property="og:image" content="https://ShoheiOkazaki.github.io/FXHACK/profile.jpg"><meta property="og:site_name" content="FX HACK"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://ShoheiOkazaki.github.io/FXHACK/profile.jpg"><meta name=twitter:title content="SOP"><meta name=twitter:description content="No Procedulat No FX."></head><body class="list dark" id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://ShoheiOkazaki.github.io/FXHACK/ accesskey=h title="FX HACK (Alt + H)">FX HACK</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li><li><a href=https://ShoheiOkazaki.github.io/FXHACK/en/ title=English aria-label=English>🌐English</a></li></ul></div></div><ul id=menu><li><a href=https://ShoheiOkazaki.github.io/FXHACK/posts title=Blog><span>Blog</span></a></li><li><a href=https://ShoheiOkazaki.github.io/FXHACK/search/ title=Search><span>Search</span></a></li><li><a href=https://ShoheiOkazaki.github.io/FXHACK/tags/ title=Tags><span>Tags</span></a></li><li><a href=https://ShoheiOkazaki.github.io/FXHACK/Wiki/ title=Wiki><span>Wiki</span></a></li><li><a href=https://ShoheiOkazaki.github.io/FXHACK/fixed/works title=About><span>About</span></a></li></ul></nav></header><main class=main><header class=page-header><div class=breadcrumbs><a href=https://ShoheiOkazaki.github.io/FXHACK/>ホーム</a>&nbsp;»&nbsp;<a href=https://ShoheiOkazaki.github.io/FXHACK/tags/>Tags</a></div><h1>SOP</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2>FX的　Height Fieldの使い方</h2></header><div class=entry-content><p>今回は、Height Fieldです。 FXは、Height Fieldの恩恵は、あまりないと思いますが、個人的なFX的使い方を紹介します。
+サンプルファイルです。17.0.459で作成。
+Download
+Terrain Object Height Filedの実装にともないTerrain Object DOPにUse Heightfiledというオプションが追加されました。
+今までは、Particleと地面の詳細なコリジョン結果を得るには、このノードのVolumeに変換する所のオプションにてDivisionSizeをあげて高解像度にするか、StaticObjectをつかってSurface Collisionを使用したりしてました。どちらも、軽いものではありませんね。
+Height Filedは、どこかの軸が2000を超えてもなんてことありません。普通のVolumeのならめっちゃ重いですよね。これを使うなんて、さすがSideFX。
+さて実際の使い方は、Environment Modeler等が作ってくれた地形等を読み込み、HeightField ProjectでHeightFiledに変換します。
+シミュレーションの範囲を決めて、より効率的に作業するならHeightField Cropを使いましょう。 小さな石とかデブリがあったら、それごとProjectionしても、そこそこ使えます。 え、Displacement・Bumpを使ってたらどうするんだって？ Point CloudでUVを持ってきて、Textureをインポートして、 足し算。 それだとNormal考慮してないってか。インポートしたGeometryをSubdivisionをめっちゃかけて、SopでDisplacementするしかないですかね。
+Packでコレ使うと、めっちゃ重いからVolume Collision使わないで、普通にBulletでConcaveにしたほうが良いです。
+Boolean Cutter 続いては、別の使い方の紹介。BooleanのShatterに使ってみましょう。 そもそもBooleanを使う時の重要な点は、如何にエラーのないGeometryを作り出しレンダリングできるようにするかです。「エラー」とはManifold Topologyになっていないものが生成されたり、Alembicを使って他のツールにGeometryとしてインポートするときに起こりうる問題の要因のことを指します。Houdini内で完結する場合は、これらの問題があっても気にせずレンダリングできることが多々です。
+なぜBooleanに使うのか？それはHeightFiledの特徴が気に入ったからです。
+特徴1:軽い
+前述した通り挙動が軽いです。破壊の断面はディティールが欲しくなります。通常だったら、面を細かく分割してPointにNoiseをかけたりしますが、結構動作重いです。軽いは良いです。
+特徴2:Topology
+HeightFieldをPolygonにコンバートして、それをDisplacementした方向からTopoloyを見ると綺麗な格子状になっています。
+エラーTopologyを最も生成しやすい要因は、このNoiseのカッターを作ってる時です。GeometryのPointsに対して、強いNoiseをかけると、自身の面と干渉してしまいます。これは、あまり良くないです。 そして、綺麗なTopologyということは、ここからUVが作りやすいです。
+それでは、実際の手順の説明です。 基本的には普通よくあるやつと似てます。Point作ってHeightFiledのGridをコピーしてNoiseをかけます。 Noiseをかける前に対象Geometryより少し大きめなBoundigBoxを使ってCropしてあげれば、より効率が良くなります。 続いて、HeightFiledをMeshにコンバートし、UV ProjectでDisplacement方向からUVを転写。UV Layoutで一度整えます。このままだと高さが考慮されていないので、heightというPointAttrを使ってUVを調整します。
+Wrangleで縦横比をheihgtで乗算
+vector bsize = getbbox_size(0); float mult= bsize[0]/bsize[2]; @uv.y = point(0,"height",@ptnum)*mult; 最後に、UV Layoutでもう一度整えておしまいです。
+Cutterの用意ができたら、あとは通常通りBooleanでShatterしましょう。
+その後は、Normal入れたり、
+Non-Manifoldを取り除くために、CleanかPolyDoctorで治しときましょう。エラーは出るときは出ます。
+ここまでUVがあれば、ModelerやLookDevにTexture・Shaderを作ってもらうために壊したものを戻しても、文句は言われないでしょう。きっと。
+ということで、今回は本来の用途とは違った使い方の紹介でした。
+他にも、こんな風に本来の目的とは違う使ってるよって方いましたら、ぜひ教えてください。</p></div><footer class=entry-footer><span title='2019-02-12 09:30:42 +0900 JST'>2月 12, 2019</span>&nbsp;·&nbsp;1 分&nbsp;·&nbsp;Shohei Okazaki</footer><a class=entry-link aria-label="post link to FX的　Height Fieldの使い方" href=https://ShoheiOkazaki.github.io/FXHACK/posts/2019-02-12/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>Wrangleを使おう 3 - Replace ForLoop</h2></header><div class=entry-content><p>久しぶりのWrangle回です。
+個人的にHoudiniにおいて、よく使う必需ノードは、For LoopとAttribute Promoteです。これらがないと仕事ができません。もちろんWrangleも絶対使います。
+特にFor LoopはHoudiniを象徴するようなノードだと勝手に思ってます。ある処理を考え、それを他のものにも同様な処理を施す。まさにProceduralに作業する上で必要不可欠なものです。
+しかし！ForLoopは処理に時間がかる時が大半です。なぜなら、
+すべてのノードがマルチスレッド処理されるわけではありませんし、１つ１つのピースやグループを同時にではなく、順番に処理するため遅くなってしまいます 。
+シンプルな例を元に解説していきます。
+Sample File : wrangle_03.hiplc (15.5.607 linux-x86_64-gcc4.8)
+Voronoiで割った1つ1つのピースのサイズを測ろうと思います。あまりにも小さいピースはSimulationに参加させない様にさせるとか、大きいやつはもう一回砕こうとかで使うことがありますね。
+ピースのサイズを求めるために、まずMeasureで個々のPrimitiveの面積か体積を測ります。続いて、For Loopで各ピースごとが持っている各Primitive面積の総和を出します。これが、ピースのサイズとなります。
+本題です。Wrangleでやってみます。
+nuniqueval() uniqueval() findattribvalcount() findattribval() この関数がミソなんでHelpは読んでください。
+string piece_attr = "name"; int num_piece_attr = nuniqueval(@OpInput1, "prim", piece_attr); addattrib(0,"prim","area_sum",0.0); for(int i = 0; i &lt; num_piece_attr; i++){ string uq_val = uniqueval(@OpInput1, "prim", piece_attr,i); int num_prim_piece = findattribvalcount(@OpInput1, "prim", piece_attr,uq_val); int prim_piece,ii =0; float per_area,area_sum =0.0; for(ii=0; ii&lt; num_prim_piece; ii++){ prim_piece = findattribval(@OpInput1,"prim",piece_attr,uq_val,ii); per_area = prim(0,"area",prim_piece); area_sum += per_area; } for(ii=0; ii&lt; num_prim_piece; ii++){ prim_piece = findattribval(@OpInput1,"prim",piece_attr,uq_val,ii); setattrib(0, "prim", "area_sum", prim_piece, 0, area_sum, "set"); } } For Loopでやった処理を分解しながら説明していきます。Run OverはDetailです。...</p></div><footer class=entry-footer><span title='2016-12-10 10:00:44 +0900 JST'>12月 10, 2016</span>&nbsp;·&nbsp;1 分&nbsp;·&nbsp;Shohei Okazaki</footer><a class=entry-link aria-label="post link to Wrangleを使おう 3 - Replace ForLoop" href=https://ShoheiOkazaki.github.io/FXHACK/posts/2016-12-10/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>Time Dependent Cook : YES? or NO?</h2></header><div class=entry-content><p>お久しぶりです。そこそこ忙しくて、ブログを書くのを怠ってました。 今回の内容はビギナー向けですが、非常に重要な考え方なので紹介しようと思います。Time Dependent Cookについてです。
+Time Dependentという言葉は、Houdiniを使ってないと聞き慣れないかもしれませんし、気にしたこともないかもしれません。
+サンプルファイル (Fedora21, Houdini15.0.393, linux-x86_64-gcc4.8)
+What is Time Dependent？ ではTime Dependentとはなんでしょうか？直訳すると「時間に依存」です。
+[Time Dependent Cook:Yes]はフレームが変わるとcookする。逆にNoの場合は、
+時間に依存してない。つまり、フレームが変わってもcookしません。 1回cookすれば、それを使いまわします。単純な話、レンジが100Fの場合でYesなら100回cookします。Noなら1回のcookですみます。
+これを気にせずアセットを作るなんてことは、トーシロー、素人です。一昨日来やがれ。言い過ぎました。
+このTime Dependent Cookの情報をどうやって知るかというと、ノードをミドルクリックすれば一番下に出てきます。SOP、DOP、OBJ、COP、CHOP、SHOP、ROP全てのノードで出てきます。（ん？ROPのTime Dependent Cookってなんでしょうね？）
+また、会社の人に教えてもらいましたが、ノードを光らせてどのノードがそうなのかを識別させることもできます。
+どうして重要なのか？ 続いて、活用方法を紹介したいと思います。Houdini始めたら誰しもが使うScatterを使って解説します。 例えば、この歩いている人間にPointを発生させたいとします。普通にScatterすると毎フレーム違う場所に発生してしまいます。これを回避するには、ScatterのパラメータにあるGenerateをIn Texture Spaceにします。一気に処理が重くなりますね
+パラメータを変えるまでは120fps出ていたのに、 10fpsも出なくなってしまいました。致命的ですね。
+速くするにはScatterするのを1回だけにして、後からPositionを動かせばいいのです。TimeShiftでScatterのソースを止めます。そして、ScatterのOutput Attributesから2つを有効にします。これはScatterしたPrim NumberとUVを保存してくれます。 保持したら、最近ついた新しいノードをつかいます。Attribute Interpolateです。1st InputにScatterしたPointをさして、2nd Inputに動いてる人をさすだけPointが動きます。
+Attribute Interpolateなかったころ、どうやっていたかというとVopのPrimitive Attributeを使っていました。ちなみにですが、sourceのPrim NumとUVはIntersect Vopでもとれます。
+Pointが動いたということで、どれくらい速くなってか試してみましょう。一番最後にTrail Sopをさして、Compute Velocityをvを計算させてみます。毎フレームScatterする場所が違うと、vもおかしな値が入ってしまうので、正確に動作しているかも判断できます。
+では、Scatterを毎フレーム計算させた場合です。
+続いて、1FだけScatterしたものです。
+一目瞭然ですね。処理も速いですし、Velocityもうまく計算されています。
+Attribute Interpolateを使うと速くなるよということが言いたかったわけではありません。何が言いたかったかというと、重い処理を極力少なくすれば速くなるよということです。
+それを判断する材料の1つがTime Dependent Cookということです。
+特になにかしらのエミッターを作るときに、非常にお世話になります。シミュレーションは重いです。エミッターも重いとなるとトライアンドエラーの回数が減ってしまいます。
+まとめ 出来る限り重い処理を少なくするためにはどうすればよいか。
+今回の例だと
+「動いているものにScatterして、Point群を動かす」を「Scatterして動いているものにくっつけ、Point群を動かす」 に変えました。言葉の並び替えみたいなようなものですが、この考え方が重要です。頭の中で、今ある仕組みを文にして、並び替えてみてください。
+ただ単純にノードをつなぐ順番を変えるだけでも、速くなるかもしれません。Performance MonitorやTime Dependentを表示させて、どこがネックになっているか見てみましょう。
+今作っている仕組みには、これ使えないなと思ってるあなた！本当にそうでしょうか？固定観念を捨てて、違った角度から考えてみてはいかがでしょうか？なぜなら、あなたが使ってるソフトはHoudiniなんです。限界を作ってるのはあなた自身かもしれません。信じるか信じないかはアナタ次第です！笑</p></div><footer class=entry-footer><span title='2016-08-07 08:42:33 +0900 JST'>8月 7, 2016</span>&nbsp;·&nbsp;1 分&nbsp;·&nbsp;Shohei Okazaki</footer><a class=entry-link aria-label="post link to Time Dependent Cook : YES? or NO?" href=https://ShoheiOkazaki.github.io/FXHACK/posts/2016-08-07/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>Volume Displacement</h2></header><div class=entry-content><p>Cloud Noise シミュレーションをせずにVolumeを何かしら編集するエレメントといったら雲や霧だと思います。
+エフェクトの人で雲を作るときに、ネット検索で引っかかり一回は目にしたことであろう、この論文http://magnuswrenninge.com/productionvolumerendering, Resolution Independent Volumes 何やら、難しそうですね。てか4年(2011)も前なんですね。
+個人的な見解ですが、H13?から用意されたCloud Noise Sopはこれを元に作られていると見ています。理由は中を見ればわかります。
+Surfaceの場合、DisplacementはNormal方向に対して、ポジションをオフセットします。となると、VolumeのNormalを計算する必要があります。つまりGradientを用意します。
+Density VolumeをPolygonにしてからSigned Distance Field(SDF)を作っています。SDFは表面までの距離を記録しています。これをVolume VopでVolume Gradientを使って読み込んだSDFから勾配を計算し、このVector方向にDisplacementしています。 SOPでもVDB AnalysisかVolume Analysisを使って勾配のVector Fieldを作れます。
+DisplacementによってVolumeが膨らむことを考慮して、2でBounding Boxを大きくしています。
+Noiseを生成しています。 NoiseはForを使って、最初のNoiseより少し小さなNoiseを足していくようなことを繰り返すことによって複雑なNoiseを作り出しています。あとはAdvectionもありますね。
+論文で紹介されているやり方に似ていると思いませんか？
+中を覗いてみることによって、細かいところは理解できなかったとしても、VolumeにDisplacementする大枠はつかめたのではないでしょうか？ SDFからGradientを計算し、その方向にNoiseで作った値をDisplacementするという流れです。次に、この考えを応用してみます。
+Pyro Displacement VolumeのDisplacementの方法がわかったところで、続いてシミュレーションしたVolumeに対しての方法を紹介します。
+前述の方法は静止しているPに対してNoiseをかけていました。今回は シミュレーションされたVolumeに対して処理を施します。PにNoiseをかけると煙の動きとあいません。Maya Fluidだと煙の進行方向と動きのスピードに合わせて、Noiseのオフセットにキーを打つみたいなことをした経験があるかたもいるかもしれませんが、そんなことはしません。
+restが必要です。他のソフトではP_refとか言われていますね。
+rest Filedを作るにはいくつか設定が必要です。Smoke ObjectとSolverに設定すべき項目があるので設定します。
+ヘルプによるとRest Fieldは、流体の位置を追跡するフィールドと解説されています。また、Dual Restは長いシミュレーションの時に有効で、異なる開始フレームで始まる2つのrestができて、その2つをブレンドして使います。そして、Detailアトリビュートにrest_ratioとrest2_ratioの2つが追加されます。VopまたはShader内で読むときは、restとrest2をMixでまぜbaisにratioを入れてあげます。
+最後にSDFも用意しておきましょう。
+ここまで用意できれば、後はrestを元にNoiseを作ってDisplacementするだけです。SOPでやるかShaderでやるかは、アナタ次第です。
+ちなみにShaderでやる場合は、Pyro Shaderを参考にすると良いです。 上の動画はBasic Smokeを元に作りました。
+How to set rest(hip)
+おまけ。Compress Volume Cache とあるセミナーで、キャッシュサイズの節約法みたいな話がでていたみたいなんで、ここでも触れてみたいとおもいます。といっても、これまた用意されているOTLとノードの解説なんで、手抜き感が否めないですが、意外と知らない方が多いので紹介します。
+ShelfからPyroを組んでる人は、Dop I/O SOPを使ってキャッシュをとってる人がいるかもしれません。そのSOPにCompressionタブがあり、これを使います。これはVolume Compressノードの値を逃しているだけです。 このノードは基本的に、以下の画像の赤枠をいじればよいかと思います。Compress設定は、レンダリングに影響が出ない範囲で、最適な値を各自見つけてください。
+ちょうど2年前に比較したデータですが、Compressをすることでサイズが半分くらいになり、ディスクへの書き込み時間も減っています。 余談ですが、この表はWindowsとLinuxを比べることを目的にしたものです。どちらが速いかはわかりますよね。
+また、多くのVolumeなんちゃらSOPはVDBに対応していません。VDBのデータを16bitにしたい場合は、PrimitiveのVolume>VDBにWrite 16-Bit Floatsというオプションにチェックを入れます。
+まとめ 今回の内容は、SideFxが用意したOTLの解説みたいになってしまいました。Houdiniのアセットは、ブラックボックスになっているところが少ないので中の仕組みを見ることも、編集して自分用にカスタマイズできます。当たり前ですが仕事で使うには、遅かったりコントロールが難しかったり、クオリティが出にくいことがあるので、中を見たり編集する行為は必然です。
+Sigrapphのようなところで発表された技術も、Cloud Noise Sopのように既存のノードを組み合わせるだけで一部を再現できることがあります。Mayaやプラグインのアップデートを待たないと何もできないと手をこまねいているより、新しい技術を観て取り入れるチャレンジをすれば色んな発見をし、可能性が広がるかもしれません。</p></div><footer class=entry-footer><span title='2015-07-19 00:54:08 +0900 JST'>7月 19, 2015</span>&nbsp;·&nbsp;1 分&nbsp;·&nbsp;Shohei Okazaki</footer><a class=entry-link aria-label="post link to Volume Displacement" href=https://ShoheiOkazaki.github.io/FXHACK/posts/2015-07-16/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>Wrangleを使おう 2.5</h2></header><div class=entry-content><p>一個書き忘れてたことがあったので、さらっと。
+数学定数、円周率(π)・自然対数の底(e)・黄金比(φ/τ)とか、時々使うけど漠然としか値を覚えていない奴らがいます。正確な値を知るために毎回、調べるのは億劫です。
+例えば、Wrangleで初めに#include &lt;math.h>と書けば、以降このノード内ではM_PIが3.1415926の値を持っていることになります。
+#include &lt;math.h> f@_check = M_PI; なにが起こっているかというと、$HH/vex/includeにmath.hというファイルがあります。そのファイルの中で、定義されたものを読み込んでいます。この他にもあるので中を見てみてください。
+このファイルは自分で作ることもできます。例えば黄金比を呼び出したい場合。
+#define PHI 1.61803 これを、HOUDINI_PATHに設定している場所のvex/includeに.h形式で保存するか、HOUDINI_VEX_PATHに登録しているところに保存すれば、これ以降、読み込むことができます。
+#include &lt;test.h> f@_check = PHI; 決められたところに保存しなくても、test.hのところを/home/user/test.hとパスを入れても呼び出すこともできます。</p></div><footer class=entry-footer><span title='2015-03-02 02:53:32 +0900 JST'>3月 2, 2015</span>&nbsp;·&nbsp;1 分&nbsp;·&nbsp;Shohei Okazaki</footer><a class=entry-link aria-label="post link to Wrangleを使おう 2.5" href=https://ShoheiOkazaki.github.io/FXHACK/posts/2015-03-02/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://ShoheiOkazaki.github.io/FXHACK/tags/sop/page/2/>次のページ&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2022 <a href=https://ShoheiOkazaki.github.io/FXHACK/>FX HACK</a></span>
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

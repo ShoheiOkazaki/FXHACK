@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Deadline on FX HACK</title>
+    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/deadline/</link>
+    <description>Recent content in Deadline on FX HACK</description>
+    <image>
+      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 13 Sep 2017 11:00:53 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/deadline/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Deadline] Add Extra Version</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-09-13/</link>
+      <pubDate>Wed, 13 Sep 2017 11:00:53 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-09-13/</guid>
+      <description>時々、悩んでる人がいたので、Deadlineネタを１つ。
+どんなソフトでも、マイナーアップデートは簡単にできますが、メジャーアップデートは、プロジェクトの兼ね合いや自社Plugin/Toolの影響で、そうは容易くできません。アップグレードの金を出すのに渋って更新してないのでなく、ただ単にめんどくさいという理由で更新されてなかったら、担当者のケツを蹴っ飛ばして更新してもらいましょう。
+いろんな理由でDeadlineのバージョンが古すぎて、最新のHoudiniのバージョン使用できないという人もいるでしょう。今回は、そんな人向けへの裏ワザを紹介します。
+※この記事は、Deadline Client Version: 9.0.6.1の元、作成しています。
+Configure Plugins まずは、 Configure Pluginsに任意のバージョンを追加して、Pathをセットできるようにしましょう。
+以下のファイルを探しだして、[Houdini16_Hython_Executable]の次に追加します。 $DEADLINE_REPOSITORY/plugins/Houdini/houdini.param
+[Houdini17_Hython_Executable] Label=Houdini 17 Hython Executable Category=Render Executables CategoryOrder=0 Type=multilinemultifilename Index=8 Default=C:\Program Files\Side Effects Software\Houdini 17.0.000\bin\Hython.exe;C:\Program Files (x86)\Side Effects Software\Houdini 17.0.000\bin\Hython.exe;/Applications/Houdini/Houdini17.0.000/Frameworks/Houdini.framework/Versions/17.0.000/Resources/bin/hython Description=The path to the hython executable. It can be found in the Houdini bin folder. そうすると、Configure Pluginsをみてみると追加されています。簡単ですね。各自インストールフォルダを指定してあげてください。 Distribute Sim使う人は、Sim Trackerも追加しときましょう。（HQueue使う人ってどれくらいるんだろう？使わないよね？）
+Buildを指定したいなら、Houdini16.5.123_Hython_Executableみたいに作ることも可能です。 Mantraも同じ要領でやればできます。
+Houdini Submission Submission WindowのVersion指定メニューに、任意のバージョンを足すには、以下のpythonを変更します。 $DEADLINE_REPOSITORY/scripts/Submission/HoudiniSubmission.py 以下のラインを探しだして、任意のバージョンを追加してください。
+scriptDialog.AddComboControlToGrid(&amp;#34;VersionBox&amp;#34;,&amp;#34;ComboControl&amp;#34;,&amp;#34;14&amp;#34;,(&amp;#34;9&amp;#34;,&amp;#34;10&amp;#34;,&amp;#34;11&amp;#34;,&amp;#34;12&amp;#34;,&amp;#34;13&amp;#34;,&amp;#34;14&amp;#34;,&amp;#34;15&amp;#34;,&amp;#34;16&amp;#34;,&amp;#34;17&amp;#34;,), 5, 1) これだけです。 Deadlineは結構いいよ 以上の手順を踏めば、投げられるようになったと思いますが、 Deadlineはバッチ処理をする前に、いくつかのプロセスを処理してるので、あまりにも古いバージョンを使用してる場合は、ノードのパラメータ名が変わっていたり、対応してないかもしれません。 そんな時は、$DEADLINE_REPOSITORY/plugins/Houdini/hrender_dl.pyをなんとかなります。</description>
+    </item>
+    
+  </channel>
+</rss>

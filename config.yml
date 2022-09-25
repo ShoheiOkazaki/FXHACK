@@ -1,0 +1,157 @@
+baseURL: "https://ShoheiOkazaki.github.io/FXHACK/"
+canonifyurls: false
+publishDir: "docs"
+
+title: FX HACK
+paginate: 5
+theme: PaperMod
+
+defaultContentLanguage: ja
+
+enableEmoji: true
+enableRobotsTXT: true
+
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+
+languages:
+  ja:
+    languageName: "Japanese"    
+    weight: 1
+  en:
+    languageName: "English"
+    weight: 2
+    profileMode:
+      enabled: True # needs to be explicitly set
+      title: FX HACK
+      subtitle: "Will put useful Houdini Tips, when I'd like."
+      #imageUrl: "https://avatars.githubusercontent.com/u/59508678?v=4"
+      #imageUrl: "#"
+      imageWidth: 200
+      imageHeight: 200
+      imageTitle: my image
+
+params:
+  #    env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: FX HACK
+  description: "No Procedulat No FX."
+  keywords: [Blog, Portfolio, PaperMod]
+  author: Shohei Okazaki
+  # author: ["Me", "You"] # multiple authors
+  images: ["profile.jpg"]
+  #DateFormat: "02 2, 2006"
+
+  defaultTheme: dark # dark, light, auto
+  disableThemeToggle: false
+
+
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  assets:
+    # disableHLJS: true # to disable highlight.js
+    # disableFingerprinting: true
+    favicon: "Thinking_Face_Emoji_large.png"
+    favicon16x16: "Thinking_Face_Emoji_large.png"
+    favicon32x32: "Thinking_Face_Emoji_large.png"
+    apple_touch_icon: "Thinking_Face_Emoji_large.png"
+    safari_pinned_tab: "Thinking_Face_Emoji_large.png"
+
+  label:
+    text: "FX HACK"
+    # icon: Thinking_Face_Emoji_large.png
+    iconHeight: 35
+
+  # profile-mode
+  profileMode:
+    enabled: True # needs to be explicitly set
+    title: FX HACK
+    subtitle: "気が向いたらHoudiniのTipsを紹介する"
+    #imageUrl: "https://avatars.githubusercontent.com/u/59508678?v=4"
+    #imageUrl: "#"
+    imageWidth: 200
+    imageHeight: 200
+    imageTitle: my image
+    # buttons:
+    #     - name: Posts
+    #       url: posts
+
+  homeInfoParams:
+    Title: "PaperMod"
+    Content: >
+        Welcome to demo of hugo's theme PaperMod.
+        - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
+        - Do give a 🌟 on Github !
+        - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper).
+
+  socialIcons:
+    - name: twitter
+      url: "https://twitter.com/_ShoHey_"
+    - name: IMDb
+      url: "https://www.imdb.com/name/nm10296438"
+    - name: github
+      url: "https://github.com/ShoheiOkazaki"
+
+  cover:
+    hidden: true # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: true # hide on single page
+
+  editPost:
+    URL: "https://github.com/ShoheiOkazaki/FXHACK/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+    
+
+menu:
+  main:
+    - identifier: posts
+      name: Blog
+      url: posts
+      weight: 5
+    # - identifier: Profile
+    #   name: profile
+    #   url: fixed/profile
+      weight: 10
+    - name: About
+      url: fixed/works
+      weight: 51
+    - name: Search
+      url: search/
+      weight: 20
+    - identifier: Tags
+      name: Tags
+      url: tags/
+      weight: 25
+    - identifier: Wiki
+      name: Wiki
+      url: Wiki/
+      weight: 40

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Workflow on FX HACK</title>
+    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/workflow/</link>
+    <description>Recent content in Workflow on FX HACK</description>
+    <image>
+      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 29 Apr 2021 12:27:07 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/workflow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Houdini Workflowについて</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2021-04-29/</link>
+      <pubDate>Thu, 29 Apr 2021 12:27:07 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2021-04-29/</guid>
+      <description>いままで何回もHoudini Workflowをつくってきたので、どんなことをやっているか紹介したいと思います。
+小規模な会社にいるからとか個人でやってるから、そんなの必要ないと考える人もいるかもしれませんが、そうは思いません。数人の会社で働いたことがありますが、確実にワークフローが少しでもないと良いパフォーマンスを出すことをできません。
+大規模な会社には専任のTDがいてパイプラインがしっかりあり、色々便利なこともあります。反面、大きくなりすぎた会社ほど、やる気のない人や老害がたまり自由度がなくなり最新の流れにもついていけなくなったり、ワークフローを作るのに大工事したり、パイプラインにも手をいれなければいけないみたいなことも起こってしまいます。小規模だとパイプラインを作るのは難しいですが、ワークフローは自分たちの好きに作りやすいです。自分たちにあったものを構築できれば、小回りがきいて大きな所に負けないワークフローを構築しアドバンテージにすることも出来ます。
+ワークフローは、TDの人やスクリプトをかける人が作るものだと考えるでしょうが、実際に作業するアーティスト主導で構築するべきです。なぜならそのワークフローを使うのは作業者であり、なにが必要なのかを知ってるのは作業者であるアーティストだからです。
+パイプライン？　ワークフロー？ そもそもパイプラインとワークフローの違いはなんなんでしょうか？
+パイプラインは、別部署へのデータを送る時、たとえばアセットデータやアニメーションデータやレンダーイメージのパブリッシュなど です。決められた場所かつ安全な場所にパブリッシュしたり、決まったフォーマットに変換したりします。また、ファイルの命名規則やチェック方法やShotgunとの連携もこちらの役割です。
+ワークフローは、アーティストがショット作業をする時に必要なルール・ツール を用意しておくことです。
+パイプラインはTDが担当しますが、ワークフローは出来る限りそのツールや流れを熟知した人が作るのに携わるのが良いと思います。そしてFXはPythonは書けて当たり前なので、TDにお前らどうせ自分たちで出来るからとか言われ、他の部署を先にやってからと後回しにされがちです。
+目的 まずは何のためにワークフローを作るかの目的をしかっり決めましょう。
+私はいつもアーティストが絵作りだけに集中できる環境を作ることを目的にし、できるかぎりのことをするようにしています。
+何を基準にツールやルールを作るかというと、基本この２つをベースに考えます。
+ヒューマンエラーをなくす 毎回同じことをしたくない 代表格は、キャッシュやレンダーの出力先を毎回入力することです。これはもはや人間のやることではありません。
+チームで新しくワークフローを作る場合は、みんなの意見を聞いて不便なことや要望を洗い出してあげることも大事です。
+チームにジュニアレベルの人やHoudiniに詳しくない人がいるとしたら、色んなレベルの人にもスムーズにいくルールを考える必要があるかもしれません。
+環境変数 まずプロジェクト固有の変数について考えましょう。変数は、プロジェクト全体に適用されるグローバル変数と、シーケンスやショットごとに値が変わるローカル変数にわけられます。 プロジェクト名やシーケンス名を定義しとくとフォルダの移動やアウトプット先を決めるのが楽になります。ただこの変数はパイプラインとして設定されてることが多いです。小規模な会社や個人では自身で設定してもいいと思います。これらを設定することによってどういうことが出来るかはあとで説明します。
+PROJ = &amp;#39;BurningProj&amp;#39; 他のソフトからAlembic等でデータを持ってきた時、シーンスケールを正しくしてあげる必要があります。なぜなら、Houdiniのシミュレーション系ノードのデフォルト値は、1Grid=1mを前提として値が設定されています。これにあわせてやるのが一番良いです。
+大抵の場合はインポートしたものを0.1倍か0.01倍すればいいでしょうが、海外のクライアントからもらったデータはメートルでなくインチで作業してる場合があります。その場合は39.37で割る必要があります。覚えたくないですよね。なので、コレも変数にしておきましょう。
+SCALE_FACTOR = 10 他には、レンダーサイズも変数にしてもいいかもしれません。
+RENDER_RES_X=1920 RENDER_RES_Y=960 また、WinodwsやLinuxのプラットフォームが混在してる場合、マウントするところを変数にしたとき、少し便利になります。どいうことかというとWindowsはZ:/proj/BuringProjがLinuxでは/proj/BuringProjの場合、$PROJ_ROOT/BuringProjという書き方に統一できます。協力会社によってはクライアントと同じドライブレターが使えないときは、協力会社に$PROJ_ROOTをX:/good_client/A_Inc/projみたいに設定してもらえれば、フォルダ構造を維持したままシーンファイルを渡せば、別の環境でもシーンを容易に再現できる可能性が高まります。
+PROJ_ROOT = &amp;#39;Z:/proj&amp;#39; 日本でもNetflixの仕事が増えてきたせいか、やっとColorMangementが浸透してきましたね。Houdiniも他のソフト同様、OCIOの環境変数を設定してあげる必要があります。ACTIVE_VIEWSはなくてもいいです。VFXではシーケンスやショットごとでLutが違う場合があるので、OCIO_ACTIVE_VIEWSを変動出来るようにしてもいいかと思います。
+OCIO=&amp;#39;/proj/BurninigProj/tools/OCIO/will_be_beautiful.ocio&amp;#39; OCIO_ACTIVE_VIEWS=&amp;#39;Rec.709&amp;#39; ローカル変数の代表は、シーケンスとショット番号、フレームレンジとかでしょうか。
+SEQ = &amp;#39;seq_01&amp;#39; SHOT = &amp;#39;shot_003&amp;#39; P_START = 1001 P_END = 1032 さて、これらをどうやって全員に行き渡せるかですが、大きい会社ならランチャーがあると思うので、そこで設定してもいいです。
+小さい会社や個人の場合は、パッケージを使うといいでしょう。 https://www.sidefx.com/ja/docs/houdini/ref/plugins.html
+たとえば/proj/BurningProj/tools/houdiniというフォルダの中にプロジェクトのHDAやスクリプトを置き変数を定義するとします。
+/proj/BurningProj └── tools └── houdini └── otls └── packages └── scripts └── toolbar └── maya └── nuke まずメインのパッケージを作ります。これをpackagesフォルダのBurningProj.</description>
+    </item>
+    
+    <item>
+      <title>最近のお気に入り - 1　「右クリック」</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2018-03-06/</link>
+      <pubDate>Tue, 06 Mar 2018 12:00:18 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2018-03-06/</guid>
+      <description>大したことじゃないけど、最近のお気に入りを紹介するコーナ。 第一弾は右クリック。
+FXを作ってく上で、僕には2大裏テーマというものがあります。それは 「キーフレームを極力打たない」と「手の挙動範囲を極力少なくする」 です。今回は後者のために、必要なカスタマイズです。
+ノードのプリセットに入れればいいじゃんと言う人もいるかもしれないですが、あれはパラメータの並び順や位置のレイアウトも記憶しています。Houdiniはバージョンが変わると、パラメータのレイアウトが変わることなんてことは当たり前なので、バージョンごとにプリセットを更新する必要があり非常にめんどいのです。といわけで右クリックのメニューにサポートツールを追加して効率化を図っています。
+メニューの追加の仕方ですが、 ノードを右クリックした時にメニューを追加するには、OPmenu.xmlを編集します。 パラメータを右クリックした時にメニューを追加するには、PRAMmenu.xmlを編集します。
+基本的には、ここに書いてあるんで、読めばわかります。 http://www.sidefx.com/docs/houdini/basics/config_menus.html
+お題として、先日パベルさんのセミナーでDescriptive Parmの表示の仕方を習ったので、これをパラメータの右クリックに追加してみましょう。 Descriptive Parmとは、File Sopなどにある、Network View上でノードの名前の下にあるやつです。
+これを、表示されてないノードにも表示させるようにします。これで、いちいちノードを選択してパラメータを見なくても、重要なパラメータの値がNetwork View上で確認できるようになります。しかし、そのパラメータが何かのノードとリンクして、そのノードはクソ重い処理をしなければならないのなら、この値を表示するために、毎回時間がかかってしまうので、気をつけてください。
+最初に、Pythonでどうやるか確認しましょう。ヘルプを見るとノードのUserDataを変更すれば、いいようです。 http://www.sidefx.com/docs/houdini/network/badges.html#textbadges
+上の添付のようにMountainSopのElement Sizeを、Network Viewに表示させるには、Pythonはこんな感じ。
+node = hou.node(&amp;#39;/obj/geo1/mountain1&amp;#39;) parm_name = &amp;#39;elementsize&amp;#39; node.setUserData(&amp;#34;descriptiveparm&amp;#34;, parm_name) ノードと、Descriptive Parmになるパラメータの名前が必要ですね。
+必要なものがわかったので、実際の作業に入りましょう。まずはPythonファイルを作ります。ここでは、changeDescriptiveParm.pyという名前にして、Houdiniがインポートできる場所に保存します。
+import hou def doit(parms,type): parm = parms[0] parm_name = parm.name() node = parm.node() if type == &amp;#34;clear&amp;#34; parm_name = &amp;#34;&amp;#34; node.setUserData(&amp;#34;descriptiveparm&amp;#34;, parm_name)) 現在、右クリックしているパラメータが何かはparms=kwargs[&amp;quot;parms&amp;quot;]で取得します。parmsとあるとおり、リストとして値が返ってきます。選択してるパラメータは1つなので、parm = parms[0]。パラメータからノードの情報を得るには、単純にparm.node()。これで、必要な情報はすべて取得できたことになります。 Descriptive Parmをクリアしたい時もあるので、parm_nameを空にして、それを可能にしておきます。
+最後に、PARMmenu.xmlを編集しましょう。こうです。
+&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;menuDocument&amp;gt; &amp;lt;menu&amp;gt; &amp;lt;subMenu id=&amp;#34;changeDescriptiveParm&amp;#34;&amp;gt; &amp;lt;label&amp;gt;Change Descriptive Parm&amp;lt;/label&amp;gt; &amp;lt;scriptItem&amp;gt; &amp;lt;label&amp;gt;Set&amp;lt;/label&amp;gt; &amp;lt;scriptCode&amp;gt;&amp;lt;!</description>
+    </item>
+    
+  </channel>
+</rss>

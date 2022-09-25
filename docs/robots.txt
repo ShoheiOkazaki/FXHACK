@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://ShoheiOkazaki.github.io/FXHACK/sitemap.xml

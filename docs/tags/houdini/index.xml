@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Houdini on FX HACK</title>
+    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/houdini/</link>
+    <description>Recent content in Houdini on FX HACK</description>
+    <image>
+      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 29 Apr 2021 12:27:07 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/houdini/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Houdini Workflowについて</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2021-04-29/</link>
+      <pubDate>Thu, 29 Apr 2021 12:27:07 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2021-04-29/</guid>
+      <description>いままで何回もHoudini Workflowをつくってきたので、どんなことをやっているか紹介したいと思います。
+小規模な会社にいるからとか個人でやってるから、そんなの必要ないと考える人もいるかもしれませんが、そうは思いません。数人の会社で働いたことがありますが、確実にワークフローが少しでもないと良いパフォーマンスを出すことをできません。
+大規模な会社には専任のTDがいてパイプラインがしっかりあり、色々便利なこともあります。反面、大きくなりすぎた会社ほど、やる気のない人や老害がたまり自由度がなくなり最新の流れにもついていけなくなったり、ワークフローを作るのに大工事したり、パイプラインにも手をいれなければいけないみたいなことも起こってしまいます。小規模だとパイプラインを作るのは難しいですが、ワークフローは自分たちの好きに作りやすいです。自分たちにあったものを構築できれば、小回りがきいて大きな所に負けないワークフローを構築しアドバンテージにすることも出来ます。
+ワークフローは、TDの人やスクリプトをかける人が作るものだと考えるでしょうが、実際に作業するアーティスト主導で構築するべきです。なぜならそのワークフローを使うのは作業者であり、なにが必要なのかを知ってるのは作業者であるアーティストだからです。
+パイプライン？　ワークフロー？ そもそもパイプラインとワークフローの違いはなんなんでしょうか？
+パイプラインは、別部署へのデータを送る時、たとえばアセットデータやアニメーションデータやレンダーイメージのパブリッシュなど です。決められた場所かつ安全な場所にパブリッシュしたり、決まったフォーマットに変換したりします。また、ファイルの命名規則やチェック方法やShotgunとの連携もこちらの役割です。
+ワークフローは、アーティストがショット作業をする時に必要なルール・ツール を用意しておくことです。
+パイプラインはTDが担当しますが、ワークフローは出来る限りそのツールや流れを熟知した人が作るのに携わるのが良いと思います。そしてFXはPythonは書けて当たり前なので、TDにお前らどうせ自分たちで出来るからとか言われ、他の部署を先にやってからと後回しにされがちです。
+目的 まずは何のためにワークフローを作るかの目的をしかっり決めましょう。
+私はいつもアーティストが絵作りだけに集中できる環境を作ることを目的にし、できるかぎりのことをするようにしています。
+何を基準にツールやルールを作るかというと、基本この２つをベースに考えます。
+ヒューマンエラーをなくす 毎回同じことをしたくない 代表格は、キャッシュやレンダーの出力先を毎回入力することです。これはもはや人間のやることではありません。
+チームで新しくワークフローを作る場合は、みんなの意見を聞いて不便なことや要望を洗い出してあげることも大事です。
+チームにジュニアレベルの人やHoudiniに詳しくない人がいるとしたら、色んなレベルの人にもスムーズにいくルールを考える必要があるかもしれません。
+環境変数 まずプロジェクト固有の変数について考えましょう。変数は、プロジェクト全体に適用されるグローバル変数と、シーケンスやショットごとに値が変わるローカル変数にわけられます。 プロジェクト名やシーケンス名を定義しとくとフォルダの移動やアウトプット先を決めるのが楽になります。ただこの変数はパイプラインとして設定されてることが多いです。小規模な会社や個人では自身で設定してもいいと思います。これらを設定することによってどういうことが出来るかはあとで説明します。
+PROJ = &amp;#39;BurningProj&amp;#39; 他のソフトからAlembic等でデータを持ってきた時、シーンスケールを正しくしてあげる必要があります。なぜなら、Houdiniのシミュレーション系ノードのデフォルト値は、1Grid=1mを前提として値が設定されています。これにあわせてやるのが一番良いです。
+大抵の場合はインポートしたものを0.1倍か0.01倍すればいいでしょうが、海外のクライアントからもらったデータはメートルでなくインチで作業してる場合があります。その場合は39.37で割る必要があります。覚えたくないですよね。なので、コレも変数にしておきましょう。
+SCALE_FACTOR = 10 他には、レンダーサイズも変数にしてもいいかもしれません。
+RENDER_RES_X=1920 RENDER_RES_Y=960 また、WinodwsやLinuxのプラットフォームが混在してる場合、マウントするところを変数にしたとき、少し便利になります。どいうことかというとWindowsはZ:/proj/BuringProjがLinuxでは/proj/BuringProjの場合、$PROJ_ROOT/BuringProjという書き方に統一できます。協力会社によってはクライアントと同じドライブレターが使えないときは、協力会社に$PROJ_ROOTをX:/good_client/A_Inc/projみたいに設定してもらえれば、フォルダ構造を維持したままシーンファイルを渡せば、別の環境でもシーンを容易に再現できる可能性が高まります。
+PROJ_ROOT = &amp;#39;Z:/proj&amp;#39; 日本でもNetflixの仕事が増えてきたせいか、やっとColorMangementが浸透してきましたね。Houdiniも他のソフト同様、OCIOの環境変数を設定してあげる必要があります。ACTIVE_VIEWSはなくてもいいです。VFXではシーケンスやショットごとでLutが違う場合があるので、OCIO_ACTIVE_VIEWSを変動出来るようにしてもいいかと思います。
+OCIO=&amp;#39;/proj/BurninigProj/tools/OCIO/will_be_beautiful.ocio&amp;#39; OCIO_ACTIVE_VIEWS=&amp;#39;Rec.709&amp;#39; ローカル変数の代表は、シーケンスとショット番号、フレームレンジとかでしょうか。
+SEQ = &amp;#39;seq_01&amp;#39; SHOT = &amp;#39;shot_003&amp;#39; P_START = 1001 P_END = 1032 さて、これらをどうやって全員に行き渡せるかですが、大きい会社ならランチャーがあると思うので、そこで設定してもいいです。
+小さい会社や個人の場合は、パッケージを使うといいでしょう。 https://www.sidefx.com/ja/docs/houdini/ref/plugins.html
+たとえば/proj/BurningProj/tools/houdiniというフォルダの中にプロジェクトのHDAやスクリプトを置き変数を定義するとします。
+/proj/BurningProj └── tools └── houdini └── otls └── packages └── scripts └── toolbar └── maya └── nuke まずメインのパッケージを作ります。これをpackagesフォルダのBurningProj.</description>
+    </item>
+    
+    <item>
+      <title>FX的　Height Fieldの使い方</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2019-02-12/</link>
+      <pubDate>Tue, 12 Feb 2019 09:30:42 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2019-02-12/</guid>
+      <description>今回は、Height Fieldです。 FXは、Height Fieldの恩恵は、あまりないと思いますが、個人的なFX的使い方を紹介します。
+サンプルファイルです。17.0.459で作成。
+Download
+Terrain Object Height Filedの実装にともないTerrain Object DOPにUse Heightfiledというオプションが追加されました。
+今までは、Particleと地面の詳細なコリジョン結果を得るには、このノードのVolumeに変換する所のオプションにてDivisionSizeをあげて高解像度にするか、StaticObjectをつかってSurface Collisionを使用したりしてました。どちらも、軽いものではありませんね。
+Height Filedは、どこかの軸が2000を超えてもなんてことありません。普通のVolumeのならめっちゃ重いですよね。これを使うなんて、さすがSideFX。
+さて実際の使い方は、Environment Modeler等が作ってくれた地形等を読み込み、HeightField ProjectでHeightFiledに変換します。
+シミュレーションの範囲を決めて、より効率的に作業するならHeightField Cropを使いましょう。 小さな石とかデブリがあったら、それごとProjectionしても、そこそこ使えます。 え、Displacement・Bumpを使ってたらどうするんだって？ Point CloudでUVを持ってきて、Textureをインポートして、 足し算。 それだとNormal考慮してないってか。インポートしたGeometryをSubdivisionをめっちゃかけて、SopでDisplacementするしかないですかね。
+Packでコレ使うと、めっちゃ重いからVolume Collision使わないで、普通にBulletでConcaveにしたほうが良いです。
+Boolean Cutter 続いては、別の使い方の紹介。BooleanのShatterに使ってみましょう。 そもそもBooleanを使う時の重要な点は、如何にエラーのないGeometryを作り出しレンダリングできるようにするかです。「エラー」とはManifold Topologyになっていないものが生成されたり、Alembicを使って他のツールにGeometryとしてインポートするときに起こりうる問題の要因のことを指します。Houdini内で完結する場合は、これらの問題があっても気にせずレンダリングできることが多々です。
+なぜBooleanに使うのか？それはHeightFiledの特徴が気に入ったからです。
+特徴1:軽い
+前述した通り挙動が軽いです。破壊の断面はディティールが欲しくなります。通常だったら、面を細かく分割してPointにNoiseをかけたりしますが、結構動作重いです。軽いは良いです。
+特徴2:Topology
+HeightFieldをPolygonにコンバートして、それをDisplacementした方向からTopoloyを見ると綺麗な格子状になっています。
+エラーTopologyを最も生成しやすい要因は、このNoiseのカッターを作ってる時です。GeometryのPointsに対して、強いNoiseをかけると、自身の面と干渉してしまいます。これは、あまり良くないです。 そして、綺麗なTopologyということは、ここからUVが作りやすいです。
+それでは、実際の手順の説明です。 基本的には普通よくあるやつと似てます。Point作ってHeightFiledのGridをコピーしてNoiseをかけます。 Noiseをかける前に対象Geometryより少し大きめなBoundigBoxを使ってCropしてあげれば、より効率が良くなります。 続いて、HeightFiledをMeshにコンバートし、UV ProjectでDisplacement方向からUVを転写。UV Layoutで一度整えます。このままだと高さが考慮されていないので、heightというPointAttrを使ってUVを調整します。
+Wrangleで縦横比をheihgtで乗算
+vector bsize = getbbox_size(0); float mult= bsize[0]/bsize[2]; @uv.y = point(0,&amp;#34;height&amp;#34;,@ptnum)*mult; 最後に、UV Layoutでもう一度整えておしまいです。
+Cutterの用意ができたら、あとは通常通りBooleanでShatterしましょう。
+その後は、Normal入れたり、
+Non-Manifoldを取り除くために、CleanかPolyDoctorで治しときましょう。エラーは出るときは出ます。
+ここまでUVがあれば、ModelerやLookDevにTexture・Shaderを作ってもらうために壊したものを戻しても、文句は言われないでしょう。きっと。
+ということで、今回は本来の用途とは違った使い方の紹介でした。
+他にも、こんな風に本来の目的とは違う使ってるよって方いましたら、ぜひ教えてください。</description>
+    </item>
+    
+    <item>
+      <title>最近のお気に入り - 1　「右クリック」</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2018-03-06/</link>
+      <pubDate>Tue, 06 Mar 2018 12:00:18 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2018-03-06/</guid>
+      <description>大したことじゃないけど、最近のお気に入りを紹介するコーナ。 第一弾は右クリック。
+FXを作ってく上で、僕には2大裏テーマというものがあります。それは 「キーフレームを極力打たない」と「手の挙動範囲を極力少なくする」 です。今回は後者のために、必要なカスタマイズです。
+ノードのプリセットに入れればいいじゃんと言う人もいるかもしれないですが、あれはパラメータの並び順や位置のレイアウトも記憶しています。Houdiniはバージョンが変わると、パラメータのレイアウトが変わることなんてことは当たり前なので、バージョンごとにプリセットを更新する必要があり非常にめんどいのです。といわけで右クリックのメニューにサポートツールを追加して効率化を図っています。
+メニューの追加の仕方ですが、 ノードを右クリックした時にメニューを追加するには、OPmenu.xmlを編集します。 パラメータを右クリックした時にメニューを追加するには、PRAMmenu.xmlを編集します。
+基本的には、ここに書いてあるんで、読めばわかります。 http://www.sidefx.com/docs/houdini/basics/config_menus.html
+お題として、先日パベルさんのセミナーでDescriptive Parmの表示の仕方を習ったので、これをパラメータの右クリックに追加してみましょう。 Descriptive Parmとは、File Sopなどにある、Network View上でノードの名前の下にあるやつです。
+これを、表示されてないノードにも表示させるようにします。これで、いちいちノードを選択してパラメータを見なくても、重要なパラメータの値がNetwork View上で確認できるようになります。しかし、そのパラメータが何かのノードとリンクして、そのノードはクソ重い処理をしなければならないのなら、この値を表示するために、毎回時間がかかってしまうので、気をつけてください。
+最初に、Pythonでどうやるか確認しましょう。ヘルプを見るとノードのUserDataを変更すれば、いいようです。 http://www.sidefx.com/docs/houdini/network/badges.html#textbadges
+上の添付のようにMountainSopのElement Sizeを、Network Viewに表示させるには、Pythonはこんな感じ。
+node = hou.node(&amp;#39;/obj/geo1/mountain1&amp;#39;) parm_name = &amp;#39;elementsize&amp;#39; node.setUserData(&amp;#34;descriptiveparm&amp;#34;, parm_name) ノードと、Descriptive Parmになるパラメータの名前が必要ですね。
+必要なものがわかったので、実際の作業に入りましょう。まずはPythonファイルを作ります。ここでは、changeDescriptiveParm.pyという名前にして、Houdiniがインポートできる場所に保存します。
+import hou def doit(parms,type): parm = parms[0] parm_name = parm.name() node = parm.node() if type == &amp;#34;clear&amp;#34; parm_name = &amp;#34;&amp;#34; node.setUserData(&amp;#34;descriptiveparm&amp;#34;, parm_name)) 現在、右クリックしているパラメータが何かはparms=kwargs[&amp;quot;parms&amp;quot;]で取得します。parmsとあるとおり、リストとして値が返ってきます。選択してるパラメータは1つなので、parm = parms[0]。パラメータからノードの情報を得るには、単純にparm.node()。これで、必要な情報はすべて取得できたことになります。 Descriptive Parmをクリアしたい時もあるので、parm_nameを空にして、それを可能にしておきます。
+最後に、PARMmenu.xmlを編集しましょう。こうです。
+&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;menuDocument&amp;gt; &amp;lt;menu&amp;gt; &amp;lt;subMenu id=&amp;#34;changeDescriptiveParm&amp;#34;&amp;gt; &amp;lt;label&amp;gt;Change Descriptive Parm&amp;lt;/label&amp;gt; &amp;lt;scriptItem&amp;gt; &amp;lt;label&amp;gt;Set&amp;lt;/label&amp;gt; &amp;lt;scriptCode&amp;gt;&amp;lt;!</description>
+    </item>
+    
+    <item>
+      <title>[Deadline] Add Extra Version</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-09-13/</link>
+      <pubDate>Wed, 13 Sep 2017 11:00:53 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-09-13/</guid>
+      <description>時々、悩んでる人がいたので、Deadlineネタを１つ。
+どんなソフトでも、マイナーアップデートは簡単にできますが、メジャーアップデートは、プロジェクトの兼ね合いや自社Plugin/Toolの影響で、そうは容易くできません。アップグレードの金を出すのに渋って更新してないのでなく、ただ単にめんどくさいという理由で更新されてなかったら、担当者のケツを蹴っ飛ばして更新してもらいましょう。
+いろんな理由でDeadlineのバージョンが古すぎて、最新のHoudiniのバージョン使用できないという人もいるでしょう。今回は、そんな人向けへの裏ワザを紹介します。
+※この記事は、Deadline Client Version: 9.0.6.1の元、作成しています。
+Configure Plugins まずは、 Configure Pluginsに任意のバージョンを追加して、Pathをセットできるようにしましょう。
+以下のファイルを探しだして、[Houdini16_Hython_Executable]の次に追加します。 $DEADLINE_REPOSITORY/plugins/Houdini/houdini.param
+[Houdini17_Hython_Executable] Label=Houdini 17 Hython Executable Category=Render Executables CategoryOrder=0 Type=multilinemultifilename Index=8 Default=C:\Program Files\Side Effects Software\Houdini 17.0.000\bin\Hython.exe;C:\Program Files (x86)\Side Effects Software\Houdini 17.0.000\bin\Hython.exe;/Applications/Houdini/Houdini17.0.000/Frameworks/Houdini.framework/Versions/17.0.000/Resources/bin/hython Description=The path to the hython executable. It can be found in the Houdini bin folder. そうすると、Configure Pluginsをみてみると追加されています。簡単ですね。各自インストールフォルダを指定してあげてください。 Distribute Sim使う人は、Sim Trackerも追加しときましょう。（HQueue使う人ってどれくらいるんだろう？使わないよね？）
+Buildを指定したいなら、Houdini16.5.123_Hython_Executableみたいに作ることも可能です。 Mantraも同じ要領でやればできます。
+Houdini Submission Submission WindowのVersion指定メニューに、任意のバージョンを足すには、以下のpythonを変更します。 $DEADLINE_REPOSITORY/scripts/Submission/HoudiniSubmission.py 以下のラインを探しだして、任意のバージョンを追加してください。
+scriptDialog.AddComboControlToGrid(&amp;#34;VersionBox&amp;#34;,&amp;#34;ComboControl&amp;#34;,&amp;#34;14&amp;#34;,(&amp;#34;9&amp;#34;,&amp;#34;10&amp;#34;,&amp;#34;11&amp;#34;,&amp;#34;12&amp;#34;,&amp;#34;13&amp;#34;,&amp;#34;14&amp;#34;,&amp;#34;15&amp;#34;,&amp;#34;16&amp;#34;,&amp;#34;17&amp;#34;,), 5, 1) これだけです。 Deadlineは結構いいよ 以上の手順を踏めば、投げられるようになったと思いますが、 Deadlineはバッチ処理をする前に、いくつかのプロセスを処理してるので、あまりにも古いバージョンを使用してる場合は、ノードのパラメータ名が変わっていたり、対応してないかもしれません。 そんな時は、$DEADLINE_REPOSITORY/plugins/Houdini/hrender_dl.pyをなんとかなります。</description>
+    </item>
+    
+    <item>
+      <title>Kill Houdini</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-06-19/</link>
+      <pubDate>Mon, 19 Jun 2017 11:00:53 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-06-19/</guid>
+      <description>今回の話は、Linuxユーザのためだけですので、あしからず。
+なにか間違った値を入れてしまったりして、メモリが右肩上がりに上昇し、メモリをフルに使いきり、パソコンが動かなくなるということは、時々あるでしょう。会社のマシンは128GBですが、まれになります。 そんなときは、 CUIモードで対処したり、同僚のマシンから操作してもらったり、泣く泣く電源を落としたりと、みなさんもこんな経験はたくさんあるでしょう。 残念ながら、いろいろセーブしてなくて、「ごめんなさい」を連呼しながらEscを連打しても、ダメなときはダメです。
+そうなる前に、問題のプロセスを強制的に終了させましょう。 というわけで、今回はBashを調べてみました。基本Linuxで仕事してますが、Bashやコマンドは避けてきたので、何か間違ってる点や、もっといい方法がありましたら教えてください。
+プロセス一覧から探しだして、kill まずは、ベーシック。 プロセスを表示するコマンドはps。 みなさんは、どういうオプション使っているかはわかりませんが、自分はいつもこれ
+ps aux 端末内外のプロセスを表示して、CPUとメモリの使用量も表示させる。
+さらに、Houdiniのプロセスだけを表示させる
+ps aux | grep houdini-bin 表示された結果から、見つけた対象のプロセスIDを殺す。
+kill -SEGV 123456 このSEGVは、ホント助かりますよね。Windowsにはないらしいですが、可哀想に。
+これで、プロセスが死に、$houdini_tmpのなかに、シーンファイルが、保存される。まっ、たまに保存が失敗することがありますが。
+さて、ここまでは普通の手順。もう少し、賢くやってみましょう。
+すべてのHoudiniプロセスを、kill まずは、今あるHoudiniのプロセスすべてをKillします。
+kill -SEGV `ps aux | grep [h]oudini-bin | tr -s &amp;#39; &amp;#39; | cut -d &amp;#39; &amp;#39; -f 2` houdini-binは、houdiniの立ち上げ方によって、名前変わるので、各自変えてください。ちなみにhoudini-bin はターミナルで、houdini_sourceをセットし、houdiniとタイプし起動したら、そうなります。 なので、それらを考慮するなら、複数指定しときましょう
+grep -e [h]oudini-bin -e [h]indie-bin []を使う理由は、プロセスにgrep自身が表示されないようにするためです。
+ps aux | grep [h]oudini-bin 実行すると、こんな感じのものが返ってくると思います。 shohei 9042 4.7 1.5 5985364 2067844 ? Ssl 10:54 11:17 /opt/hfs16.</description>
+    </item>
+    
+    <item>
+      <title>H16についてのメモ</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-03-29/</link>
+      <pubDate>Wed, 29 Mar 2017 15:50:27 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-03-29/</guid>
+      <description>New Network Editor さて、賛否両論ありそうなこれ。見た目は可愛くなりましたね。 そして描画速度も速くなりました。Pythonでノードを何千と作ったり、AlembicのHierarchyを保持して展開するときなど、大きな差が出そうです。
+あのノードの形、可愛くないから使いたくないとか、デフォルトを変えたいって人はいるでしょう。僕はノードを組む上での自分なりのルールがあるためノードの色が最初から付いているのは非常に不便でデフォルトを変更してます。
+そこで、どうやってカスタマイズするかを紹介します。
+書き方は、インストール先の$HFS/houdini/OPcustomizeに記述されてるので覗いてみてください。
+Sample
+文頭がopdefaultcolorで始まるのが色の設定。 文頭がopdefaultshapeで始まるのが形の設定。 では、$HOME/houdini16.0/OPcustomizeというテキストを作って編集してみましょう。
+まず形から変更してみましょう。 SopのMergeを丸にするには
+opdefaultshape Sop merge circle 形の種類ってヘルプのどこかに書いてあるんですかね？5分位探してなかったのであきらめました。 そこでPythonで選択したのノードの形を取得してみます。
+import hou n = hou.selectedNodes()[0] ns = n.userData(&amp;#39;nodeshape&amp;#39;) ds = n.type().defaultShape() print(ns, ds) userDataに入ってるのは、NetworkViewで変えた形で、defaultShapeは名の通りです。
+続いて色です。個人的に勝手にノードに色がつくのはうっとおしかったため、すべての色の設定をクリアしました。
+opdefaultcolor -c これで、Houdini Pathの順番で、このファイルより前で設定されたopdefaultcolorはClearされます。 形の設定をクリアするには、同じく-cです
+opdefaultshape -c 色をつけるには
+opdefaultcolor Sop rop_geometry &amp;#39;RGB 0.451 0.369 0.796&amp;#39; ノードの名称、色とか形を調べるのはメンドイんで、ノードを選択して実行すれば分かるようにして、作業しました。
+import hou ns = hou.selectedNodes() for n in ns: nn = n.type().nameWithCategory() cd = n.color() ds = n.type().defaultShape() us = n.</description>
+    </item>
+    
+    <item>
+      <title>Wrangleを使おう 3 - Replace ForLoop</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2016-12-10/</link>
+      <pubDate>Sat, 10 Dec 2016 10:00:44 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2016-12-10/</guid>
+      <description>久しぶりのWrangle回です。
+個人的にHoudiniにおいて、よく使う必需ノードは、For LoopとAttribute Promoteです。これらがないと仕事ができません。もちろんWrangleも絶対使います。
+特にFor LoopはHoudiniを象徴するようなノードだと勝手に思ってます。ある処理を考え、それを他のものにも同様な処理を施す。まさにProceduralに作業する上で必要不可欠なものです。
+しかし！ForLoopは処理に時間がかる時が大半です。なぜなら、すべてのノードがマルチスレッド処理されるわけではありませんし、１つ１つのピースやグループを同時にではなく、順番に処理するため遅くなってしまいます 。
+シンプルな例を元に解説していきます。
+Sample File : wrangle_03.hiplc (15.5.607 linux-x86_64-gcc4.8)
+Voronoiで割った1つ1つのピースのサイズを測ろうと思います。あまりにも小さいピースはSimulationに参加させない様にさせるとか、大きいやつはもう一回砕こうとかで使うことがありますね。
+ピースのサイズを求めるために、まずMeasureで個々のPrimitiveの面積か体積を測ります。続いて、For Loopで各ピースごとが持っている各Primitive面積の総和を出します。これが、ピースのサイズとなります。
+本題です。Wrangleでやってみます。
+nuniqueval() uniqueval() findattribvalcount() findattribval() この関数がミソなんでHelpは読んでください。
+string piece_attr = &amp;#34;name&amp;#34;; int num_piece_attr = nuniqueval(@OpInput1, &amp;#34;prim&amp;#34;, piece_attr); addattrib(0,&amp;#34;prim&amp;#34;,&amp;#34;area_sum&amp;#34;,0.0); for(int i = 0; i &amp;lt; num_piece_attr; i++){ string uq_val = uniqueval(@OpInput1, &amp;#34;prim&amp;#34;, piece_attr,i); int num_prim_piece = findattribvalcount(@OpInput1, &amp;#34;prim&amp;#34;, piece_attr,uq_val); int prim_piece,ii =0; float per_area,area_sum =0.0; for(ii=0; ii&amp;lt; num_prim_piece; ii++){ prim_piece = findattribval(@OpInput1,&amp;#34;prim&amp;#34;,piece_attr,uq_val,ii); per_area = prim(0,&amp;#34;area&amp;#34;,prim_piece); area_sum += per_area; } for(ii=0; ii&amp;lt; num_prim_piece; ii++){ prim_piece = findattribval(@OpInput1,&amp;#34;prim&amp;#34;,piece_attr,uq_val,ii); setattrib(0, &amp;#34;prim&amp;#34;, &amp;#34;area_sum&amp;#34;, prim_piece, 0, area_sum, &amp;#34;set&amp;#34;); } } For Loopでやった処理を分解しながら説明していきます。Run OverはDetailです。</description>
+    </item>
+    
+    <item>
+      <title>Time Dependent Cook : YES? or NO?</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2016-08-07/</link>
+      <pubDate>Sun, 07 Aug 2016 08:42:33 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2016-08-07/</guid>
+      <description>お久しぶりです。そこそこ忙しくて、ブログを書くのを怠ってました。 今回の内容はビギナー向けですが、非常に重要な考え方なので紹介しようと思います。Time Dependent Cookについてです。
+Time Dependentという言葉は、Houdiniを使ってないと聞き慣れないかもしれませんし、気にしたこともないかもしれません。
+サンプルファイル (Fedora21, Houdini15.0.393, linux-x86_64-gcc4.8)
+What is Time Dependent？ ではTime Dependentとはなんでしょうか？直訳すると「時間に依存」です。
+[Time Dependent Cook:Yes]はフレームが変わるとcookする。逆にNoの場合は、時間に依存してない。つまり、フレームが変わってもcookしません。 1回cookすれば、それを使いまわします。単純な話、レンジが100Fの場合でYesなら100回cookします。Noなら1回のcookですみます。
+これを気にせずアセットを作るなんてことは、トーシロー、素人です。一昨日来やがれ。言い過ぎました。
+このTime Dependent Cookの情報をどうやって知るかというと、ノードをミドルクリックすれば一番下に出てきます。SOP、DOP、OBJ、COP、CHOP、SHOP、ROP全てのノードで出てきます。（ん？ROPのTime Dependent Cookってなんでしょうね？）
+また、会社の人に教えてもらいましたが、ノードを光らせてどのノードがそうなのかを識別させることもできます。
+どうして重要なのか？ 続いて、活用方法を紹介したいと思います。Houdini始めたら誰しもが使うScatterを使って解説します。 例えば、この歩いている人間にPointを発生させたいとします。普通にScatterすると毎フレーム違う場所に発生してしまいます。これを回避するには、ScatterのパラメータにあるGenerateをIn Texture Spaceにします。一気に処理が重くなりますね
+パラメータを変えるまでは120fps出ていたのに、 10fpsも出なくなってしまいました。致命的ですね。
+速くするにはScatterするのを1回だけにして、後からPositionを動かせばいいのです。TimeShiftでScatterのソースを止めます。そして、ScatterのOutput Attributesから2つを有効にします。これはScatterしたPrim NumberとUVを保存してくれます。 保持したら、最近ついた新しいノードをつかいます。Attribute Interpolateです。1st InputにScatterしたPointをさして、2nd Inputに動いてる人をさすだけPointが動きます。
+Attribute Interpolateなかったころ、どうやっていたかというとVopのPrimitive Attributeを使っていました。ちなみにですが、sourceのPrim NumとUVはIntersect Vopでもとれます。
+Pointが動いたということで、どれくらい速くなってか試してみましょう。一番最後にTrail Sopをさして、Compute Velocityをvを計算させてみます。毎フレームScatterする場所が違うと、vもおかしな値が入ってしまうので、正確に動作しているかも判断できます。
+では、Scatterを毎フレーム計算させた場合です。
+続いて、1FだけScatterしたものです。
+一目瞭然ですね。処理も速いですし、Velocityもうまく計算されています。
+Attribute Interpolateを使うと速くなるよということが言いたかったわけではありません。何が言いたかったかというと、重い処理を極力少なくすれば速くなるよということです。
+それを判断する材料の1つがTime Dependent Cookということです。
+特になにかしらのエミッターを作るときに、非常にお世話になります。シミュレーションは重いです。エミッターも重いとなるとトライアンドエラーの回数が減ってしまいます。
+まとめ 出来る限り重い処理を少なくするためにはどうすればよいか。
+今回の例だと「動いているものにScatterして、Point群を動かす」を「Scatterして動いているものにくっつけ、Point群を動かす」 に変えました。言葉の並び替えみたいなようなものですが、この考え方が重要です。頭の中で、今ある仕組みを文にして、並び替えてみてください。
+ただ単純にノードをつなぐ順番を変えるだけでも、速くなるかもしれません。Performance MonitorやTime Dependentを表示させて、どこがネックになっているか見てみましょう。
+今作っている仕組みには、これ使えないなと思ってるあなた！本当にそうでしょうか？固定観念を捨てて、違った角度から考えてみてはいかがでしょうか？なぜなら、あなたが使ってるソフトはHoudiniなんです。限界を作ってるのはあなた自身かもしれません。信じるか信じないかはアナタ次第です！笑</description>
+    </item>
+    
+    <item>
+      <title>[RnD] Pyro with Vorticity</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-11-07/</link>
+      <pubDate>Sat, 07 Nov 2015 13:43:24 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-11-07/</guid>
+      <description>レゾをそんなに高くしなくても、手軽にコントロールでき、形を崩しいい感じのShapeを作るを目的にしたRnD
+Houdini歴5年目にして、やっとSopレベルもそこそこになってきたので、最近Dopに力を入れ始めました。データの流れを考えながら構築していったり、Sopでの知識は必ず役に立ちますし、データを可視化できるので、今までもっていたMicroSolverに対する苦手意識がなくなりました。
+FumeやらPhoenix FDにvorticityというのがついてるのに、Pyroにはないのとお思いの方、朗報です。
+自分で作れます。
+あのプラグイン達はBlackboxになっているので、どのような手法をとっているかは伺えしれませんが、結果的によければOKです。
+普通に煙をエミットするとのっぺりとした部分ができてしまいます。 これを崩すにはTubulenceをかけたり、Pyroの場合はDisturbanceを使ったりします。Turbulenceの使い方を間違えると、エミットしてから時間が立っているとこにも強くかかってしまうと、ダサい煙になってしまいます。また、Disturbanceも強くかけ過ぎると、ボロボロになってしまいます。コントロールが難しいです。
+Vimeoにあげた動画の、最初の煙はエミットされてからすぐに、モコモコしてるのが分かると思います。これが、求めていたものです。コントロールも結構簡単です。
+作り方は、、、いくつかのMicroSolverとSop Solverの組み合わせですｗ Vorticleを作って、渦度が高くないところも高くして影響を与えるみたいなことをしてます。 （Divergenceをいじってもこんな結果ができるはずです。）
+手軽に自分で作れるこそが、Houdiniの強み</description>
+    </item>
+    
+    <item>
+      <title>Volume Displacement</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-07-16/</link>
+      <pubDate>Sun, 19 Jul 2015 00:54:08 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-07-16/</guid>
+      <description>Cloud Noise シミュレーションをせずにVolumeを何かしら編集するエレメントといったら雲や霧だと思います。
+エフェクトの人で雲を作るときに、ネット検索で引っかかり一回は目にしたことであろう、この論文http://magnuswrenninge.com/productionvolumerendering, Resolution Independent Volumes 何やら、難しそうですね。てか4年(2011)も前なんですね。
+個人的な見解ですが、H13?から用意されたCloud Noise Sopはこれを元に作られていると見ています。理由は中を見ればわかります。
+Surfaceの場合、DisplacementはNormal方向に対して、ポジションをオフセットします。となると、VolumeのNormalを計算する必要があります。つまりGradientを用意します。
+Density VolumeをPolygonにしてからSigned Distance Field(SDF)を作っています。SDFは表面までの距離を記録しています。これをVolume VopでVolume Gradientを使って読み込んだSDFから勾配を計算し、このVector方向にDisplacementしています。	SOPでもVDB AnalysisかVolume Analysisを使って勾配のVector Fieldを作れます。
+DisplacementによってVolumeが膨らむことを考慮して、2でBounding Boxを大きくしています。
+Noiseを生成しています。 NoiseはForを使って、最初のNoiseより少し小さなNoiseを足していくようなことを繰り返すことによって複雑なNoiseを作り出しています。あとはAdvectionもありますね。
+論文で紹介されているやり方に似ていると思いませんか？
+中を覗いてみることによって、細かいところは理解できなかったとしても、VolumeにDisplacementする大枠はつかめたのではないでしょうか？ SDFからGradientを計算し、その方向にNoiseで作った値をDisplacementするという流れです。次に、この考えを応用してみます。
+Pyro Displacement VolumeのDisplacementの方法がわかったところで、続いてシミュレーションしたVolumeに対しての方法を紹介します。
+前述の方法は静止しているPに対してNoiseをかけていました。今回は シミュレーションされたVolumeに対して処理を施します。PにNoiseをかけると煙の動きとあいません。Maya Fluidだと煙の進行方向と動きのスピードに合わせて、Noiseのオフセットにキーを打つみたいなことをした経験があるかたもいるかもしれませんが、そんなことはしません。
+restが必要です。他のソフトではP_refとか言われていますね。
+rest Filedを作るにはいくつか設定が必要です。Smoke ObjectとSolverに設定すべき項目があるので設定します。
+ヘルプによるとRest Fieldは、流体の位置を追跡するフィールドと解説されています。また、Dual Restは長いシミュレーションの時に有効で、異なる開始フレームで始まる2つのrestができて、その2つをブレンドして使います。そして、Detailアトリビュートにrest_ratioとrest2_ratioの2つが追加されます。VopまたはShader内で読むときは、restとrest2をMixでまぜbaisにratioを入れてあげます。
+最後にSDFも用意しておきましょう。
+ここまで用意できれば、後はrestを元にNoiseを作ってDisplacementするだけです。SOPでやるかShaderでやるかは、アナタ次第です。
+ちなみにShaderでやる場合は、Pyro Shaderを参考にすると良いです。 上の動画はBasic Smokeを元に作りました。
+How to set rest(hip)
+おまけ。Compress Volume Cache とあるセミナーで、キャッシュサイズの節約法みたいな話がでていたみたいなんで、ここでも触れてみたいとおもいます。といっても、これまた用意されているOTLとノードの解説なんで、手抜き感が否めないですが、意外と知らない方が多いので紹介します。
+ShelfからPyroを組んでる人は、Dop I/O SOPを使ってキャッシュをとってる人がいるかもしれません。そのSOPにCompressionタブがあり、これを使います。これはVolume Compressノードの値を逃しているだけです。 このノードは基本的に、以下の画像の赤枠をいじればよいかと思います。Compress設定は、レンダリングに影響が出ない範囲で、最適な値を各自見つけてください。
+ちょうど2年前に比較したデータですが、Compressをすることでサイズが半分くらいになり、ディスクへの書き込み時間も減っています。 余談ですが、この表はWindowsとLinuxを比べることを目的にしたものです。どちらが速いかはわかりますよね。
+また、多くのVolumeなんちゃらSOPはVDBに対応していません。VDBのデータを16bitにしたい場合は、PrimitiveのVolume&amp;gt;VDBにWrite 16-Bit Floatsというオプションにチェックを入れます。
+まとめ 今回の内容は、SideFxが用意したOTLの解説みたいになってしまいました。Houdiniのアセットは、ブラックボックスになっているところが少ないので中の仕組みを見ることも、編集して自分用にカスタマイズできます。当たり前ですが仕事で使うには、遅かったりコントロールが難しかったり、クオリティが出にくいことがあるので、中を見たり編集する行為は必然です。
+Sigrapphのようなところで発表された技術も、Cloud Noise Sopのように既存のノードを組み合わせるだけで一部を再現できることがあります。Mayaやプラグインのアップデートを待たないと何もできないと手をこまねいているより、新しい技術を観て取り入れるチャレンジをすれば色んな発見をし、可能性が広がるかもしれません。</description>
+    </item>
+    
+    <item>
+      <title>Dynamically Fractured Object</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/</link>
+      <pubDate>Sat, 02 May 2015 12:04:32 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/</guid>
+      <description>FXらしく少し見栄えの良いものを紹介します。
+破壊です。といっても、激しいやつではありません。
+破壊をするときは、Pre-Fractureしてからシミュレーションをかける事が大半だとも思いますが、何かしらのトリガーによって自動的に破壊が起こる仕組みを作ってみます。
+今回のトリガーさんはImpactです。何かしらが対象物に当たり、ある一定以上の衝撃を受けた部分を壊していきます。 （昔からshelfにRBDで似たようなのができるボタンがあったと思いますが、使ったことないのでよく知りません。）
+簡単なところやパラメータに関しての説明はしませんので、hipファイルを見ながら、ブログを読んでいただけるとありがたいです。
+シーンファイル(Houdini14.0.291-gcc4.8 Fedora20)
+そもそもRBD Packed Objectを使ったことない人は、これからの説明を理解することは困難だと思うので、日本語字幕も付いているH13 Masterclass | Bulletを見ることをおすすめします。
+Emit Pack Objects このチュートリアルの19:30くらいからのPackエミットを使って、破壊を引き起こす飛んでくる物体をつくります。しかし、チュートリアルのままだと、エミットの量が倍になってしまいます。この問題は、RBD Packed Objectが複数あると起こっていしまいます。
+上の画像のように白い柱と赤いボックスは、別々のRBD Packed Objectです。この2つがGeometryというデータを持っているため、SopSolverが両方に処理を行ってしまいます。なのでエミットの量も2倍になっています。
+問題を解決するには、片方だけに処理が行われるようにしなければいけません。 Empty Data DOPで任意のDataを作り、Enable Solver DOPで作ったDataに対してのみ作用するようにします。(ここの使い方が正しいかは、あまり自信がないです)
+これで意図する結果が得られました。 Get Impact Attributes 続いて、Impactの情報を取得するために、Impact Analysis DOPを使います。これはImpactの時間や強さ、法線、ぶつかったオブジェクトのOBJID等を取得できます。
+このImpactの情報を元にFractureしていきます。 初めに衝撃を受けたピースの判定をします。Impactの情報の中にはimpactobjectとimpactprimnumがあります
+impactobjectは$OBJIDのことで、impactprimnumはPackのPrimitive Numberです。 このimpactprimnumをArrayアトリビュートに格納します。
+int numpoints = npoints(0); i[]@_impactList; for(int i=0; i&amp;lt;numpoints; i++){ int prinum = point(0,&amp;#34;impactprimnum&amp;#34;,i); append(@_impactList,prinum); } Arrayの中に重複した値がある場合がありますが、今回は問題にならないので無視します。 H14からArrayをアトリビュートに保存できるようになりましたが、すごい便利ですね。
+Vopを使ってprimnumがこのArrayの中にある値と同じときに、任意のGroupに入るようにしています。
+Dynamic Fracturing 後は、このGroupに入ったピースをUnpackして壊してくだけです。
+砕いた後に、packed objectに戻しますが、nameアトリビューを重複しないように修正します。nameはコンストレイントでは必ず使用されるので注意して扱う必要があります。また、RBD Packed Objectの中にあるcreate_or_overwrite_attributesをみてシミュレーションに必要なアトリビュートを設定しておきましょう。最後に、砕く前のvなどのアトリビューを移しておくと、それらの値を継承したまま新たな破片が生まれることになります。
+このままだと無限に割れ続けてしまうので、ある一定の状態になったものは割れないようにしといたほうが良いです。例えば、ピースがある一定以下のサイズになった場合とか、割れる最大回数を指定しておくとかです。
+さらにコンストレインを毎フレーム更新すると、より見栄えが良くなっていくと思います。最初のムービーはPin Constraintを毎フレーム生成しています。 書くの疲れてきたしGW中なので諸事情により、これらの説明等は割愛させていただきます。</description>
+    </item>
+    
+    <item>
+      <title>Wrangleを使おう 2.5</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-03-02/</link>
+      <pubDate>Mon, 02 Mar 2015 02:53:32 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-03-02/</guid>
+      <description>一個書き忘れてたことがあったので、さらっと。
+数学定数、円周率(π)・自然対数の底(e)・黄金比(φ/τ)とか、時々使うけど漠然としか値を覚えていない奴らがいます。正確な値を知るために毎回、調べるのは億劫です。
+例えば、Wrangleで初めに#include &amp;lt;math.h&amp;gt;と書けば、以降このノード内ではM_PIが3.1415926の値を持っていることになります。
+#include &amp;lt;math.h&amp;gt; f@_check = M_PI; なにが起こっているかというと、$HH/vex/includeにmath.hというファイルがあります。そのファイルの中で、定義されたものを読み込んでいます。この他にもあるので中を見てみてください。
+このファイルは自分で作ることもできます。例えば黄金比を呼び出したい場合。
+#define PHI 1.61803 これを、HOUDINI_PATHに設定している場所のvex/includeに.h形式で保存するか、HOUDINI_VEX_PATHに登録しているところに保存すれば、これ以降、読み込むことができます。
+#include &amp;lt;test.h&amp;gt; f@_check = PHI; 決められたところに保存しなくても、test.hのところを/home/user/test.hとパスを入れても呼び出すこともできます。</description>
+    </item>
+    
+    <item>
+      <title>Wrangleを使おう 2</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-03-01/</link>
+      <pubDate>Sun, 01 Mar 2015 11:40:54 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-03-01/</guid>
+      <description>Wrangleは、アトリビュートを作ったり編集するだけでなく、Pointを作ったりPrimitiveを作ったりもできます。初心者向けのチュートリアルで時々みるPointSopを使って、Pを編集してるやつをWrangleで置き換えてみます。こんなやつです。 まずラインの作り方 line sopできますが、wrangleでやってみます。ただの直線を作るときに、わざわざwrangleでやる必要はないかと思いますが、近くのpoint同士を結びつけるときなど普通にやろうとすると、めんどくさい時に重宝するので覚えときましょう。
+int res = 10; float height = 5.0; int line = addprim(0, &amp;#34;polyline&amp;#34;); for(int i=0; i&amp;lt;res; i++){ vector pos =set(1, height/(res-1)*i, 0); int cp = addpoint(0,pos); addvertex(0, line, cp); } 長さ(height)とポイント数(res)を決めてあげて、これらのポイントを結んでラインを作ります。なぜ、Vertexを作る必要があるかというと、Primitiveを構成するにはVertexが必要です。Pointではありません。Help: ジオメトリの作成
+もちろん、Vopでもつくれます。 ラインが作れたら、各Pointの位置を編集するだけです。簡単ですね。
+int res = 100; float rad = 3; float height = 5; float freq = 10; int line = addprim(0, &amp;#34;polyline&amp;#34;); for (int i = 0; i &amp;lt; res; i++){ vector pos; pos.</description>
+    </item>
+    
+    <item>
+      <title>Wrangleを使おう 1</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-02-18/</link>
+      <pubDate>Wed, 18 Feb 2015 13:59:47 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-02-18/</guid>
+      <description>&lt;p&gt;12.5から搭載されたWrangleですが、結構避けてる人が多い印象です。&lt;/p&gt;
+&lt;p&gt;せっかくノードベースでやってるのに、&lt;del&gt;イライラする&lt;/del&gt;MayaのExpressionを思い出させられて避けてるのかもしれません。&lt;/p&gt;
+&lt;p&gt;しかしMayaから移行した人にとっては、Expressionと似ているので敷居は高くないはずです。エフェクト屋でPythonとかMelなどのScriptを、全く書けないという人はいないと思うんで、その知識も役立ちます。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
