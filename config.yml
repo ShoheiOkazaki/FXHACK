@@ -8,6 +8,9 @@ theme: PaperMod
 
 defaultContentLanguage: ja
 
+plugins:
+ - jekyll-sitemap
+
 enableEmoji: true
 enableRobotsTXT: true
 
