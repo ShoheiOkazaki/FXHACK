@@ -143,9 +143,9 @@ menu:
     - name: Profile
       url: profile
       weight: 51
-    - name: Search
-      url: search/
-      weight: 20
+    # - name: Search
+    #   url: search/
+    #   weight: 20
     - identifier: Tags
       name: Tags
       url: tags/

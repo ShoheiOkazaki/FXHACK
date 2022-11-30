@@ -2,12 +2,21 @@
 title: "SHOHEI OKAZAKI"
 ---
 
+## DEMOREEL
+{{< vimeo_simple 728564342 >}}
+
+Need password? Contact me.
+
 ## SUMMARY
 I'm working at Weta FX as Effects Technical Director. I have a deep knowledge of Houdini, and more than 11 years of experience with Houdini, FX techniques, simulation and other areas of the VFX, and 3D CG.
 
 
 ## SKILLS
-Fluid and liquid simulation, rigid body, particle, procedural modeling, PDG, tool development, pipeline support, VEX, Python, render optimization, debugging.
+Fluid and Liquid simulation, Rigid body, Particle, Procedural modeling
+
+PDG, Tool development, Pipeline support, VEX, Python, Render Optimization, Debugging.
+
+Supervising, Bidding, Team management
 
 ## PROFESSIONAL EXPERIENCE
 - Current, Weta FX
@@ -19,19 +28,19 @@ Fluid and liquid simulation, rigid body, particle, procedural modeling, PDG, too
 
 	- FX Supervisor
 
-		[Film] Sonic the Hedgehog 2
+		[Film] [Sonic the Hedgehog 2](https://youtu.be/47r8FXYZWNU)
 
 - Feb 2020 - Mar 2021, Polygon Pictures Inc., Tokyo/Japan
 
 	- FX Supervisor
 
-		[Netflix] Love, Death & Robots S3: ‘TBD’
+		[Netflix] [Love, Death & Robots S3: The Very Pulse of the Machine](https://youtu.be/943NIBTvRVg)
 
 - Nov 2018– Dec 2019,  Marza Animation Planet Inc., Tokyo/Japan
 
 	- FX Supervisor
 
-		[Film] Sonic the Hedgehog
+		[Film] [Sonic the Hedgehog](https://youtu.be/szby7ZHLnkA)
 	- Houdini Generalist
 
 		[Ivent] Opening Ceremony of New National Tokyo Stadium 
@@ -43,7 +52,7 @@ Fluid and liquid simulation, rigid body, particle, procedural modeling, PDG, too
 
 	- FX Supervisor
 
-		[Game Trailer] Spider-Man: Be Grater
+		[Game Trailer] [Spider-Man: Be Grater](https://youtu.be/q4GdJVvdxss)
 
 		[Commercial] Dragon Quest Heroes
 
@@ -60,11 +69,11 @@ Fluid and liquid simulation, rigid body, particle, procedural modeling, PDG, too
 
 		[PS VR] Resident Evil: Vendetta
 
-		[Game Trailer] Fortune Street
+		[Game Trailer] [Fortune Street](https://youtu.be/s32vAFxnZxY)
 
-		[Film] Resident Evil: Vendetta
+		[Film] [Resident Evil: Vendetta](https://youtu.be/LwKRTO93Y2w)
 
-		[Presentation] Final Fantasy : Witch Chapter 0 “Cry” 
+		[Presentation] [Final Fantasy : Witch Chapter 0 “Cry” ](https://youtu.be/BJB2ZmiaLVM)
 
 	- FX Artist
 

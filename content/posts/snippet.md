@@ -17,6 +17,8 @@ draft: true
 
 <a><img src="https://dump.cy.md/6c736bfd11ded8cdc5e2bda009a6694a/colortext.svg"/></a>
 
+hugo new 2022-10-02/index.md
+
 # H1
 
 ## H2
