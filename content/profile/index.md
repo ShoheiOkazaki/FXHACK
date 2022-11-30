@@ -62,7 +62,7 @@ Supervising, Bidding, Team management
 
 		[Netflix] Love, Death & Robots S1: Shape-Shifters
 
-		[Presentaion] Xiaomi
+		[Presentaion] [Xiaomi](https://www.sidefx.com/community/houdini-connect-megalis/)
 
 - Apr 2014– Mar 2017,  Marza Animation Planet Inc., Tokyo/Japan
 	- FX Supervisor
