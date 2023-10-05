@@ -9,7 +9,25 @@
       <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 29 Apr 2021 12:27:07 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/houdini/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Oct 2023 09:27:07 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/houdini/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Solaris] HDAカメラのインポート</title>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/</link>
+      <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
+      
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/</guid>
+      <description>最近、自宅のSolaris環境を作リ始めて
+問題 SolarisにSceneImportLOPでカメラをインポートする際、自前のHDAカメラをインポートしようとするとワーニングがでてインポートできません。
+（自前のカメラとはこういうHDAです）
+以下のようなワーニングが表示されます。これはおそらく19.5以降でしか表示されないかもしれません。 解決策 まずは言われた通り、リンクに飛びましょう。
+以下のような記述が冒頭にありますね。カスタムノードをLOPに読み込むにはなにか作業が必要なようですね。
+Scene Import LOPが特定のHoudiniオブジェクトノードタイプをUSDに変換する方法をカスタマイズすることができます。 これは、特にカスタムノードタイプ(例えば、プロプライエタリなレンダラー関係のライトタイプやカメラタイプ)の変換に役立ちます。
+その後を読み続けると色々Pythonやら書いてありますね。でもちょっと長いので無視します。
+Houdiniはカスタムできるものについては、インストールフォルダにだいたいのものがバイナリになっていない状態で保存されてるので、それをコピーしてから始めるのが最短の道です。ということで以下のファイルを見てみましょう。
+インストールフォルダ/houdini/husdplugins/objtranslators/cam.py
+import hou import husd from pxr import UsdGeom class CameraTranslator(husd.objtranslator.Translator): def shouldTranslateNode(self): return True def primType(self): return &amp;#39;Camera&amp;#39; def populatePrim(self, prim, referenced_node_prim_paths, force_active): super(CameraTranslator, self).populatePrim(prim, referenced_node_prim_paths, force_active) cam = UsdGeom.Camera(prim) proj = self._node.parm(&amp;#39;projection&amp;#39;).evalAsString() if proj == &amp;#39;perspective&amp;#39;: cam.CreateProjectionAttr(&amp;#39;perspective&amp;#39;) elif proj == &amp;#39;ortho&amp;#39;: cam.CreateProjectionAttr(&amp;#39;orthographic&amp;#39;) # A few of the parameters need to be converted into 1/10 scene unit space stage = prim.</description>
+    </item>
+    
     <item>
       <title>Houdini Workflowについて</title>
       <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2021-04-29/</link>
