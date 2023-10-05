@@ -5,8 +5,6 @@ tags: ["Houdini", "Python", "Workflow", "Solaris"]
 draft: false
 ---
 
-最近、自宅のSolaris環境を作リ始めて
-
 ## 問題
 SolarisにSceneImportLOPでカメラをインポートする際、自前のHDAカメラをインポートしようとするとワーニングがでてインポートできません。
 

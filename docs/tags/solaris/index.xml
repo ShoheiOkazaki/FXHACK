@@ -16,8 +16,7 @@
       <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
       
       <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/</guid>
-      <description>最近、自宅のSolaris環境を作リ始めて
-問題 SolarisにSceneImportLOPでカメラをインポートする際、自前のHDAカメラをインポートしようとするとワーニングがでてインポートできません。
+      <description>問題 SolarisにSceneImportLOPでカメラをインポートする際、自前のHDAカメラをインポートしようとするとワーニングがでてインポートできません。
 （自前のカメラとはこういうHDAです）
 以下のようなワーニングが表示されます。これはおそらく19.5以降でしか表示されないかもしれません。 解決策 まずは言われた通り、リンクに飛びましょう。
 以下のような記述が冒頭にありますね。カスタムノードをLOPに読み込むにはなにか作業が必要なようですね。
