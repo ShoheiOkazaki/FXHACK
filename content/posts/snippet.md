@@ -31,9 +31,7 @@ hugo new 2022-10-02/index.md
 
 ###### H6
 
-```
-{{< colour "#e3fbc9" "colour" >}}
-```
+
 
 | Italics   | Bold     | Code   |
 | --------- | -------- | ------ |
