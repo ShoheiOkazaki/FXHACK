@@ -1,6 +1,6 @@
 ---
 title: "[Linux] 101"
-date: 2024-02-28T09:27:07+09:00
+date: 2024-02-28T09:27:07+00:00
 tags: ["Workflow", "Linux"]
 draft: false
 ---
