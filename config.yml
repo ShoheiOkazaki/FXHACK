@@ -30,7 +30,7 @@ languages:
   en:
     languageName: "English"
     weight: 2
-    profileMode:
+    params:
       enabled: True # needs to be explicitly set
       title: FX HACK
       subtitle: "Will put useful Houdini Tips, when I'd like."
