@@ -2,20 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Deadline on FX HACK</title>
-    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/deadline/</link>
+    <link>http://localhost:1313/FXHACK/tags/deadline/</link>
     <description>Recent content in Deadline on FX HACK</description>
     <image>
-      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+      <url>http://localhost:1313/FXHACK/profile.jpg</url>
+      <link>http://localhost:1313/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 13 Sep 2017 11:00:53 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/deadline/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language>
+    <lastBuildDate>Wed, 13 Sep 2017 11:00:53 +0900</lastBuildDate><atom:link href="http://localhost:1313/FXHACK/tags/deadline/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Deadline] Add Extra Version</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-09-13/</link>
+      <link>http://localhost:1313/FXHACK/posts/2017-09-13/</link>
       <pubDate>Wed, 13 Sep 2017 11:00:53 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-09-13/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2017-09-13/</guid>
       <description>時々、悩んでる人がいたので、Deadlineネタを１つ。
 どんなソフトでも、マイナーアップデートは簡単にできますが、メジャーアップデートは、プロジェクトの兼ね合いや自社Plugin/Toolの影響で、そうは容易くできません。アップグレードの金を出すのに渋って更新してないのでなく、ただ単にめんどくさいという理由で更新されてなかったら、担当者のケツを蹴っ飛ばして更新してもらいましょう。
 いろんな理由でDeadlineのバージョンが古すぎて、最新のHoudiniのバージョン使用できないという人もいるでしょう。今回は、そんな人向けへの裏ワザを紹介します。

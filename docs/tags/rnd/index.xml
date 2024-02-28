@@ -2,20 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>RnD on FX HACK</title>
-    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/rnd/</link>
+    <link>http://localhost:1313/FXHACK/tags/rnd/</link>
     <description>Recent content in RnD on FX HACK</description>
     <image>
-      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+      <url>http://localhost:1313/FXHACK/profile.jpg</url>
+      <link>http://localhost:1313/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 07 Nov 2015 13:43:24 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/rnd/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language>
+    <lastBuildDate>Sat, 07 Nov 2015 13:43:24 +0900</lastBuildDate><atom:link href="http://localhost:1313/FXHACK/tags/rnd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[RnD] Pyro with Vorticity</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-11-07/</link>
+      <link>http://localhost:1313/FXHACK/posts/2015-11-07/</link>
       <pubDate>Sat, 07 Nov 2015 13:43:24 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-11-07/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2015-11-07/</guid>
       <description>レゾをそんなに高くしなくても、手軽にコントロールでき、形を崩しいい感じのShapeを作るを目的にしたRnD
 Houdini歴5年目にして、やっとSopレベルもそこそこになってきたので、最近Dopに力を入れ始めました。データの流れを考えながら構築していったり、Sopでの知識は必ず役に立ちますし、データを可視化できるので、今までもっていたMicroSolverに対する苦手意識がなくなりました。
 FumeやらPhoenix FDにvorticityというのがついてるのに、Pyroにはないのとお思いの方、朗報です。

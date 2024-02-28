@@ -2,20 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>HeightField on FX HACK</title>
-    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/heightfield/</link>
+    <link>http://localhost:1313/FXHACK/tags/heightfield/</link>
     <description>Recent content in HeightField on FX HACK</description>
     <image>
-      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+      <url>http://localhost:1313/FXHACK/profile.jpg</url>
+      <link>http://localhost:1313/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 12 Feb 2019 09:30:42 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/heightfield/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language>
+    <lastBuildDate>Tue, 12 Feb 2019 09:30:42 +0900</lastBuildDate><atom:link href="http://localhost:1313/FXHACK/tags/heightfield/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FX的　Height Fieldの使い方</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2019-02-12/</link>
+      <link>http://localhost:1313/FXHACK/posts/2019-02-12/</link>
       <pubDate>Tue, 12 Feb 2019 09:30:42 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2019-02-12/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2019-02-12/</guid>
       <description>今回は、Height Fieldです。 FXは、Height Fieldの恩恵は、あまりないと思いますが、個人的なFX的使い方を紹介します。
 サンプルファイルです。17.0.459で作成。
 Download

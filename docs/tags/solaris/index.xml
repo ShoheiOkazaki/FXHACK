@@ -2,20 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Solaris on FX HACK</title>
-    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/solaris/</link>
+    <link>http://localhost:1313/FXHACK/tags/solaris/</link>
     <description>Recent content in Solaris on FX HACK</description>
     <image>
-      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+      <url>http://localhost:1313/FXHACK/profile.jpg</url>
+      <link>http://localhost:1313/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 05 Oct 2023 09:27:07 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/solaris/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language>
+    <lastBuildDate>Thu, 05 Oct 2023 09:27:07 +0900</lastBuildDate><atom:link href="http://localhost:1313/FXHACK/tags/solaris/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Solaris] HDAカメラのインポート</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/</link>
+      <link>http://localhost:1313/FXHACK/posts/2023-10-05/</link>
       <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2023-10-05/</guid>
       <description>問題 SolarisにSceneImportLOPでカメラをインポートする際、自前のHDAカメラをインポートしようとするとワーニングがでてインポートできません。
 （自前のカメラとはこういうHDAです）
 以下のようなワーニングが表示されます。これはおそらく19.5以降でしか表示されないかもしれません。 解決策 まずは言われた通り、リンクに飛びましょう。

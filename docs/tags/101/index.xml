@@ -2,20 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>101 on FX HACK</title>
-    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/101/</link>
+    <link>http://localhost:1313/FXHACK/tags/101/</link>
     <description>Recent content in 101 on FX HACK</description>
     <image>
-      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+      <url>http://localhost:1313/FXHACK/profile.jpg</url>
+      <link>http://localhost:1313/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 10 Dec 2016 10:00:44 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/101/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language>
+    <lastBuildDate>Sat, 10 Dec 2016 10:00:44 +0900</lastBuildDate><atom:link href="http://localhost:1313/FXHACK/tags/101/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wrangleを使おう 3 - Replace ForLoop</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2016-12-10/</link>
+      <link>http://localhost:1313/FXHACK/posts/2016-12-10/</link>
       <pubDate>Sat, 10 Dec 2016 10:00:44 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2016-12-10/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2016-12-10/</guid>
       <description>久しぶりのWrangle回です。
 個人的にHoudiniにおいて、よく使う必需ノードは、For LoopとAttribute Promoteです。これらがないと仕事ができません。もちろんWrangleも絶対使います。
 特にFor LoopはHoudiniを象徴するようなノードだと勝手に思ってます。ある処理を考え、それを他のものにも同様な処理を施す。まさにProceduralに作業する上で必要不可欠なものです。
@@ -31,10 +32,10 @@ string piece_attr = &amp;#34;name&amp;#34;; int num_piece_attr = nuniqueval(@OpI
     
     <item>
       <title>Time Dependent Cook : YES? or NO?</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2016-08-07/</link>
+      <link>http://localhost:1313/FXHACK/posts/2016-08-07/</link>
       <pubDate>Sun, 07 Aug 2016 08:42:33 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2016-08-07/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2016-08-07/</guid>
       <description>お久しぶりです。そこそこ忙しくて、ブログを書くのを怠ってました。 今回の内容はビギナー向けですが、非常に重要な考え方なので紹介しようと思います。Time Dependent Cookについてです。
 Time Dependentという言葉は、Houdiniを使ってないと聞き慣れないかもしれませんし、気にしたこともないかもしれません。
 サンプルファイル (Fedora21, Houdini15.0.393, linux-x86_64-gcc4.8)
@@ -62,10 +63,10 @@ Attribute Interpolateを使うと速くなるよということが言いたか�
     
     <item>
       <title>Wrangleを使おう 2.5</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-03-02/</link>
+      <link>http://localhost:1313/FXHACK/posts/2015-03-02/</link>
       <pubDate>Mon, 02 Mar 2015 02:53:32 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-03-02/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2015-03-02/</guid>
       <description>一個書き忘れてたことがあったので、さらっと。
 数学定数、円周率(π)・自然対数の底(e)・黄金比(φ/τ)とか、時々使うけど漠然としか値を覚えていない奴らがいます。正確な値を知るために毎回、調べるのは億劫です。
 例えば、Wrangleで初めに#include &amp;lt;math.h&amp;gt;と書けば、以降このノード内ではM_PIが3.1415926の値を持っていることになります。
@@ -77,10 +78,10 @@ Attribute Interpolateを使うと速くなるよということが言いたか�
     
     <item>
       <title>Wrangleを使おう 2</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-03-01/</link>
+      <link>http://localhost:1313/FXHACK/posts/2015-03-01/</link>
       <pubDate>Sun, 01 Mar 2015 11:40:54 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-03-01/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2015-03-01/</guid>
       <description>Wrangleは、アトリビュートを作ったり編集するだけでなく、Pointを作ったりPrimitiveを作ったりもできます。初心者向けのチュートリアルで時々みるPointSopを使って、Pを編集してるやつをWrangleで置き換えてみます。こんなやつです。 まずラインの作り方 line sopできますが、wrangleでやってみます。ただの直線を作るときに、わざわざwrangleでやる必要はないかと思いますが、近くのpoint同士を結びつけるときなど普通にやろうとすると、めんどくさい時に重宝するので覚えときましょう。
 int res = 10; float height = 5.0; int line = addprim(0, &amp;#34;polyline&amp;#34;); for(int i=0; i&amp;lt;res; i++){ vector pos =set(1, height/(res-1)*i, 0); int cp = addpoint(0,pos); addvertex(0, line, cp); } 長さ(height)とポイント数(res)を決めてあげて、これらのポイントを結んでラインを作ります。なぜ、Vertexを作る必要があるかというと、Primitiveを構成するにはVertexが必要です。Pointではありません。Help: ジオメトリの作成
 もちろん、Vopでもつくれます。 ラインが作れたら、各Pointの位置を編集するだけです。簡単ですね。
@@ -89,10 +90,10 @@ int res = 100; float rad = 3; float height = 5; float freq = 10; int line = addp
     
     <item>
       <title>Wrangleを使おう 1</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-02-18/</link>
+      <link>http://localhost:1313/FXHACK/posts/2015-02-18/</link>
       <pubDate>Wed, 18 Feb 2015 13:59:47 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-02-18/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2015-02-18/</guid>
       <description>&lt;p&gt;12.5から搭載されたWrangleですが、結構避けてる人が多い印象です。&lt;/p&gt;
 &lt;p&gt;せっかくノードベースでやってるのに、&lt;del&gt;イライラする&lt;/del&gt;MayaのExpressionを思い出させられて避けてるのかもしれません。&lt;/p&gt;
 &lt;p&gt;しかしMayaから移行した人にとっては、Expressionと似ているので敷居は高くないはずです。エフェクト屋でPythonとかMelなどのScriptを、全く書けないという人はいないと思うんで、その知識も役立ちます。&lt;/p&gt;</description>

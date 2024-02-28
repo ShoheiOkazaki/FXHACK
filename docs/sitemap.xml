@@ -2,14 +2,14 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <sitemap>
-    <loc>https://ShoheiOkazaki.github.io/FXHACK/ja/sitemap.xml</loc>
+    <loc>http://localhost:1313/FXHACK/ja/sitemap.xml</loc>
     
-      <lastmod>2023-10-05T09:27:07+09:00</lastmod>
+      <lastmod>2024-02-28T00:00:00+00:00</lastmod>
     
   </sitemap>
   
   <sitemap>
-    <loc>https://ShoheiOkazaki.github.io/FXHACK/en/sitemap.xml</loc>
+    <loc>http://localhost:1313/FXHACK/en/sitemap.xml</loc>
     
       <lastmod>2023-10-05T09:27:07+09:00</lastmod>
     

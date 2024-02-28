@@ -2,20 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Linux on FX HACK</title>
-    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/linux/</link>
+    <link>http://localhost:1313/FXHACK/tags/linux/</link>
     <description>Recent content in Linux on FX HACK</description>
     <image>
-      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+      <url>http://localhost:1313/FXHACK/profile.jpg</url>
+      <link>http://localhost:1313/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 19 Jun 2017 11:00:53 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language>
+    <lastBuildDate>Wed, 28 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/FXHACK/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Linux] 101</title>
+      <link>http://localhost:1313/FXHACK/posts/2024-02-28/</link>
+      <pubDate>Wed, 28 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/FXHACK/posts/2024-02-28/</guid>
+      <description>Windows vs Linux Googleで「Houdini Windows vs Linux」と調べればいろいろな検証結果がでてきます。
+例えば杉村さんのBlogには、シミュレーションの比較があります。
+Linux vs Windows10パフォーマンス対決その１｜スギムラ マサヤ(sugiggy)またこちらの動画はMantraとKarmaのレンダリング比較してくれてます。
+10％ー30％はLinuxのほうが速いですね。 にしてもKarmaの速度に大きな差があるのは驚きですね！
+Linuxディストリビューション Linuxディストリビューションとは、ハードウェアとソフトウェアの間の通信を管理し、システムリソースを効率的に配分してくれるLinuxカーネルに加えて、ソフトウェアやユーティリティ、ユーザーインターフェースなどが組み込まれている、Linuxベースのオペレーティングシステムのバリエーションやバージョンのこと。
+ユーザーフレンドリーなUbuntuやLinux Mint、企業向けのRed Hat Enterprise Linux、高度なユーザー向けのArch Linuxなど、多種多様なバリエーションがあります。
+VFX/CG業界ではCentOSが主流 でした。しかしCentOSが2024年6月30日にサポート終了 になる、つまりアップデートやセキュリティパッチの更新がなくなることが発表されました。 ですのでCentOSを使ってた会社はRockyに移行 してくとこもあるみたいです。
+ディストリビューション 特徴 Ubuntu ユーザーフレンドリーで初心者におすすめ。広範なソフトウェアサポート。 Debian 安定性とセキュリティに重点を置いている。多くのディストリビューションのベース。 Fedora 最新のテクノロジーを早期に採用。Red Hatによって支援されている。 CentOS Red Hat Enterprise Linuxをベースにした企業向けの無料ディストリビューション。 Arch Linux シンプルさとユーザーによる細かなカスタマイズを重視。 Linux Mint Ubuntuをベースに、使いやすさと美しいデスクトップ環境を提供。 Rocky Linux CentOSの代替として開発された、企業向けの安定したディストリビューション。 AlmaLinux CentOSの終了に伴い、そのコミュニティによって作成された無料のエンタープライズ級Linuxディストリビューション。 どのディストリビューションを選ぶかは、まず各ソフトのシステム要件をみてみましょう。
+Houdini:
+https://www.sidefx.com/ja/Support/system-requirements Nuke:
+https://www.foundry.com/products/nuke-family/requirements Unreal Engine:
+https://docs.unrealengine.com/5.3/en-US/hardware-and-software-specifications-for-unreal-engine/ Blender:
+https://blender.org/download/requirements/ Maya:
+https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/System-Requirements-for-Autodesk-Maya-2024.html やはりRockyを推していってますね。
+Mintをインストール！ Mintな理由 上記でVFX業界の主流はCentOSからRockyへ、ソフトウェアの対応もRockyに移行してるみたいなのに、なんでMintなのと思われるでしょう。 CentOSやRockyはRedHat系といわれますが、これらは初心者には難しいです。私自身も自宅でCentやFedoraを使ったことがありますが、かなり苦労しました。</description>
+    </item>
+    
     <item>
       <title>Kill Houdini</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-06-19/</link>
+      <link>http://localhost:1313/FXHACK/posts/2017-06-19/</link>
       <pubDate>Mon, 19 Jun 2017 11:00:53 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-06-19/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2017-06-19/</guid>
       <description>今回の話は、Linuxユーザのためだけですので、あしからず。
 なにか間違った値を入れてしまったりして、メモリが右肩上がりに上昇し、メモリをフルに使いきり、パソコンが動かなくなるということは、時々あるでしょう。会社のマシンは128GBですが、まれになります。 そんなときは、 CUIモードで対処したり、同僚のマシンから操作してもらったり、泣く泣く電源を落としたりと、みなさんもこんな経験はたくさんあるでしょう。 残念ながら、いろいろセーブしてなくて、「ごめんなさい」を連呼しながらEscを連打しても、ダメなときはダメです。
 そうなる前に、問題のプロセスを強制的に終了させましょう。 というわけで、今回はBashを調べてみました。基本Linuxで仕事してますが、Bashやコマンドは避けてきたので、何か間違ってる点や、もっといい方法がありましたら教えてください。

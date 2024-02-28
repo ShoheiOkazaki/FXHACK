@@ -2,20 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Python on FX HACK</title>
-    <link>https://ShoheiOkazaki.github.io/FXHACK/en/tags/python/</link>
+    <link>http://localhost:1313/FXHACK/en/tags/python/</link>
     <description>Recent content in Python on FX HACK</description>
     <image>
-      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+      <url>http://localhost:1313/FXHACK/profile.jpg</url>
+      <link>http://localhost:1313/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 05 Oct 2023 09:27:07 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/en/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Thu, 05 Oct 2023 09:27:07 +0900</lastBuildDate><atom:link href="http://localhost:1313/FXHACK/en/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Solaris] Importing HDA-Camera to LOP</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/en/posts/2023-10-05/</link>
+      <link>http://localhost:1313/FXHACK/en/posts/2023-10-05/</link>
       <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/en/posts/2023-10-05/</guid>
+      <guid>http://localhost:1313/FXHACK/en/posts/2023-10-05/</guid>
       <description>Issue When importing your custom HDA camera into Solaris using SceneImportLOP, you can&amp;rsquo;t import it and it appear the waring.
 （Custom HDA camera is some thing like this.）
 The following warning appears. This may probably only appear in 19.5 or later. Solution Let&amp;rsquo;s go to the link that the waring said.

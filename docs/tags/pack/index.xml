@@ -2,20 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Pack on FX HACK</title>
-    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/pack/</link>
+    <link>http://localhost:1313/FXHACK/tags/pack/</link>
     <description>Recent content in Pack on FX HACK</description>
     <image>
-      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+      <url>http://localhost:1313/FXHACK/profile.jpg</url>
+      <link>http://localhost:1313/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 02 May 2015 12:04:32 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/pack/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language>
+    <lastBuildDate>Sat, 02 May 2015 12:04:32 +0900</lastBuildDate><atom:link href="http://localhost:1313/FXHACK/tags/pack/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dynamically Fractured Object</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/</link>
+      <link>http://localhost:1313/FXHACK/posts/2015-05-03/</link>
       <pubDate>Sat, 02 May 2015 12:04:32 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2015-05-03/</guid>
       <description>FXらしく少し見栄えの良いものを紹介します。
 破壊です。といっても、激しいやつではありません。
 破壊をするときは、Pre-Fractureしてからシミュレーションをかける事が大半だとも思いますが、何かしらのトリガーによって自動的に破壊が起こる仕組みを作ってみます。

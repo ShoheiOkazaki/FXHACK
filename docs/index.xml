@@ -2,20 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>FX HACK</title>
-    <link>https://ShoheiOkazaki.github.io/FXHACK/</link>
+    <link>http://localhost:1313/FXHACK/</link>
     <description>Recent content on FX HACK</description>
     <image>
-      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+      <url>http://localhost:1313/FXHACK/profile.jpg</url>
+      <link>http://localhost:1313/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 05 Oct 2023 09:27:07 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language>
+    <lastBuildDate>Wed, 28 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/FXHACK/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Linux] 101</title>
+      <link>http://localhost:1313/FXHACK/posts/2024-02-28/</link>
+      <pubDate>Wed, 28 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/FXHACK/posts/2024-02-28/</guid>
+      <description>Windows vs Linux Googleで「Houdini Windows vs Linux」と調べればいろいろな検証結果がでてきます。
+例えば杉村さんのBlogには、シミュレーションの比較があります。
+Linux vs Windows10パフォーマンス対決その１｜スギムラ マサヤ(sugiggy)またこちらの動画はMantraとKarmaのレンダリング比較してくれてます。
+10％ー30％はLinuxのほうが速いですね。 にしてもKarmaの速度に大きな差があるのは驚きですね！
+Linuxディストリビューション Linuxディストリビューションとは、ハードウェアとソフトウェアの間の通信を管理し、システムリソースを効率的に配分してくれるLinuxカーネルに加えて、ソフトウェアやユーティリティ、ユーザーインターフェースなどが組み込まれている、Linuxベースのオペレーティングシステムのバリエーションやバージョンのこと。
+ユーザーフレンドリーなUbuntuやLinux Mint、企業向けのRed Hat Enterprise Linux、高度なユーザー向けのArch Linuxなど、多種多様なバリエーションがあります。
+VFX/CG業界ではCentOSが主流 でした。しかしCentOSが2024年6月30日にサポート終了 になる、つまりアップデートやセキュリティパッチの更新がなくなることが発表されました。 ですのでCentOSを使ってた会社はRockyに移行 してくとこもあるみたいです。
+ディストリビューション 特徴 Ubuntu ユーザーフレンドリーで初心者におすすめ。広範なソフトウェアサポート。 Debian 安定性とセキュリティに重点を置いている。多くのディストリビューションのベース。 Fedora 最新のテクノロジーを早期に採用。Red Hatによって支援されている。 CentOS Red Hat Enterprise Linuxをベースにした企業向けの無料ディストリビューション。 Arch Linux シンプルさとユーザーによる細かなカスタマイズを重視。 Linux Mint Ubuntuをベースに、使いやすさと美しいデスクトップ環境を提供。 Rocky Linux CentOSの代替として開発された、企業向けの安定したディストリビューション。 AlmaLinux CentOSの終了に伴い、そのコミュニティによって作成された無料のエンタープライズ級Linuxディストリビューション。 どのディストリビューションを選ぶかは、まず各ソフトのシステム要件をみてみましょう。
+Houdini:
+https://www.sidefx.com/ja/Support/system-requirements Nuke:
+https://www.foundry.com/products/nuke-family/requirements Unreal Engine:
+https://docs.unrealengine.com/5.3/en-US/hardware-and-software-specifications-for-unreal-engine/ Blender:
+https://blender.org/download/requirements/ Maya:
+https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/System-Requirements-for-Autodesk-Maya-2024.html やはりRockyを推していってますね。
+Mintをインストール！ Mintな理由 上記でVFX業界の主流はCentOSからRockyへ、ソフトウェアの対応もRockyに移行してるみたいなのに、なんでMintなのと思われるでしょう。 CentOSやRockyはRedHat系といわれますが、これらは初心者には難しいです。私自身も自宅でCentやFedoraを使ったことがありますが、かなり苦労しました。</description>
+    </item>
+    
     <item>
       <title>[Solaris] HDAカメラのインポート</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/</link>
+      <link>http://localhost:1313/FXHACK/posts/2023-10-05/</link>
       <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2023-10-05/</guid>
       <description>問題 SolarisにSceneImportLOPでカメラをインポートする際、自前のHDAカメラをインポートしようとするとワーニングがでてインポートできません。
 （自前のカメラとはこういうHDAです）
 以下のようなワーニングが表示されます。これはおそらく19.5以降でしか表示されないかもしれません。 解決策 まずは言われた通り、リンクに飛びましょう。
@@ -29,10 +53,10 @@ import hou import husd from pxr import UsdGeom class CameraTranslator(husd.objtr
     
     <item>
       <title>Houdini Workflowについて</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2021-04-29/</link>
+      <link>http://localhost:1313/FXHACK/posts/2021-04-29/</link>
       <pubDate>Thu, 29 Apr 2021 12:27:07 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2021-04-29/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2021-04-29/</guid>
       <description>いままで何回もHoudini Workflowをつくってきたので、どんなことをやっているか紹介したいと思います。
 小規模な会社にいるからとか個人でやってるから、そんなの必要ないと考える人もいるかもしれませんが、そうは思いません。数人の会社で働いたことがありますが、確実にワークフローが少しでもないと良いパフォーマンスを出すことをできません。
 大規模な会社には専任のTDがいてパイプラインがしっかりあり、色々便利なこともあります。反面、大きくなりすぎた会社ほど、やる気のない人や老害がたまり自由度がなくなり最新の流れにもついていけなくなったり、ワークフローを作るのに大工事したり、パイプラインにも手をいれなければいけないみたいなことも起こってしまいます。小規模だとパイプラインを作るのは難しいですが、ワークフローは自分たちの好きに作りやすいです。自分たちにあったものを構築できれば、小回りがきいて大きな所に負けないワークフローを構築しアドバンテージにすることも出来ます。
@@ -62,10 +86,10 @@ SEQ = &amp;#39;seq_01&amp;#39; SHOT = &amp;#39;shot_003&amp;#39; P_START = 1001 
     
     <item>
       <title>FX的　Height Fieldの使い方</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2019-02-12/</link>
+      <link>http://localhost:1313/FXHACK/posts/2019-02-12/</link>
       <pubDate>Tue, 12 Feb 2019 09:30:42 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2019-02-12/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2019-02-12/</guid>
       <description>今回は、Height Fieldです。 FXは、Height Fieldの恩恵は、あまりないと思いますが、個人的なFX的使い方を紹介します。
 サンプルファイルです。17.0.459で作成。
 Download
@@ -95,10 +119,10 @@ Non-Manifoldを取り除くために、CleanかPolyDoctorで治しときまし�
     
     <item>
       <title>最近のお気に入り - 1　「右クリック」</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2018-03-06/</link>
+      <link>http://localhost:1313/FXHACK/posts/2018-03-06/</link>
       <pubDate>Tue, 06 Mar 2018 12:00:18 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2018-03-06/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2018-03-06/</guid>
       <description>大したことじゃないけど、最近のお気に入りを紹介するコーナ。 第一弾は右クリック。
 FXを作ってく上で、僕には2大裏テーマというものがあります。それは 「キーフレームを極力打たない」と「手の挙動範囲を極力少なくする」 です。今回は後者のために、必要なカスタマイズです。
 ノードのプリセットに入れればいいじゃんと言う人もいるかもしれないですが、あれはパラメータの並び順や位置のレイアウトも記憶しています。Houdiniはバージョンが変わると、パラメータのレイアウトが変わることなんてことは当たり前なので、バージョンごとにプリセットを更新する必要があり非常にめんどいのです。といわけで右クリックのメニューにサポートツールを追加して効率化を図っています。
@@ -117,10 +141,10 @@ import hou def doit(parms,type): parm = parms[0] parm_name = parm.name() node = 
     
     <item>
       <title>[Deadline] Add Extra Version</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-09-13/</link>
+      <link>http://localhost:1313/FXHACK/posts/2017-09-13/</link>
       <pubDate>Wed, 13 Sep 2017 11:00:53 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-09-13/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2017-09-13/</guid>
       <description>時々、悩んでる人がいたので、Deadlineネタを１つ。
 どんなソフトでも、マイナーアップデートは簡単にできますが、メジャーアップデートは、プロジェクトの兼ね合いや自社Plugin/Toolの影響で、そうは容易くできません。アップグレードの金を出すのに渋って更新してないのでなく、ただ単にめんどくさいという理由で更新されてなかったら、担当者のケツを蹴っ飛ばして更新してもらいましょう。
 いろんな理由でDeadlineのバージョンが古すぎて、最新のHoudiniのバージョン使用できないという人もいるでしょう。今回は、そんな人向けへの裏ワザを紹介します。
@@ -135,10 +159,10 @@ scriptDialog.AddComboControlToGrid(&amp;#34;VersionBox&amp;#34;,&amp;#34;ComboCo
     
     <item>
       <title>Kill Houdini</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-06-19/</link>
+      <link>http://localhost:1313/FXHACK/posts/2017-06-19/</link>
       <pubDate>Mon, 19 Jun 2017 11:00:53 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-06-19/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2017-06-19/</guid>
       <description>今回の話は、Linuxユーザのためだけですので、あしからず。
 なにか間違った値を入れてしまったりして、メモリが右肩上がりに上昇し、メモリをフルに使いきり、パソコンが動かなくなるということは、時々あるでしょう。会社のマシンは128GBですが、まれになります。 そんなときは、 CUIモードで対処したり、同僚のマシンから操作してもらったり、泣く泣く電源を落としたりと、みなさんもこんな経験はたくさんあるでしょう。 残念ながら、いろいろセーブしてなくて、「ごめんなさい」を連呼しながらEscを連打しても、ダメなときはダメです。
 そうなる前に、問題のプロセスを強制的に終了させましょう。 というわけで、今回はBashを調べてみました。基本Linuxで仕事してますが、Bashやコマンドは避けてきたので、何か間違ってる点や、もっといい方法がありましたら教えてください。
@@ -157,10 +181,10 @@ ps aux | grep [h]oudini-bin 実行すると、こんな感じのものが返っ�
     
     <item>
       <title>H16についてのメモ</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-03-29/</link>
+      <link>http://localhost:1313/FXHACK/posts/2017-03-29/</link>
       <pubDate>Wed, 29 Mar 2017 15:50:27 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2017-03-29/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2017-03-29/</guid>
       <description>New Network Editor さて、賛否両論ありそうなこれ。見た目は可愛くなりましたね。 そして描画速度も速くなりました。Pythonでノードを何千と作ったり、AlembicのHierarchyを保持して展開するときなど、大きな差が出そうです。
 あのノードの形、可愛くないから使いたくないとか、デフォルトを変えたいって人はいるでしょう。僕はノードを組む上での自分なりのルールがあるためノードの色が最初から付いているのは非常に不便でデフォルトを変更してます。
 そこで、どうやってカスタマイズするかを紹介します。
@@ -179,10 +203,10 @@ import hou ns = hou.selectedNodes() for n in ns: nn = n.type().nameWithCategory(
     
     <item>
       <title>Wrangleを使おう 3 - Replace ForLoop</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2016-12-10/</link>
+      <link>http://localhost:1313/FXHACK/posts/2016-12-10/</link>
       <pubDate>Sat, 10 Dec 2016 10:00:44 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2016-12-10/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2016-12-10/</guid>
       <description>久しぶりのWrangle回です。
 個人的にHoudiniにおいて、よく使う必需ノードは、For LoopとAttribute Promoteです。これらがないと仕事ができません。もちろんWrangleも絶対使います。
 特にFor LoopはHoudiniを象徴するようなノードだと勝手に思ってます。ある処理を考え、それを他のものにも同様な処理を施す。まさにProceduralに作業する上で必要不可欠なものです。
@@ -198,10 +222,10 @@ string piece_attr = &amp;#34;name&amp;#34;; int num_piece_attr = nuniqueval(@OpI
     
     <item>
       <title>Time Dependent Cook : YES? or NO?</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2016-08-07/</link>
+      <link>http://localhost:1313/FXHACK/posts/2016-08-07/</link>
       <pubDate>Sun, 07 Aug 2016 08:42:33 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2016-08-07/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2016-08-07/</guid>
       <description>お久しぶりです。そこそこ忙しくて、ブログを書くのを怠ってました。 今回の内容はビギナー向けですが、非常に重要な考え方なので紹介しようと思います。Time Dependent Cookについてです。
 Time Dependentという言葉は、Houdiniを使ってないと聞き慣れないかもしれませんし、気にしたこともないかもしれません。
 サンプルファイル (Fedora21, Houdini15.0.393, linux-x86_64-gcc4.8)
@@ -229,10 +253,10 @@ Attribute Interpolateを使うと速くなるよということが言いたか�
     
     <item>
       <title>[RnD] Pyro with Vorticity</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-11-07/</link>
+      <link>http://localhost:1313/FXHACK/posts/2015-11-07/</link>
       <pubDate>Sat, 07 Nov 2015 13:43:24 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-11-07/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2015-11-07/</guid>
       <description>レゾをそんなに高くしなくても、手軽にコントロールでき、形を崩しいい感じのShapeを作るを目的にしたRnD
 Houdini歴5年目にして、やっとSopレベルもそこそこになってきたので、最近Dopに力を入れ始めました。データの流れを考えながら構築していったり、Sopでの知識は必ず役に立ちますし、データを可視化できるので、今までもっていたMicroSolverに対する苦手意識がなくなりました。
 FumeやらPhoenix FDにvorticityというのがついてるのに、Pyroにはないのとお思いの方、朗報です。
@@ -246,10 +270,10 @@ Vimeoにあげた動画の、最初の煙はエミットされてからすぐに
     
     <item>
       <title>Volume Displacement</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-07-16/</link>
+      <link>http://localhost:1313/FXHACK/posts/2015-07-16/</link>
       <pubDate>Sun, 19 Jul 2015 00:54:08 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-07-16/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2015-07-16/</guid>
       <description>Cloud Noise シミュレーションをせずにVolumeを何かしら編集するエレメントといったら雲や霧だと思います。
 エフェクトの人で雲を作るときに、ネット検索で引っかかり一回は目にしたことであろう、この論文http://magnuswrenninge.com/productionvolumerendering, Resolution Independent Volumes 何やら、難しそうですね。てか4年(2011)も前なんですね。
 個人的な見解ですが、H13?から用意されたCloud Noise Sopはこれを元に作られていると見ています。理由は中を見ればわかります。
@@ -278,10 +302,10 @@ Sigrapphのようなところで発表された技術も、Cloud Noise Sopのよ
     
     <item>
       <title>Dynamically Fractured Object</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/</link>
+      <link>http://localhost:1313/FXHACK/posts/2015-05-03/</link>
       <pubDate>Sat, 02 May 2015 12:04:32 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2015-05-03/</guid>
       <description>FXらしく少し見栄えの良いものを紹介します。
 破壊です。といっても、激しいやつではありません。
 破壊をするときは、Pre-Fractureしてからシミュレーションをかける事が大半だとも思いますが、何かしらのトリガーによって自動的に破壊が起こる仕組みを作ってみます。
@@ -305,10 +329,10 @@ Dynamic Fracturing 後は、このGroupに入ったピースをUnpackして壊�
     
     <item>
       <title>Wrangleを使おう 2.5</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-03-02/</link>
+      <link>http://localhost:1313/FXHACK/posts/2015-03-02/</link>
       <pubDate>Mon, 02 Mar 2015 02:53:32 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-03-02/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2015-03-02/</guid>
       <description>一個書き忘れてたことがあったので、さらっと。
 数学定数、円周率(π)・自然対数の底(e)・黄金比(φ/τ)とか、時々使うけど漠然としか値を覚えていない奴らがいます。正確な値を知るために毎回、調べるのは億劫です。
 例えば、Wrangleで初めに#include &amp;lt;math.h&amp;gt;と書けば、以降このノード内ではM_PIが3.1415926の値を持っていることになります。
@@ -320,10 +344,10 @@ Dynamic Fracturing 後は、このGroupに入ったピースをUnpackして壊�
     
     <item>
       <title>Wrangleを使おう 2</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-03-01/</link>
+      <link>http://localhost:1313/FXHACK/posts/2015-03-01/</link>
       <pubDate>Sun, 01 Mar 2015 11:40:54 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-03-01/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2015-03-01/</guid>
       <description>Wrangleは、アトリビュートを作ったり編集するだけでなく、Pointを作ったりPrimitiveを作ったりもできます。初心者向けのチュートリアルで時々みるPointSopを使って、Pを編集してるやつをWrangleで置き換えてみます。こんなやつです。 まずラインの作り方 line sopできますが、wrangleでやってみます。ただの直線を作るときに、わざわざwrangleでやる必要はないかと思いますが、近くのpoint同士を結びつけるときなど普通にやろうとすると、めんどくさい時に重宝するので覚えときましょう。
 int res = 10; float height = 5.0; int line = addprim(0, &amp;#34;polyline&amp;#34;); for(int i=0; i&amp;lt;res; i++){ vector pos =set(1, height/(res-1)*i, 0); int cp = addpoint(0,pos); addvertex(0, line, cp); } 長さ(height)とポイント数(res)を決めてあげて、これらのポイントを結んでラインを作ります。なぜ、Vertexを作る必要があるかというと、Primitiveを構成するにはVertexが必要です。Pointではありません。Help: ジオメトリの作成
 もちろん、Vopでもつくれます。 ラインが作れたら、各Pointの位置を編集するだけです。簡単ですね。
@@ -332,10 +356,10 @@ int res = 100; float rad = 3; float height = 5; float freq = 10; int line = addp
     
     <item>
       <title>Wrangleを使おう 1</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-02-18/</link>
+      <link>http://localhost:1313/FXHACK/posts/2015-02-18/</link>
       <pubDate>Wed, 18 Feb 2015 13:59:47 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-02-18/</guid>
+      <guid>http://localhost:1313/FXHACK/posts/2015-02-18/</guid>
       <description>&lt;p&gt;12.5から搭載されたWrangleですが、結構避けてる人が多い印象です。&lt;/p&gt;
 &lt;p&gt;せっかくノードベースでやってるのに、&lt;del&gt;イライラする&lt;/del&gt;MayaのExpressionを思い出させられて避けてるのかもしれません。&lt;/p&gt;
 &lt;p&gt;しかしMayaから移行した人にとっては、Expressionと似ているので敷居は高くないはずです。エフェクト屋でPythonとかMelなどのScriptを、全く書けないという人はいないと思うんで、その知識も役立ちます。&lt;/p&gt;</description>
@@ -345,10 +369,10 @@ int res = 100; float rad = 3; float height = 5; float freq = 10; int line = addp
     
     <item>
       <title>SHOHEI OKAZAKI</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/profile/</link>
+      <link>http://localhost:1313/FXHACK/profile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/profile/</guid>
+      <guid>http://localhost:1313/FXHACK/profile/</guid>
       <description>DEMOREEL Need password? Contact me.
 SUMMARY I&amp;rsquo;m working at Weta FX as Effects Technical Director. I have a deep knowledge of Houdini, and more than 11 years of experience with Houdini, FX techniques, simulation and other areas of the VFX, and 3D CG.
 SKILLS Fluid and Liquid simulation, Rigid body, Particle, Procedural modeling

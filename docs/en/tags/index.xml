@@ -2,74 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on FX HACK</title>
-    <link>https://ShoheiOkazaki.github.io/FXHACK/en/tags/</link>
+    <link>http://localhost:1313/FXHACK/en/tags/</link>
     <description>Recent content in Tags on FX HACK</description>
     <image>
-      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
+      <url>http://localhost:1313/FXHACK/profile.jpg</url>
+      <link>http://localhost:1313/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 05 Oct 2023 09:27:07 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Thu, 05 Oct 2023 09:27:07 +0900</lastBuildDate><atom:link href="http://localhost:1313/FXHACK/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Houdini</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/en/tags/houdini/</link>
+      <link>http://localhost:1313/FXHACK/en/tags/houdini/</link>
       <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/en/tags/houdini/</guid>
+      <guid>http://localhost:1313/FXHACK/en/tags/houdini/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/en/tags/python/</link>
+      <link>http://localhost:1313/FXHACK/en/tags/python/</link>
       <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/en/tags/python/</guid>
+      <guid>http://localhost:1313/FXHACK/en/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Solaris</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/en/tags/solaris/</link>
+      <link>http://localhost:1313/FXHACK/en/tags/solaris/</link>
       <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/en/tags/solaris/</guid>
+      <guid>http://localhost:1313/FXHACK/en/tags/solaris/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Workflow</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/en/tags/workflow/</link>
+      <link>http://localhost:1313/FXHACK/en/tags/workflow/</link>
       <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/en/tags/workflow/</guid>
+      <guid>http://localhost:1313/FXHACK/en/tags/workflow/</guid>
       <description></description>
     </item>
     
     <item>
       <title>101</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/en/tags/101/</link>
+      <link>http://localhost:1313/FXHACK/en/tags/101/</link>
       <pubDate>Sun, 01 Mar 2015 11:40:54 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/en/tags/101/</guid>
+      <guid>http://localhost:1313/FXHACK/en/tags/101/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SOP</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/en/tags/sop/</link>
+      <link>http://localhost:1313/FXHACK/en/tags/sop/</link>
       <pubDate>Sun, 01 Mar 2015 11:40:54 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/en/tags/sop/</guid>
+      <guid>http://localhost:1313/FXHACK/en/tags/sop/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Wrangle</title>
-      <link>https://ShoheiOkazaki.github.io/FXHACK/en/tags/wrangle/</link>
+      <link>http://localhost:1313/FXHACK/en/tags/wrangle/</link>
       <pubDate>Sun, 01 Mar 2015 11:40:54 +0900</pubDate>
       
-      <guid>https://ShoheiOkazaki.github.io/FXHACK/en/tags/wrangle/</guid>
+      <guid>http://localhost:1313/FXHACK/en/tags/wrangle/</guid>
       <description></description>
     </item>
     
