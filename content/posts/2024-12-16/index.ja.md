@@ -1,8 +1,8 @@
 ---
 title: "[PDG] Gathering USD Files"
 date: 2024-12-12T00:00:00+00:00
-tags: ["USD", "PDG"]
-draft: true
+tags: ["USD", "PDG", "Workflow", "Solaris"]
+draft: false
 ---
 
 # 
