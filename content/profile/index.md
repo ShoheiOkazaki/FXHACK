@@ -25,8 +25,8 @@ Supervising, Bidding, Team management
 
 	- Effects Technical Director
 
-		[Film] Guardians of the Galaxy Vol. 3
-		
+		[Film] [Guardians of the Galaxy Vol. 3](https://www.youtube.com/watch?v=0EORPrMkvMM)
+
 		[Film] Minecraft
 
 - Jun 2021 – Feb 2022,  Marza Animation Planet Inc., Tokyo/Japan
