@@ -21,6 +21,10 @@ Supervising, Bidding, Team management
 ## PROFESSIONAL EXPERIENCE
 - Current, Freelance
 
+	- FX Supervisor
+
+		[Film] [Sonic the Hedgehog 3](https://www.youtube.com/watch?v=qSu6i2iFMO0)
+
 - May 2022 - Feb 2024, Wētā FX
 
 	- Effects Technical Director
