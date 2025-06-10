@@ -8,7 +8,7 @@ title: "SHOHEI OKAZAKI"
 Need password? Contact me.
 
 ## SUMMARY
-I'm working at Weta FX as Effects Technical Director. I have a deep knowledge of Houdini, and more than 11 years of experience with Houdini, FX techniques, simulation and other areas of the VFX, and 3D CG.
+I'm a freelance FX artist and FX supervisor who specializes in high-end FX simulations. I’ve been using Houdini daily since version 10, giving me over 14 years of hands-on experience. In addition to creating complex visual effects, I design and optimize Houdini workflows that enable teams to iterate quickly and maintain consistency across the VFX pipeline.
 
 
 ## SKILLS
