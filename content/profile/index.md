@@ -19,10 +19,14 @@ PDG, Tool development, Pipeline support, VEX, Python, Render Optimization, Debug
 Supervising, Bidding, Team management
 
 ## PROFESSIONAL EXPERIENCE
-- Current, Weta FX
+- Current, Freelance
+
+- May 2022 - Feb 2024, Wētā FX
 
 	- Effects Technical Director
 
+		[Film] Guardians of the Galaxy Vol. 3
+		[Film] Minecraft
 
 - Jun 2021 – Feb 2022,  Marza Animation Planet Inc., Tokyo/Japan
 
