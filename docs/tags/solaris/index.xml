@@ -2,52 +2,191 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Solaris on FX HACK</title>
-    <link>http://127.0.0.1:1313/FXHACK/tags/solaris/</link>
+    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/solaris/</link>
     <description>Recent content in Solaris on FX HACK</description>
     <image>
-      <url>http://127.0.0.1:1313/FXHACK/profile.jpg</url>
-      <link>http://127.0.0.1:1313/FXHACK/profile.jpg</link>
+      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 12 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://127.0.0.1:1313/FXHACK/tags/solaris/index.xml" rel="self" type="application/rss+xml" />
+    
+    <managingEditor>Shohei Okazaki</managingEditor>
+    <webMaster>Shohei Okazaki</webMaster>
+    
+    
+    
+    <lastBuildDate>Thu, 12 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/solaris/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[PDG] Gathering USD Files</title>
-      <link>http://127.0.0.1:1313/FXHACK/posts/2024-12-16/</link>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2024-12-16/</link>
       <pubDate>Thu, 12 Dec 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://127.0.0.1:1313/FXHACK/posts/2024-12-16/</guid>
-      <description>皆さんはアウトソーシング先や他のベンダー会社にデータを共有する際、どのような手法を取っていますか？
-Houdiniならキャッシュやテクスチャをシーンファイルがある同じ階層に置いて、それぞれのファイルパスを$HIP始まりにする。もしくはLocal Variables $JOBを用いてファイルの保存場所を指定し、異なる環境で開いた際には作業者が変数の値を更新するのが一般的です。
-Nukeにおいては、Nukepediaや社内で開発したGathering toolを利用して、シーン内のRead/Writeノードが参照するファイルパスのデータを他の場所にコピーし、それらのノードのファイルパスを相対パスに変更することが多いです。
-では、USDを使う場合はどのように対応すればよいでしょうか？今回はPDGを使った話をしていきます。
-Sample File(20.5.410 py3.11): https://drive.google.com/file/d/1pkv1pYyNRrdOpoF50qxvsBc3HxAFyi5r/view?usp=drive_link
-USDアセット作成 まずSolarisで簡単なデータを作るとこから始めます。
-もうUSDは日本以外のとこではスタンダードになったと言っても過言ではないフォーマットです。ですので、簡単な説明は省きます。
-アセットを作ったことがない人は、このチュートリアルを見てください。 https://www.sidefx.com/tutorials/usd-asset-building-with-solaris/
-Component まずCompoent Builderを使って、2つのComponent、GridとVariantをもったRocksをつくります。
-Component Outputの出力先を、今後の説明を分かりやすくするために以下のように変更しておきます。 それぞれ、Save to Diskを押して、USDを作成します。
-$HIP/usd/components/`chs(&amp;#34;name&amp;#34;)`/v001/`chs(&amp;#34;filename&amp;#34;)` 保存先を見てみると、このようなフォルダ構造になっているかと思います。
-└── usd/ └── components/ └── grid/ └── v001/ └── grid.usd └── geo.usdc └── mtl.usdc └── payload.usdc └── textures/ └── bricks001_basecolor.png └── rocks/ └── v001/ └── rocks.usd └── geo.usdc └── mtl.usdc └── payload.usdc Gridはテクスチャは持っており、そのテクスチャは$HIP/texturesに保存してありましたが、usdが保存されているtexturesフォルダにコピーされています。 そして、GridというComponentのUsdを読み込んでみると、テクスチャパスは@./textures/bricks001_basecolor.png@になっています。絶対パスではなくでなく、相対パスになっています。
-Referenceで読み込んでるgrid.usdの中身にも相対パスが使われています
-#usda 1.0 ( defaultPrim = &amp;#34;grid&amp;#34; framesPerSecond = 24 metersPerUnit = 1 timeCodesPerSecond = 24 upAxis = &amp;#34;Y&amp;#34; ) def Xform &amp;#34;grid&amp;#34; ( prepend apiSchemas = [&amp;#34;GeomModelAPI&amp;#34;] assetInfo = { asset identifier = @.</description>
+      <author>Shohei Okazaki</author>
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2024-12-16/</guid>
+      <description>&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;皆さんはアウトソーシング先や他のベンダー会社にデータを共有する際、どのような手法を取っていますか？&lt;/p&gt;
+&lt;p&gt;Houdiniならキャッシュやテクスチャをシーンファイルがある同じ階層に置いて、それぞれのファイルパスを$HIP始まりにする。もしくはLocal Variables $JOBを用いてファイルの保存場所を指定し、異なる環境で開いた際には作業者が変数の値を更新するのが一般的です。&lt;/p&gt;
+&lt;p&gt;Nukeにおいては、Nukepediaや社内で開発したGathering toolを利用して、シーン内のRead/Writeノードが参照するファイルパスのデータを他の場所にコピーし、それらのノードのファイルパスを相対パスに変更することが多いです。&lt;/p&gt;
+&lt;p&gt;では、USDを使う場合はどのように対応すればよいでしょうか？今回はPDGを使った話をしていきます。&lt;/p&gt;
+&lt;p&gt;Sample File(20.5.410 py3.11): &lt;a href=&#34;https://drive.google.com/file/d/1pkv1pYyNRrdOpoF50qxvsBc3HxAFyi5r/view?usp=drive_link&#34;&gt;https://drive.google.com/file/d/1pkv1pYyNRrdOpoF50qxvsBc3HxAFyi5r/view?usp=drive_link&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;usdアセット作成&#34;&gt;USDアセット作成&lt;/h2&gt;
+&lt;p&gt;まずSolarisで簡単なデータを作るとこから始めます。&lt;br&gt;
+もうUSDは日本以外のとこではスタンダードになったと言っても過言ではないフォーマットです。ですので、簡単な説明は省きます。&lt;/p&gt;
+&lt;p&gt;アセットを作ったことがない人は、このチュートリアルを見てください。
+&lt;a href=&#34;https://www.sidefx.com/tutorials/usd-asset-building-with-solaris/&#34;&gt;https://www.sidefx.com/tutorials/usd-asset-building-with-solaris/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;component&#34;&gt;Component&lt;/h3&gt;
+&lt;p&gt;まずCompoent Builderを使って、2つのComponent、GridとVariantをもったRocksをつくります。&lt;/p&gt;
+&lt;p&gt;Component Outputの出力先を、今後の説明を分かりやすくするために以下のように変更しておきます。
+それぞれ、Save to Diskを押して、USDを作成します。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$HIP/usd/components/`chs(&amp;#34;name&amp;#34;)`/v001/`chs(&amp;#34;filename&amp;#34;)`
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2024-12-16/img/imag_001.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;保存先を見てみると、このようなフォルダ構造になっているかと思います。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;└── usd/
+    └── components/
+        └── grid/
+            └── v001/
+                └── grid.usd
+                └── geo.usdc
+                └── mtl.usdc
+                └── payload.usdc
+                └── textures/
+                    └── bricks001_basecolor.png
+        └── rocks/
+            └── v001/
+                └── rocks.usd
+                └── geo.usdc
+                └── mtl.usdc
+                └── payload.usdc
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Gridはテクスチャは持っており、そのテクスチャは$HIP/texturesに保存してありましたが、usdが保存されているtexturesフォルダにコピーされています。
+そして、GridというComponentのUsdを読み込んでみると、テクスチャパスは@./textures/bricks001_basecolor.png@になっています。絶対パスではなくでなく、相対パスになっています。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2024-12-16/img/imag_002.png&#34; alt=&#34;img_02&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Referenceで読み込んでるgrid.usdの中身にも相対パスが使われています&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#usda 1.0
+(
+    defaultPrim = &amp;#34;grid&amp;#34;
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = &amp;#34;Y&amp;#34;
+)
+
+def Xform &amp;#34;grid&amp;#34; (
+    prepend apiSchemas = [&amp;#34;GeomModelAPI&amp;#34;]
+    assetInfo = {
+        asset identifier = @./grid.usd@
+        string name = &amp;#34;grid&amp;#34;
+        asset thumbnail = @./thumbnail.png@
+    }
+    prepend inherits = &amp;lt;/__class__/grid&amp;gt;
+    kind = &amp;#34;component&amp;#34;
+    prepend payload = @./payload.usdc@
+)
+{
+    float3[] extentsHint = [(-5, 0, -5), (5, 0, 5)]
+}
+
+class &amp;#34;__class__&amp;#34;
+{
+    class &amp;#34;grid&amp;#34;
+    {
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;これらはComponent Outputのなかにあるropの&lt;strong&gt;Output Processing&lt;/strong&gt;にて、処理がされています。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2024-12-16/img/imag_003.png&#34; alt=&#34;img_03&#34;  /&gt;
+&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>[Solaris] HDAカメラのインポート</title>
-      <link>http://127.0.0.1:1313/FXHACK/posts/2023-10-05/</link>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/</link>
       <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
-      
-      <guid>http://127.0.0.1:1313/FXHACK/posts/2023-10-05/</guid>
-      <description>問題 SolarisにSceneImportLOPでカメラをインポートする際、自前のHDAカメラをインポートしようとするとワーニングがでてインポートできません。
-（自前のカメラとはこういうHDAです）
-以下のようなワーニングが表示されます。これはおそらく19.5以降でしか表示されないかもしれません。 解決策 まずは言われた通り、リンクに飛びましょう。
-以下のような記述が冒頭にありますね。カスタムノードをLOPに読み込むにはなにか作業が必要なようですね。
-Scene Import LOPが特定のHoudiniオブジェクトノードタイプをUSDに変換する方法をカスタマイズすることができます。 これは、特にカスタムノードタイプ(例えば、プロプライエタリなレンダラー関係のライトタイプやカメラタイプ)の変換に役立ちます。
-その後を読み続けると色々Pythonやら書いてありますね。でもちょっと長いので無視します。
-Houdiniはカスタムできるものについては、インストールフォルダにだいたいのものがバイナリになっていない状態で保存されてるので、それをコピーしてから始めるのが最短の道です。ということで以下のファイルを見てみましょう。
-インストールフォルダ/houdini/husdplugins/objtranslators/cam.py
-import hou import husd from pxr import UsdGeom class CameraTranslator(husd.objtranslator.Translator): def shouldTranslateNode(self): return True def primType(self): return &amp;#39;Camera&amp;#39; def populatePrim(self, prim, referenced_node_prim_paths, force_active): super(CameraTranslator, self).populatePrim(prim, referenced_node_prim_paths, force_active) cam = UsdGeom.Camera(prim) proj = self._node.parm(&amp;#39;projection&amp;#39;).evalAsString() if proj == &amp;#39;perspective&amp;#39;: cam.CreateProjectionAttr(&amp;#39;perspective&amp;#39;) elif proj == &amp;#39;ortho&amp;#39;: cam.CreateProjectionAttr(&amp;#39;orthographic&amp;#39;) # A few of the parameters need to be converted into 1/10 scene unit space stage = prim.</description>
+      <author>Shohei Okazaki</author>
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/</guid>
+      <description>&lt;h2 id=&#34;問題&#34;&gt;問題&lt;/h2&gt;
+&lt;p&gt;SolarisにSceneImportLOPでカメラをインポートする際、自前のHDAカメラをインポートしようとするとワーニングがでてインポートできません。&lt;/p&gt;
+&lt;p&gt;（自前のカメラとは&lt;a href=&#34;../2021-04-29/#%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%8A%E3%81%84%E3%81%9F%E3%81%BB%E3%81%86%E3%81%8C%E3%81%84%E3%81%84%E3%83%8E%E3%83%BC%E3%83%89&#34;&gt;こういうHDA&lt;/a&gt;です）&lt;/p&gt;
+&lt;p&gt;以下のようなワーニングが表示されます。これはおそらく19.5以降でしか表示されないかもしれません。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/img/lop_waring.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;解決策&#34;&gt;解決策&lt;/h2&gt;
+&lt;p&gt;まずは言われた通り、&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/hom/sceneimport_object_translator.html&#34;&gt;リンク&lt;/a&gt;に飛びましょう。&lt;/p&gt;
+&lt;p&gt;以下のような記述が冒頭にありますね。カスタムノードをLOPに読み込むにはなにか作業が必要なようですね。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Scene Import LOPが特定のHoudiniオブジェクトノードタイプをUSDに変換する方法をカスタマイズすることができます。 これは、特にカスタムノードタイプ(例えば、プロプライエタリなレンダラー関係のライトタイプやカメラタイプ)の変換に役立ちます。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;その後を読み続けると色々Pythonやら書いてありますね。でもちょっと長いので無視します。&lt;/p&gt;
+&lt;p&gt;Houdiniはカスタムできるものについては、インストールフォルダにだいたいのものがバイナリになっていない状態で保存されてるので、それをコピーしてから始めるのが最短の道です。ということで以下のファイルを見てみましょう。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;インストールフォルダ/houdini/husdplugins/objtranslators/cam.py&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; hou
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; husd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; pxr &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; UsdGeom
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CameraTranslator&lt;/span&gt;(husd&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;objtranslator&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Translator):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;shouldTranslateNode&lt;/span&gt;(self):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;primType&lt;/span&gt;(self):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Camera&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;populatePrim&lt;/span&gt;(self, prim, referenced_node_prim_paths, force_active):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        super(CameraTranslator, self)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populatePrim(prim, referenced_node_prim_paths, force_active)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        cam &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; UsdGeom&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Camera(prim)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        proj &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;projection&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;evalAsString()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; proj &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;perspective&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateProjectionAttr(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;perspective&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; proj &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ortho&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateProjectionAttr(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orthographic&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# A few of the parameters need to be converted into 1/10 scene unit space&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        stage &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; prim&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;GetStage()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        factor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; husd&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;utils&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;convertFromMillimetersToCameraUnits(stage, &lt;span style=&#34;color:#ae81ff&#34;&gt;1.0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateFocalLengthAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;focal&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                          &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateFocusDistanceAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;focus&amp;#39;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateFStopAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;fstop&amp;#39;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateShutterOpenAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;shutter&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                          &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateShutterCloseAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;shutter&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                          &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateClippingRangeAttr(), [self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;near&amp;#39;&lt;/span&gt;), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;far&amp;#39;&lt;/span&gt;)])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# Aperture is a bit more complicated&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        aspect &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; float(self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;resy&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()) &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;resx&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        win_size &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;winsize&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; proj &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;perspective&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;# Start by grabbing a few values we&amp;#39;ll use to scale the attributes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            aperture &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;aperture&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateHorizontalApertureAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;aperture&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; win_size[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateVerticalApertureAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;aperture&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aspect &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; win_size[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateHorizontalApertureOffsetAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;win&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aperture &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateVerticalApertureOffsetAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;win&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aperture &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aspect &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; proj &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ortho&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;# Start by grabbing a few values we&amp;#39;ll use to scale the attributes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; hou&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;scaleToMKS(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;m1&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            orthowidth &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orthowidth&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateHorizontalApertureAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orthowidth&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; win_size[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateVerticalApertureAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orthowidth&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aspect &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; win_size[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateHorizontalApertureOffsetAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;win&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; orthowidth &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateVerticalApertureOffsetAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;win&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; orthowidth &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aspect &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;registerTranslators&lt;/span&gt;(manager):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    manager&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;registerTranslator(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cam&amp;#39;&lt;/span&gt;, CameraTranslator)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;このファイルを適切な場所にコピーしましょう。ファイル名は適当でOKです。&lt;code&gt;$HOUDINIPATH/husdplugins/objtranslators/customCam.py&lt;/code&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>HeightField on FX HACK</title>
+    <link>http://127.0.0.1:1313/FXHACK/en/tags/heightfield/</link>
+    <description>Recent content in HeightField on FX HACK</description>
+    <image>
+      <url>http://127.0.0.1:1313/FXHACK/profile.jpg</url>
+      <link>http://127.0.0.1:1313/FXHACK/profile.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+    <managingEditor>Shohei Okazaki</managingEditor>
+    <webMaster>Shohei Okazaki</webMaster>
+    
+    
+    
+    <lastBuildDate>Tue, 12 Feb 2019 09:30:42 +0900</lastBuildDate><atom:link href="http://127.0.0.1:1313/FXHACK/en/tags/heightfield/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to use Height Fields for FX</title>
+      <link>http://127.0.0.1:1313/FXHACK/en/posts/2019-02-12/</link>
+      <pubDate>Tue, 12 Feb 2019 09:30:42 +0900</pubDate>
+      <author>Shohei Okazaki</author>
+      <guid>http://127.0.0.1:1313/FXHACK/en/posts/2019-02-12/</guid>
+      <description>&lt;p&gt;This time, the topic is Height Fields.
+I don’t think Height Fields are especially useful for FX, but I’d like to introduce some personal FX-style ways of using them.&lt;/p&gt;
+&lt;p&gt;Here is a sample file. It was created in 17.0.459.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/fxHack_20190211_heightfield.hipnc&#34;&gt;Download&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;terrain-object&#34;&gt;Terrain Object&lt;/h2&gt;
+&lt;p&gt;With the implementation of Height Fields, the Terrain Object DOP got a new option called Use HeightField.&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/blog_height_001.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Before this, if you wanted accurate collision between particles and the ground, you had to raise the Division Size in the node’s volume conversion settings, or use Surface Collision with a Static Object. Both of those methods are pretty heavy.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

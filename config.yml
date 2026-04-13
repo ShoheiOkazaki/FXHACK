@@ -10,6 +10,7 @@ defaultContentLanguage: ja
 
 enableEmoji: true
 enableRobotsTXT: true
+ignoreLogs: ['warning-goldmark-raw-html']
 
 buildDrafts: false
 buildFuture: false
@@ -18,6 +19,11 @@ buildExpired: false
 minify:
   disableXML: true
   minifyOutput: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
 
 
 languages:

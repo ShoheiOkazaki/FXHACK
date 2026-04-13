@@ -2,89 +2,175 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>DOP on FX HACK</title>
-    <link>http://127.0.0.1:1313/FXHACK/tags/dop/</link>
+    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/dop/</link>
     <description>Recent content in DOP on FX HACK</description>
     <image>
-      <url>http://127.0.0.1:1313/FXHACK/profile.jpg</url>
-      <link>http://127.0.0.1:1313/FXHACK/profile.jpg</link>
+      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 07 Nov 2015 13:43:24 +0900</lastBuildDate><atom:link href="http://127.0.0.1:1313/FXHACK/tags/dop/index.xml" rel="self" type="application/rss+xml" />
+    
+    <managingEditor>Shohei Okazaki</managingEditor>
+    <webMaster>Shohei Okazaki</webMaster>
+    
+    
+    
+    <lastBuildDate>Sat, 07 Nov 2015 13:43:24 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/dop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[RnD] Pyro with Vorticity</title>
-      <link>http://127.0.0.1:1313/FXHACK/posts/2015-11-07/</link>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-11-07/</link>
       <pubDate>Sat, 07 Nov 2015 13:43:24 +0900</pubDate>
-      
-      <guid>http://127.0.0.1:1313/FXHACK/posts/2015-11-07/</guid>
-      <description>レゾをそんなに高くしなくても、手軽にコントロールでき、形を崩しいい感じのShapeを作るを目的にしたRnD
-Houdini歴5年目にして、やっとSopレベルもそこそこになってきたので、最近Dopに力を入れ始めました。データの流れを考えながら構築していったり、Sopでの知識は必ず役に立ちますし、データを可視化できるので、今までもっていたMicroSolverに対する苦手意識がなくなりました。
-FumeやらPhoenix FDにvorticityというのがついてるのに、Pyroにはないのとお思いの方、朗報です。
-自分で作れます。
-あのプラグイン達はBlackboxになっているので、どのような手法をとっているかは伺えしれませんが、結果的によければOKです。
-普通に煙をエミットするとのっぺりとした部分ができてしまいます。 これを崩すにはTubulenceをかけたり、Pyroの場合はDisturbanceを使ったりします。Turbulenceの使い方を間違えると、エミットしてから時間が立っているとこにも強くかかってしまうと、ダサい煙になってしまいます。また、Disturbanceも強くかけ過ぎると、ボロボロになってしまいます。コントロールが難しいです。
-Vimeoにあげた動画の、最初の煙はエミットされてからすぐに、モコモコしてるのが分かると思います。これが、求めていたものです。コントロールも結構簡単です。
-作り方は、、、いくつかのMicroSolverとSop Solverの組み合わせですｗ Vorticleを作って、渦度が高くないところも高くして影響を与えるみたいなことをしてます。 （Divergenceをいじってもこんな結果ができるはずです。）
-手軽に自分で作れるこそが、Houdiniの強み</description>
+      <author>Shohei Okazaki</author>
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-11-07/</guid>
+      <description>&lt;div style=&#34;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;&#34;&gt;
+  &lt;iframe
+    src=&#34;https://player.vimeo.com/video/144945053&#34;
+    style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;border:0;&#34;
+    allow=&#34;autoplay; fullscreen; picture-in-picture&#34;
+    allowfullscreen
+    loading=&#34;lazy&#34;
+    title=&#34;Vimeo video 144945053&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;レゾをそんなに高くしなくても、手軽にコントロールでき、形を崩しいい感じのShapeを作るを目的にしたRnD&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Houdini歴5年目にして、やっとSopレベルもそこそこになってきたので、最近Dopに力を入れ始めました。データの流れを考えながら構築していったり、Sopでの知識は必ず役に立ちますし、データを可視化できるので、今までもっていたMicroSolverに対する苦手意識がなくなりました。&lt;/p&gt;
+&lt;p&gt;FumeやらPhoenix FDにvorticityというのがついてるのに、Pyroにはないのとお思いの方、朗報です。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;自分で作れます。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;あのプラグイン達はBlackboxになっているので、どのような手法をとっているかは伺えしれませんが、結果的によければOKです。&lt;/p&gt;
+&lt;p&gt;普通に煙をエミットするとのっぺりとした部分ができてしまいます。 これを崩すにはTubulenceをかけたり、Pyroの場合はDisturbanceを使ったりします。Turbulenceの使い方を間違えると、エミットしてから時間が立っているとこにも強くかかってしまうと、ダサい煙になってしまいます。また、Disturbanceも強くかけ過ぎると、ボロボロになってしまいます。コントロールが難しいです。&lt;/p&gt;
+&lt;p&gt;Vimeoにあげた動画の、最初の煙はエミットされてからすぐに、モコモコしてるのが分かると思います。これが、求めていたものです。コントロールも結構簡単です。&lt;/p&gt;
+&lt;p&gt;作り方は、、、いくつかのMicroSolverとSop Solverの組み合わせですｗ
+Vorticleを作って、渦度が高くないところも高くして影響を与えるみたいなことをしてます。
+（Divergenceをいじってもこんな結果ができるはずです。）&lt;/p&gt;
+&lt;p&gt;手軽に自分で作れるこそが、Houdiniの強み&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Volume Displacement</title>
-      <link>http://127.0.0.1:1313/FXHACK/posts/2015-07-16/</link>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-07-16/</link>
       <pubDate>Sun, 19 Jul 2015 00:54:08 +0900</pubDate>
-      
-      <guid>http://127.0.0.1:1313/FXHACK/posts/2015-07-16/</guid>
-      <description>Cloud Noise シミュレーションをせずにVolumeを何かしら編集するエレメントといったら雲や霧だと思います。
-エフェクトの人で雲を作るときに、ネット検索で引っかかり一回は目にしたことであろう、この論文http://magnuswrenninge.com/productionvolumerendering, Resolution Independent Volumes 何やら、難しそうですね。てか4年(2011)も前なんですね。
-個人的な見解ですが、H13?から用意されたCloud Noise Sopはこれを元に作られていると見ています。理由は中を見ればわかります。
-Surfaceの場合、DisplacementはNormal方向に対して、ポジションをオフセットします。となると、VolumeのNormalを計算する必要があります。つまりGradientを用意します。
-Density VolumeをPolygonにしてからSigned Distance Field(SDF)を作っています。SDFは表面までの距離を記録しています。これをVolume VopでVolume Gradientを使って読み込んだSDFから勾配を計算し、このVector方向にDisplacementしています。	SOPでもVDB AnalysisかVolume Analysisを使って勾配のVector Fieldを作れます。
-DisplacementによってVolumeが膨らむことを考慮して、2でBounding Boxを大きくしています。
-Noiseを生成しています。 NoiseはForを使って、最初のNoiseより少し小さなNoiseを足していくようなことを繰り返すことによって複雑なNoiseを作り出しています。あとはAdvectionもありますね。
-論文で紹介されているやり方に似ていると思いませんか？
-中を覗いてみることによって、細かいところは理解できなかったとしても、VolumeにDisplacementする大枠はつかめたのではないでしょうか？ SDFからGradientを計算し、その方向にNoiseで作った値をDisplacementするという流れです。次に、この考えを応用してみます。
-Pyro Displacement VolumeのDisplacementの方法がわかったところで、続いてシミュレーションしたVolumeに対しての方法を紹介します。
-前述の方法は静止しているPに対してNoiseをかけていました。今回は シミュレーションされたVolumeに対して処理を施します。PにNoiseをかけると煙の動きとあいません。Maya Fluidだと煙の進行方向と動きのスピードに合わせて、Noiseのオフセットにキーを打つみたいなことをした経験があるかたもいるかもしれませんが、そんなことはしません。
-restが必要です。他のソフトではP_refとか言われていますね。
-rest Filedを作るにはいくつか設定が必要です。Smoke ObjectとSolverに設定すべき項目があるので設定します。
-ヘルプによるとRest Fieldは、流体の位置を追跡するフィールドと解説されています。また、Dual Restは長いシミュレーションの時に有効で、異なる開始フレームで始まる2つのrestができて、その2つをブレンドして使います。そして、Detailアトリビュートにrest_ratioとrest2_ratioの2つが追加されます。VopまたはShader内で読むときは、restとrest2をMixでまぜbaisにratioを入れてあげます。
-最後にSDFも用意しておきましょう。
-ここまで用意できれば、後はrestを元にNoiseを作ってDisplacementするだけです。SOPでやるかShaderでやるかは、アナタ次第です。
-ちなみにShaderでやる場合は、Pyro Shaderを参考にすると良いです。 上の動画はBasic Smokeを元に作りました。
-How to set rest(hip)
-おまけ。Compress Volume Cache とあるセミナーで、キャッシュサイズの節約法みたいな話がでていたみたいなんで、ここでも触れてみたいとおもいます。といっても、これまた用意されているOTLとノードの解説なんで、手抜き感が否めないですが、意外と知らない方が多いので紹介します。
-ShelfからPyroを組んでる人は、Dop I/O SOPを使ってキャッシュをとってる人がいるかもしれません。そのSOPにCompressionタブがあり、これを使います。これはVolume Compressノードの値を逃しているだけです。 このノードは基本的に、以下の画像の赤枠をいじればよいかと思います。Compress設定は、レンダリングに影響が出ない範囲で、最適な値を各自見つけてください。
-ちょうど2年前に比較したデータですが、Compressをすることでサイズが半分くらいになり、ディスクへの書き込み時間も減っています。 余談ですが、この表はWindowsとLinuxを比べることを目的にしたものです。どちらが速いかはわかりますよね。
-また、多くのVolumeなんちゃらSOPはVDBに対応していません。VDBのデータを16bitにしたい場合は、PrimitiveのVolume&amp;gt;VDBにWrite 16-Bit Floatsというオプションにチェックを入れます。
-まとめ 今回の内容は、SideFxが用意したOTLの解説みたいになってしまいました。Houdiniのアセットは、ブラックボックスになっているところが少ないので中の仕組みを見ることも、編集して自分用にカスタマイズできます。当たり前ですが仕事で使うには、遅かったりコントロールが難しかったり、クオリティが出にくいことがあるので、中を見たり編集する行為は必然です。
-Sigrapphのようなところで発表された技術も、Cloud Noise Sopのように既存のノードを組み合わせるだけで一部を再現できることがあります。Mayaやプラグインのアップデートを待たないと何もできないと手をこまねいているより、新しい技術を観て取り入れるチャレンジをすれば色んな発見をし、可能性が広がるかもしれません。</description>
+      <author>Shohei Okazaki</author>
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-07-16/</guid>
+      <description>&lt;h2 id=&#34;cloud-noise&#34;&gt;Cloud Noise&lt;/h2&gt;
+&lt;p&gt;シミュレーションをせずにVolumeを何かしら編集するエレメントといったら雲や霧だと思います。&lt;/p&gt;
+&lt;p&gt;エフェクトの人で雲を作るときに、ネット検索で引っかかり一回は目にしたことであろう、この論文&lt;a href=&#34;http://magnuswrenninge.com/productionvolumerendering&#34;&gt;http://magnuswrenninge.com/productionvolumerendering&lt;/a&gt;, &lt;a href=&#34;https://people.cs.clemson.edu/~jtessen/reports/papers_files/RIV.pdf&#34;&gt;Resolution Independent Volumes&lt;/a&gt; 何やら、難しそうですね。てか4年(2011)も前なんですね。&lt;/p&gt;
+&lt;p&gt;個人的な見解ですが、H13?から用意された&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/sop/cloudnoise.html&#34;&gt;Cloud Noise Sop&lt;/a&gt;はこれを元に作られていると見ています。理由は中を見ればわかります。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-07-16/blog_04_001.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Surfaceの場合、DisplacementはNormal方向に対して、ポジションをオフセットします。となると、VolumeのNormalを計算する必要があります。つまりGradientを用意します。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Density VolumeをPolygonにしてからSigned Distance Field(SDF)を作っています。SDFは表面までの距離を記録しています。これをVolume Vopで&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/vop/volumegradientfile.html&#34;&gt;Volume Gradientを&lt;/a&gt;使って読み込んだSDFから勾配を計算し、このVector方向にDisplacementしています。	SOPでも&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/sop/vdbanalysis.html&#34;&gt;VDB Analysis&lt;/a&gt;か&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/sop/volumeanalysis.html&#34;&gt;Volume Analysis&lt;/a&gt;を使って勾配のVector Fieldを作れます。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-07-16/blog_04_007.png&#34; alt=&#34;img_02&#34;  /&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;DisplacementによってVolumeが膨らむことを考慮して、2でBounding Boxを大きくしています。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Noiseを生成しています。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-07-16/blog_04_008.png&#34; alt=&#34;img_02&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;NoiseはForを使って、最初のNoiseより少し小さなNoiseを足していくようなことを繰り返すことによって複雑なNoiseを作り出しています。あとはAdvectionもありますね。&lt;/p&gt;
+&lt;p&gt;論文で紹介されているやり方に似ていると思いませんか？&lt;/p&gt;
+&lt;p&gt;中を覗いてみることによって、細かいところは理解できなかったとしても、VolumeにDisplacementする大枠はつかめたのではないでしょうか？
+SDFからGradientを計算し、その方向にNoiseで作った値をDisplacementするという流れです。次に、この考えを応用してみます。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;pyro-displacement&#34;&gt;Pyro Displacement&lt;/h2&gt;
+&lt;iframe width=&#34;&#34; height=&#34;&#34; src=&#34;https://www.youtube.com/embed/&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;VolumeのDisplacementの方法がわかったところで、続いてシミュレーションしたVolumeに対しての方法を紹介します。&lt;/p&gt;
+&lt;p&gt;前述の方法は静止しているPに対してNoiseをかけていました。今回は シミュレーションされたVolumeに対して処理を施します。PにNoiseをかけると煙の動きとあいません。Maya Fluidだと煙の進行方向と動きのスピードに合わせて、Noiseのオフセットにキーを打つみたいなことをした経験があるかたもいるかもしれませんが、そんなことはしません。&lt;/p&gt;
+&lt;p&gt;restが必要です。他のソフトではP_refとか言われていますね。&lt;/p&gt;
+&lt;p&gt;rest Filedを作るにはいくつか設定が必要です。&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/dop/smokeobject.html&#34;&gt;Smoke Object&lt;/a&gt;と&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/dop/smokesolver.html&#34;&gt;Solver&lt;/a&gt;に設定すべき項目があるので設定します。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-07-16/blog_04_005.png&#34; alt=&#34;img_03&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;ヘルプによるとRest Fieldは、流体の位置を追跡するフィールドと解説されています。また、Dual Restは長いシミュレーションの時に有効で、異なる開始フレームで始まる2つのrestができて、その2つをブレンドして使います。そして、Detailアトリビュートにrest_ratioとrest2_ratioの2つが追加されます。VopまたはShader内で読むときは、restとrest2をMixでまぜbaisにratioを入れてあげます。&lt;/p&gt;
+&lt;p&gt;最後にSDFも用意しておきましょう。&lt;/p&gt;
+&lt;p&gt;ここまで用意できれば、後はrestを元にNoiseを作ってDisplacementするだけです。SOPでやるかShaderでやるかは、アナタ次第です。&lt;/p&gt;
+&lt;p&gt;ちなみにShaderでやる場合は、Pyro Shaderを参考にすると良いです。
+上の動画はBasic Smokeを元に作りました。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-07-16/blog_04_009.png&#34; alt=&#34;img_04&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-07-16/rest_ratio.hiplc&#34;&gt;How to set rest(hip)&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;おまけcompress-volume-cache&#34;&gt;おまけ。Compress Volume Cache&lt;/h2&gt;
+&lt;p&gt;とあるセミナーで、キャッシュサイズの節約法みたいな話がでていたみたいなんで、ここでも触れてみたいとおもいます。といっても、これまた用意されているOTLとノードの解説なんで、手抜き感が否めないですが、意外と知らない方が多いので紹介します。&lt;/p&gt;
+&lt;p&gt;ShelfからPyroを組んでる人は、Dop I/O SOPを使ってキャッシュをとってる人がいるかもしれません。そのSOPにCompressionタブがあり、これを使います。これはVolume Compressノードの値を逃しているだけです。
+このノードは基本的に、以下の画像の赤枠をいじればよいかと思います。Compress設定は、レンダリングに影響が出ない範囲で、最適な値を各自見つけてください。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Dynamically Fractured Object</title>
-      <link>http://127.0.0.1:1313/FXHACK/posts/2015-05-03/</link>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/</link>
       <pubDate>Sat, 02 May 2015 12:04:32 +0900</pubDate>
-      
-      <guid>http://127.0.0.1:1313/FXHACK/posts/2015-05-03/</guid>
-      <description>FXらしく少し見栄えの良いものを紹介します。
-破壊です。といっても、激しいやつではありません。
-破壊をするときは、Pre-Fractureしてからシミュレーションをかける事が大半だとも思いますが、何かしらのトリガーによって自動的に破壊が起こる仕組みを作ってみます。
-今回のトリガーさんはImpactです。何かしらが対象物に当たり、ある一定以上の衝撃を受けた部分を壊していきます。 （昔からshelfにRBDで似たようなのができるボタンがあったと思いますが、使ったことないのでよく知りません。）
-簡単なところやパラメータに関しての説明はしませんので、hipファイルを見ながら、ブログを読んでいただけるとありがたいです。
-シーンファイル(Houdini14.0.291-gcc4.8 Fedora20)
-そもそもRBD Packed Objectを使ったことない人は、これからの説明を理解することは困難だと思うので、日本語字幕も付いているH13 Masterclass | Bulletを見ることをおすすめします。
-Emit Pack Objects このチュートリアルの19:30くらいからのPackエミットを使って、破壊を引き起こす飛んでくる物体をつくります。しかし、チュートリアルのままだと、エミットの量が倍になってしまいます。この問題は、RBD Packed Objectが複数あると起こっていしまいます。
-上の画像のように白い柱と赤いボックスは、別々のRBD Packed Objectです。この2つがGeometryというデータを持っているため、SopSolverが両方に処理を行ってしまいます。なのでエミットの量も2倍になっています。
-問題を解決するには、片方だけに処理が行われるようにしなければいけません。 Empty Data DOPで任意のDataを作り、Enable Solver DOPで作ったDataに対してのみ作用するようにします。(ここの使い方が正しいかは、あまり自信がないです)
-これで意図する結果が得られました。 Get Impact Attributes 続いて、Impactの情報を取得するために、Impact Analysis DOPを使います。これはImpactの時間や強さ、法線、ぶつかったオブジェクトのOBJID等を取得できます。
-このImpactの情報を元にFractureしていきます。 初めに衝撃を受けたピースの判定をします。Impactの情報の中にはimpactobjectとimpactprimnumがあります
-impactobjectは$OBJIDのことで、impactprimnumはPackのPrimitive Numberです。 このimpactprimnumをArrayアトリビュートに格納します。
-int numpoints = npoints(0); i[]@_impactList; for(int i=0; i&amp;lt;numpoints; i++){ int prinum = point(0,&amp;#34;impactprimnum&amp;#34;,i); append(@_impactList,prinum); } Arrayの中に重複した値がある場合がありますが、今回は問題にならないので無視します。 H14からArrayをアトリビュートに保存できるようになりましたが、すごい便利ですね。
-Vopを使ってprimnumがこのArrayの中にある値と同じときに、任意のGroupに入るようにしています。
-Dynamic Fracturing 後は、このGroupに入ったピースをUnpackして壊してくだけです。
-砕いた後に、packed objectに戻しますが、nameアトリビューを重複しないように修正します。nameはコンストレイントでは必ず使用されるので注意して扱う必要があります。また、RBD Packed Objectの中にあるcreate_or_overwrite_attributesをみてシミュレーションに必要なアトリビュートを設定しておきましょう。最後に、砕く前のvなどのアトリビューを移しておくと、それらの値を継承したまま新たな破片が生まれることになります。
-このままだと無限に割れ続けてしまうので、ある一定の状態になったものは割れないようにしといたほうが良いです。例えば、ピースがある一定以下のサイズになった場合とか、割れる最大回数を指定しておくとかです。
-さらにコンストレインを毎フレーム更新すると、より見栄えが良くなっていくと思います。最初のムービーはPin Constraintを毎フレーム生成しています。 書くの疲れてきたしGW中なので諸事情により、これらの説明等は割愛させていただきます。</description>
+      <author>Shohei Okazaki</author>
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/</guid>
+      <description>&lt;p&gt;FXらしく少し見栄えの良いものを紹介します。&lt;/p&gt;
+&lt;p&gt;破壊です。といっても、激しいやつではありません。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/77d45b6d5d121864.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;破壊をするときは、Pre-Fractureしてからシミュレーションをかける事が大半だとも思いますが、何かしらのトリガーによって自動的に破壊が起こる仕組みを作ってみます。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;今回のトリガーさんはImpactです。何かしらが対象物に当たり、ある一定以上の衝撃を受けた部分を壊していきます。
+（昔からshelfにRBDで似たようなのができるボタンがあったと思いますが、使ったことないのでよく知りません。）&lt;/p&gt;
+&lt;p&gt;簡単なところやパラメータに関しての説明はしませんので、hipファイルを見ながら、ブログを読んでいただけるとありがたいです。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/dynamically_fracturing_blog.hiplc&#34;&gt;&lt;strong&gt;シーンファイル&lt;/strong&gt;&lt;/a&gt;(Houdini14.0.291-gcc4.8  Fedora20)&lt;/p&gt;
+&lt;p&gt;そもそもRBD Packed Objectを使ったことない人は、これからの説明を理解することは困難だと思うので、日本語字幕も付いている&lt;a href=&#34;https://www.sidefx.com/ja/tutorials/h13-masterclass-bullet/&#34;&gt;&lt;strong&gt;H13 Masterclass | Bullet&lt;/strong&gt;&lt;/a&gt;を見ることをおすすめします。&lt;/p&gt;
+&lt;h2 id=&#34;emit-pack-objects&#34;&gt;Emit Pack Objects&lt;/h2&gt;
+&lt;p&gt;このチュートリアルの19:30くらいからのPackエミットを使って、破壊を引き起こす飛んでくる物体をつくります。しかし、チュートリアルのままだと、エミットの量が倍になってしまいます。この問題は、RBD Packed Objectが複数あると起こっていしまいます。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_002.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;上の画像のように白い柱と赤いボックスは、別々のRBD Packed Objectです。この2つがGeometryというデータを持っているため、SopSolverが両方に処理を行ってしまいます。なのでエミットの量も2倍になっています。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_004.png&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;問題を解決するには、片方だけに処理が行われるようにしなければいけません。
+&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/dop/emptydata.html&#34;&gt;Empty Data DOP&lt;/a&gt;で任意のDataを作り、&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/dop/enablesolver.html&#34;&gt;Enable Solver DOP&lt;/a&gt;で作ったDataに対してのみ作用するようにします。(&lt;del&gt;ここの使い方が正しいかは、あまり自信がないです&lt;/del&gt;)&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_005.png&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;これで意図する結果が得られました。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_001.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;get-impact-attributes&#34;&gt;Get Impact Attributes&lt;/h2&gt;
+&lt;p&gt;続いて、Impactの情報を取得するために、&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/dop/impactanalysis.html&#34;&gt;Impact Analysis DOP&lt;/a&gt;を使います。これはImpactの時間や強さ、法線、ぶつかったオブジェクトのOBJID等を取得できます。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_003.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;このImpactの情報を元にFractureしていきます。
+初めに衝撃を受けたピースの判定をします。Impactの情報の中には&lt;code&gt;impactobject&lt;/code&gt;と&lt;code&gt;impactprimnum&lt;/code&gt;があります&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_006.png&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;impactobject&lt;/code&gt;は$OBJIDのことで、&lt;code&gt;impactprimnum&lt;/code&gt;はPackのPrimitive Numberです。
+このimpactprimnumをArrayアトリビュートに格納します。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; numpoints = npoints(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;i[]@_impactList;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i=&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i&amp;lt;numpoints; i++){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; prinum = point(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;impactprimnum&amp;#34;&lt;/span&gt;,i);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    append(@_impactList,prinum);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Arrayの中に重複した値がある場合がありますが、今回は問題にならないので無視します。
+H14からArrayをアトリビュートに保存できるようになりましたが、すごい便利ですね。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_007.png&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Vopを使ってprimnumがこのArrayの中にある値と同じときに、任意のGroupに入るようにしています。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_008.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;</description>
     </item>
     
   </channel>

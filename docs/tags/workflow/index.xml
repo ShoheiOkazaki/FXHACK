@@ -2,130 +2,382 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Workflow on FX HACK</title>
-    <link>http://127.0.0.1:1313/FXHACK/tags/workflow/</link>
+    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/workflow/</link>
     <description>Recent content in Workflow on FX HACK</description>
     <image>
-      <url>http://127.0.0.1:1313/FXHACK/profile.jpg</url>
-      <link>http://127.0.0.1:1313/FXHACK/profile.jpg</link>
+      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 12 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://127.0.0.1:1313/FXHACK/tags/workflow/index.xml" rel="self" type="application/rss+xml" />
+    
+    <managingEditor>Shohei Okazaki</managingEditor>
+    <webMaster>Shohei Okazaki</webMaster>
+    
+    
+    
+    <lastBuildDate>Thu, 12 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/workflow/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[PDG] Gathering USD Files</title>
-      <link>http://127.0.0.1:1313/FXHACK/posts/2024-12-16/</link>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2024-12-16/</link>
       <pubDate>Thu, 12 Dec 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://127.0.0.1:1313/FXHACK/posts/2024-12-16/</guid>
-      <description>皆さんはアウトソーシング先や他のベンダー会社にデータを共有する際、どのような手法を取っていますか？
-Houdiniならキャッシュやテクスチャをシーンファイルがある同じ階層に置いて、それぞれのファイルパスを$HIP始まりにする。もしくはLocal Variables $JOBを用いてファイルの保存場所を指定し、異なる環境で開いた際には作業者が変数の値を更新するのが一般的です。
-Nukeにおいては、Nukepediaや社内で開発したGathering toolを利用して、シーン内のRead/Writeノードが参照するファイルパスのデータを他の場所にコピーし、それらのノードのファイルパスを相対パスに変更することが多いです。
-では、USDを使う場合はどのように対応すればよいでしょうか？今回はPDGを使った話をしていきます。
-Sample File(20.5.410 py3.11): https://drive.google.com/file/d/1pkv1pYyNRrdOpoF50qxvsBc3HxAFyi5r/view?usp=drive_link
-USDアセット作成 まずSolarisで簡単なデータを作るとこから始めます。
-もうUSDは日本以外のとこではスタンダードになったと言っても過言ではないフォーマットです。ですので、簡単な説明は省きます。
-アセットを作ったことがない人は、このチュートリアルを見てください。 https://www.sidefx.com/tutorials/usd-asset-building-with-solaris/
-Component まずCompoent Builderを使って、2つのComponent、GridとVariantをもったRocksをつくります。
-Component Outputの出力先を、今後の説明を分かりやすくするために以下のように変更しておきます。 それぞれ、Save to Diskを押して、USDを作成します。
-$HIP/usd/components/`chs(&amp;#34;name&amp;#34;)`/v001/`chs(&amp;#34;filename&amp;#34;)` 保存先を見てみると、このようなフォルダ構造になっているかと思います。
-└── usd/ └── components/ └── grid/ └── v001/ └── grid.usd └── geo.usdc └── mtl.usdc └── payload.usdc └── textures/ └── bricks001_basecolor.png └── rocks/ └── v001/ └── rocks.usd └── geo.usdc └── mtl.usdc └── payload.usdc Gridはテクスチャは持っており、そのテクスチャは$HIP/texturesに保存してありましたが、usdが保存されているtexturesフォルダにコピーされています。 そして、GridというComponentのUsdを読み込んでみると、テクスチャパスは@./textures/bricks001_basecolor.png@になっています。絶対パスではなくでなく、相対パスになっています。
-Referenceで読み込んでるgrid.usdの中身にも相対パスが使われています
-#usda 1.0 ( defaultPrim = &amp;#34;grid&amp;#34; framesPerSecond = 24 metersPerUnit = 1 timeCodesPerSecond = 24 upAxis = &amp;#34;Y&amp;#34; ) def Xform &amp;#34;grid&amp;#34; ( prepend apiSchemas = [&amp;#34;GeomModelAPI&amp;#34;] assetInfo = { asset identifier = @.</description>
+      <author>Shohei Okazaki</author>
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2024-12-16/</guid>
+      <description>&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;皆さんはアウトソーシング先や他のベンダー会社にデータを共有する際、どのような手法を取っていますか？&lt;/p&gt;
+&lt;p&gt;Houdiniならキャッシュやテクスチャをシーンファイルがある同じ階層に置いて、それぞれのファイルパスを$HIP始まりにする。もしくはLocal Variables $JOBを用いてファイルの保存場所を指定し、異なる環境で開いた際には作業者が変数の値を更新するのが一般的です。&lt;/p&gt;
+&lt;p&gt;Nukeにおいては、Nukepediaや社内で開発したGathering toolを利用して、シーン内のRead/Writeノードが参照するファイルパスのデータを他の場所にコピーし、それらのノードのファイルパスを相対パスに変更することが多いです。&lt;/p&gt;
+&lt;p&gt;では、USDを使う場合はどのように対応すればよいでしょうか？今回はPDGを使った話をしていきます。&lt;/p&gt;
+&lt;p&gt;Sample File(20.5.410 py3.11): &lt;a href=&#34;https://drive.google.com/file/d/1pkv1pYyNRrdOpoF50qxvsBc3HxAFyi5r/view?usp=drive_link&#34;&gt;https://drive.google.com/file/d/1pkv1pYyNRrdOpoF50qxvsBc3HxAFyi5r/view?usp=drive_link&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;usdアセット作成&#34;&gt;USDアセット作成&lt;/h2&gt;
+&lt;p&gt;まずSolarisで簡単なデータを作るとこから始めます。&lt;br&gt;
+もうUSDは日本以外のとこではスタンダードになったと言っても過言ではないフォーマットです。ですので、簡単な説明は省きます。&lt;/p&gt;
+&lt;p&gt;アセットを作ったことがない人は、このチュートリアルを見てください。
+&lt;a href=&#34;https://www.sidefx.com/tutorials/usd-asset-building-with-solaris/&#34;&gt;https://www.sidefx.com/tutorials/usd-asset-building-with-solaris/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;component&#34;&gt;Component&lt;/h3&gt;
+&lt;p&gt;まずCompoent Builderを使って、2つのComponent、GridとVariantをもったRocksをつくります。&lt;/p&gt;
+&lt;p&gt;Component Outputの出力先を、今後の説明を分かりやすくするために以下のように変更しておきます。
+それぞれ、Save to Diskを押して、USDを作成します。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$HIP/usd/components/`chs(&amp;#34;name&amp;#34;)`/v001/`chs(&amp;#34;filename&amp;#34;)`
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2024-12-16/img/imag_001.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;保存先を見てみると、このようなフォルダ構造になっているかと思います。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;└── usd/
+    └── components/
+        └── grid/
+            └── v001/
+                └── grid.usd
+                └── geo.usdc
+                └── mtl.usdc
+                └── payload.usdc
+                └── textures/
+                    └── bricks001_basecolor.png
+        └── rocks/
+            └── v001/
+                └── rocks.usd
+                └── geo.usdc
+                └── mtl.usdc
+                └── payload.usdc
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Gridはテクスチャは持っており、そのテクスチャは$HIP/texturesに保存してありましたが、usdが保存されているtexturesフォルダにコピーされています。
+そして、GridというComponentのUsdを読み込んでみると、テクスチャパスは@./textures/bricks001_basecolor.png@になっています。絶対パスではなくでなく、相対パスになっています。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2024-12-16/img/imag_002.png&#34; alt=&#34;img_02&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Referenceで読み込んでるgrid.usdの中身にも相対パスが使われています&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#usda 1.0
+(
+    defaultPrim = &amp;#34;grid&amp;#34;
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = &amp;#34;Y&amp;#34;
+)
+
+def Xform &amp;#34;grid&amp;#34; (
+    prepend apiSchemas = [&amp;#34;GeomModelAPI&amp;#34;]
+    assetInfo = {
+        asset identifier = @./grid.usd@
+        string name = &amp;#34;grid&amp;#34;
+        asset thumbnail = @./thumbnail.png@
+    }
+    prepend inherits = &amp;lt;/__class__/grid&amp;gt;
+    kind = &amp;#34;component&amp;#34;
+    prepend payload = @./payload.usdc@
+)
+{
+    float3[] extentsHint = [(-5, 0, -5), (5, 0, 5)]
+}
+
+class &amp;#34;__class__&amp;#34;
+{
+    class &amp;#34;grid&amp;#34;
+    {
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;これらはComponent Outputのなかにあるropの&lt;strong&gt;Output Processing&lt;/strong&gt;にて、処理がされています。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2024-12-16/img/imag_003.png&#34; alt=&#34;img_03&#34;  /&gt;
+&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>[Linux] 101</title>
-      <link>http://127.0.0.1:1313/FXHACK/posts/2024-02-28/</link>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2024-02-28/</link>
       <pubDate>Wed, 28 Feb 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://127.0.0.1:1313/FXHACK/posts/2024-02-28/</guid>
-      <description>Windows vs Linux Googleで「Houdini Windows vs Linux」と調べればいろいろな検証結果がでてきます。
-例えば杉村さんのBlogには、シミュレーションの比較があります。
-Linux vs Windows10パフォーマンス対決その１｜スギムラ マサヤ(sugiggy) またこちらの動画はMantraとKarmaのレンダリング比較してくれてます。
-10％ー30％はLinuxのほうが速いですね。 にしてもKarmaの速度に大きな差があるのは驚きですね！
-Linuxディストリビューション Linuxディストリビューションとは、ハードウェアとソフトウェアの間の通信を管理し、システムリソースを効率的に配分してくれるLinuxカーネルに加えて、ソフトウェアやユーティリティ、ユーザーインターフェースなどが組み込まれている、Linuxベースのオペレーティングシステムのバリエーションやバージョンのこと。
-ユーザーフレンドリーなUbuntuやLinux Mint、企業向けのRed Hat Enterprise Linux、高度なユーザー向けのArch Linuxなど、多種多様なバリエーションがあります。
-VFX/CG業界ではCentOSが主流 でした。しかし CentOSが2024年6月30日にサポート終了 になる、つまりアップデートやセキュリティパッチの更新がなくなることが発表されました。 ですのでCentOSを使ってた会社は Rockyに移行 してくとこもあるみたいです。
-ディストリビューション 特徴 Ubuntu ユーザーフレンドリーで初心者におすすめ。広範なソフトウェアサポート。 Debian 安定性とセキュリティに重点を置いている。多くのディストリビューションのベース。 Fedora 最新のテクノロジーを早期に採用。Red Hatによって支援されている。 CentOS Red Hat Enterprise Linuxをベースにした企業向けの無料ディストリビューション。 Arch Linux シンプルさとユーザーによる細かなカスタマイズを重視。 Linux Mint Ubuntuをベースに、使いやすさと美しいデスクトップ環境を提供。 Rocky Linux CentOSの代替として開発された、企業向けの安定したディストリビューション。 AlmaLinux CentOSの終了に伴い、そのコミュニティによって作成された無料のエンタープライズ級Linuxディストリビューション。 どのディストリビューションを選ぶかは、まず各ソフトのシステム要件をみてみましょう。
-Houdini:
-https://www.sidefx.com/ja/Support/system-requirements Nuke:
-https://www.foundry.com/products/nuke-family/requirements Unreal Engine:
-https://docs.unrealengine.com/5.3/en-US/hardware-and-software-specifications-for-unreal-engine/ Blender:
-https://blender.org/download/requirements/ Maya:
-https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/System-Requirements-for-Autodesk-Maya-2024.html やはりRockyを推していってますね。
-Mintをインストール！ Mintな理由 上記でVFX業界の主流はCentOSからRockyへ、ソフトウェアの対応もRockyに移行してるみたいなのに、なんでMintなのと思われるでしょう。 CentOSやRockyはRedHat系といわれますが、これらは初心者には難しいです。私自身も自宅でCentやFedoraを使ったことがありますが、かなり苦労しました。</description>
+      <author>Shohei Okazaki</author>
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2024-02-28/</guid>
+      <description>&lt;h2 id=&#34;windows-vs-linux&#34;&gt;Windows vs Linux&lt;/h2&gt;
+&lt;p&gt;Googleで「&lt;a href=&#34;https://www.google.com/search?q=houdini&amp;#43;linux&amp;#43;vs&amp;#43;windows&#34;&gt;Houdini Windows vs Linux&lt;/a&gt;」と調べればいろいろな検証結果がでてきます。&lt;/p&gt;
+&lt;p&gt;例えば杉村さんのBlogには、シミュレーションの比較があります。&lt;br&gt;
+&lt;a href=&#34;https://note.com/sugiggy/n/n2528d8526ea7&#34; style=&#34;text-decoration: none; color: inherit;&#34;&gt;
+  &lt;div style=&#34;border: 2px solid #ccc; padding: 5px; display: flex; align-items: center; width: 500px;&#34;&gt;
+    &lt;img src=&#34;https://assets.st-note.com/production/uploads/images/10356571/rectangle_large_type_2_07771d6829d1ef58b309e2986a4a4205.jpeg?width=800&#34; style=&#34;width: auto; height: 140px; margin-right: 0px;&#34;&gt;
+    &lt;span&gt;Linux vs Windows10パフォーマンス対決その１｜スギムラ マサヤ(sugiggy)&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;またこちらの動画はMantraとKarmaのレンダリング比較してくれてます。&lt;br&gt;
+&lt;iframe width=&#34;640&#34; height=&#34;360&#34; src=&#34;https://www.youtube.com/embed/LCYHwXZIL8Q&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; 10％ー30％はLinuxのほうが速いですね。 &lt;/span&gt;
+&lt;br&gt;
+にしてもKarmaの速度に大きな差があるのは驚きですね！&lt;/p&gt;
+&lt;h2 id=&#34;linuxディストリビューション&#34;&gt;Linuxディストリビューション&lt;/h2&gt;
+&lt;p&gt;Linuxディストリビューションとは、ハードウェアとソフトウェアの間の通信を管理し、システムリソースを効率的に配分してくれるLinuxカーネルに加えて、ソフトウェアやユーティリティ、ユーザーインターフェースなどが組み込まれている、Linuxベースのオペレーティングシステムのバリエーションやバージョンのこと。&lt;/p&gt;
+&lt;p&gt;ユーザーフレンドリーなUbuntuやLinux Mint、企業向けのRed Hat Enterprise Linux、高度なユーザー向けのArch Linuxなど、多種多様なバリエーションがあります。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; VFX/CG業界ではCentOSが主流 &lt;/span&gt;
+でした。しかし
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; CentOSが2024年6月30日にサポート終了 &lt;/span&gt;
+になる、つまりアップデートやセキュリティパッチの更新がなくなることが発表されました。
+ですのでCentOSを使ってた会社は
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; Rockyに移行 &lt;/span&gt;
+してくとこもあるみたいです。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>[Solaris] HDAカメラのインポート</title>
-      <link>http://127.0.0.1:1313/FXHACK/posts/2023-10-05/</link>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/</link>
       <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
-      
-      <guid>http://127.0.0.1:1313/FXHACK/posts/2023-10-05/</guid>
-      <description>問題 SolarisにSceneImportLOPでカメラをインポートする際、自前のHDAカメラをインポートしようとするとワーニングがでてインポートできません。
-（自前のカメラとはこういうHDAです）
-以下のようなワーニングが表示されます。これはおそらく19.5以降でしか表示されないかもしれません。 解決策 まずは言われた通り、リンクに飛びましょう。
-以下のような記述が冒頭にありますね。カスタムノードをLOPに読み込むにはなにか作業が必要なようですね。
-Scene Import LOPが特定のHoudiniオブジェクトノードタイプをUSDに変換する方法をカスタマイズすることができます。 これは、特にカスタムノードタイプ(例えば、プロプライエタリなレンダラー関係のライトタイプやカメラタイプ)の変換に役立ちます。
-その後を読み続けると色々Pythonやら書いてありますね。でもちょっと長いので無視します。
-Houdiniはカスタムできるものについては、インストールフォルダにだいたいのものがバイナリになっていない状態で保存されてるので、それをコピーしてから始めるのが最短の道です。ということで以下のファイルを見てみましょう。
-インストールフォルダ/houdini/husdplugins/objtranslators/cam.py
-import hou import husd from pxr import UsdGeom class CameraTranslator(husd.objtranslator.Translator): def shouldTranslateNode(self): return True def primType(self): return &amp;#39;Camera&amp;#39; def populatePrim(self, prim, referenced_node_prim_paths, force_active): super(CameraTranslator, self).populatePrim(prim, referenced_node_prim_paths, force_active) cam = UsdGeom.Camera(prim) proj = self._node.parm(&amp;#39;projection&amp;#39;).evalAsString() if proj == &amp;#39;perspective&amp;#39;: cam.CreateProjectionAttr(&amp;#39;perspective&amp;#39;) elif proj == &amp;#39;ortho&amp;#39;: cam.CreateProjectionAttr(&amp;#39;orthographic&amp;#39;) # A few of the parameters need to be converted into 1/10 scene unit space stage = prim.</description>
+      <author>Shohei Okazaki</author>
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/</guid>
+      <description>&lt;h2 id=&#34;問題&#34;&gt;問題&lt;/h2&gt;
+&lt;p&gt;SolarisにSceneImportLOPでカメラをインポートする際、自前のHDAカメラをインポートしようとするとワーニングがでてインポートできません。&lt;/p&gt;
+&lt;p&gt;（自前のカメラとは&lt;a href=&#34;../2021-04-29/#%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%8A%E3%81%84%E3%81%9F%E3%81%BB%E3%81%86%E3%81%8C%E3%81%84%E3%81%84%E3%83%8E%E3%83%BC%E3%83%89&#34;&gt;こういうHDA&lt;/a&gt;です）&lt;/p&gt;
+&lt;p&gt;以下のようなワーニングが表示されます。これはおそらく19.5以降でしか表示されないかもしれません。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/img/lop_waring.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;解決策&#34;&gt;解決策&lt;/h2&gt;
+&lt;p&gt;まずは言われた通り、&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/hom/sceneimport_object_translator.html&#34;&gt;リンク&lt;/a&gt;に飛びましょう。&lt;/p&gt;
+&lt;p&gt;以下のような記述が冒頭にありますね。カスタムノードをLOPに読み込むにはなにか作業が必要なようですね。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Scene Import LOPが特定のHoudiniオブジェクトノードタイプをUSDに変換する方法をカスタマイズすることができます。 これは、特にカスタムノードタイプ(例えば、プロプライエタリなレンダラー関係のライトタイプやカメラタイプ)の変換に役立ちます。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;その後を読み続けると色々Pythonやら書いてありますね。でもちょっと長いので無視します。&lt;/p&gt;
+&lt;p&gt;Houdiniはカスタムできるものについては、インストールフォルダにだいたいのものがバイナリになっていない状態で保存されてるので、それをコピーしてから始めるのが最短の道です。ということで以下のファイルを見てみましょう。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;インストールフォルダ/houdini/husdplugins/objtranslators/cam.py&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; hou
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; husd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; pxr &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; UsdGeom
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CameraTranslator&lt;/span&gt;(husd&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;objtranslator&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Translator):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;shouldTranslateNode&lt;/span&gt;(self):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;primType&lt;/span&gt;(self):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Camera&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;populatePrim&lt;/span&gt;(self, prim, referenced_node_prim_paths, force_active):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        super(CameraTranslator, self)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populatePrim(prim, referenced_node_prim_paths, force_active)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        cam &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; UsdGeom&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Camera(prim)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        proj &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;projection&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;evalAsString()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; proj &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;perspective&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateProjectionAttr(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;perspective&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; proj &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ortho&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateProjectionAttr(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orthographic&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# A few of the parameters need to be converted into 1/10 scene unit space&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        stage &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; prim&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;GetStage()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        factor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; husd&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;utils&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;convertFromMillimetersToCameraUnits(stage, &lt;span style=&#34;color:#ae81ff&#34;&gt;1.0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateFocalLengthAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;focal&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                          &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateFocusDistanceAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;focus&amp;#39;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateFStopAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;fstop&amp;#39;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateShutterOpenAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;shutter&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                          &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateShutterCloseAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;shutter&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                          &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateClippingRangeAttr(), [self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;near&amp;#39;&lt;/span&gt;), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;far&amp;#39;&lt;/span&gt;)])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# Aperture is a bit more complicated&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        aspect &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; float(self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;resy&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()) &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;resx&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        win_size &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;winsize&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; proj &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;perspective&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;# Start by grabbing a few values we&amp;#39;ll use to scale the attributes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            aperture &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;aperture&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateHorizontalApertureAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;aperture&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; win_size[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateVerticalApertureAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;aperture&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aspect &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; win_size[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateHorizontalApertureOffsetAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;win&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aperture &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateVerticalApertureOffsetAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;win&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aperture &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aspect &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; proj &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ortho&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;# Start by grabbing a few values we&amp;#39;ll use to scale the attributes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; hou&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;scaleToMKS(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;m1&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            orthowidth &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orthowidth&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateHorizontalApertureAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orthowidth&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; win_size[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateVerticalApertureAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orthowidth&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aspect &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; win_size[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateHorizontalApertureOffsetAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;win&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; orthowidth &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateVerticalApertureOffsetAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;win&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; orthowidth &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aspect &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;registerTranslators&lt;/span&gt;(manager):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    manager&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;registerTranslator(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cam&amp;#39;&lt;/span&gt;, CameraTranslator)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;このファイルを適切な場所にコピーしましょう。ファイル名は適当でOKです。&lt;code&gt;$HOUDINIPATH/husdplugins/objtranslators/customCam.py&lt;/code&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Houdini Workflowについて</title>
-      <link>http://127.0.0.1:1313/FXHACK/posts/2021-04-29/</link>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2021-04-29/</link>
       <pubDate>Thu, 29 Apr 2021 12:27:07 +0900</pubDate>
-      
-      <guid>http://127.0.0.1:1313/FXHACK/posts/2021-04-29/</guid>
-      <description>いままで何回もHoudini Workflowをつくってきたので、どんなことをやっているか紹介したいと思います。
-小規模な会社にいるからとか個人でやってるから、そんなの必要ないと考える人もいるかもしれませんが、そうは思いません。数人の会社で働いたことがありますが、確実にワークフローが少しでもないと良いパフォーマンスを出すことをできません。
-大規模な会社には専任のTDがいてパイプラインがしっかりあり、色々便利なこともあります。反面、大きくなりすぎた会社ほど、やる気のない人や老害がたまり自由度がなくなり最新の流れにもついていけなくなったり、ワークフローを作るのに大工事したり、パイプラインにも手をいれなければいけないみたいなことも起こってしまいます。小規模だとパイプラインを作るのは難しいですが、ワークフローは自分たちの好きに作りやすいです。自分たちにあったものを構築できれば、小回りがきいて大きな所に負けないワークフローを構築しアドバンテージにすることも出来ます。
-ワークフローは、TDの人やスクリプトをかける人が作るものだと考えるでしょうが、実際に作業するアーティスト主導で構築するべきです。なぜならそのワークフローを使うのは作業者であり、なにが必要なのかを知ってるのは作業者であるアーティストだからです。
-パイプライン？　ワークフロー？ そもそもパイプラインとワークフローの違いはなんなんでしょうか？
-パイプラインは、別部署へのデータを送る時、たとえばアセットデータやアニメーションデータやレンダーイメージのパブリッシュなど です。決められた場所かつ安全な場所にパブリッシュしたり、決まったフォーマットに変換したりします。また、ファイルの命名規則やチェック方法やShotgunとの連携もこちらの役割です。
-ワークフローは、アーティストがショット作業をする時に必要なルール・ツール を用意しておくことです。
-パイプラインはTDが担当しますが、ワークフローは出来る限りそのツールや流れを熟知した人が作るのに携わるのが良いと思います。そしてFXはPythonは書けて当たり前なので、TDにお前らどうせ自分たちで出来るからとか言われ、他の部署を先にやってからと後回しにされがちです。
-目的 まずは何のためにワークフローを作るかの目的をしかっり決めましょう。
-私はいつもアーティストが絵作りだけに集中できる環境を作ることを目的にし、できるかぎりのことをするようにしています。
-何を基準にツールやルールを作るかというと、基本この２つをベースに考えます。
-ヒューマンエラーをなくす 毎回同じことをしたくない 代表格は、キャッシュやレンダーの出力先を毎回入力することです。これはもはや人間のやることではありません。
-チームで新しくワークフローを作る場合は、みんなの意見を聞いて不便なことや要望を洗い出してあげることも大事です。
-チームにジュニアレベルの人やHoudiniに詳しくない人がいるとしたら、色んなレベルの人にもスムーズにいくルールを考える必要があるかもしれません。
-環境変数 まずプロジェクト固有の変数について考えましょう。変数は、 プロジェクト全体に適用されるグローバル変数と、シーケンスやショットごとに値が変わるローカル変数にわけられます。 プロジェクト名やシーケンス名を定義しとくとフォルダの移動やアウトプット先を決めるのが楽になります。ただこの変数はパイプラインとして設定されてることが多いです。小規模な会社や個人では自身で設定してもいいと思います。これらを設定することによってどういうことが出来るかはあとで説明します。
-PROJ = &amp;#39;BurningProj&amp;#39; 他のソフトからAlembic等でデータを持ってきた時、シーンスケールを正しくしてあげる必要があります。なぜなら、Houdiniのシミュレーション系ノードのデフォルト値は、1Grid=1mを前提として値が設定されています。これにあわせてやるのが一番良いです。
-大抵の場合はインポートしたものを0.1倍か0.01倍すればいいでしょうが、海外のクライアントからもらったデータはメートルでなくインチで作業してる場合があります。その場合は39.37で割る必要があります。覚えたくないですよね。なので、コレも変数にしておきましょう。
-SCALE_FACTOR = 10 他には、レンダーサイズも変数にしてもいいかもしれません。
-RENDER_RES_X=1920 RENDER_RES_Y=960 また、WinodwsやLinuxのプラットフォームが混在してる場合、マウントするところを変数にしたとき、少し便利になります。どいうことかというとWindowsはZ:/proj/BuringProjがLinuxでは/proj/BuringProjの場合、$PROJ_ROOT/BuringProjという書き方に統一できます。協力会社によってはクライアントと同じドライブレターが使えないときは、協力会社に$PROJ_ROOTをX:/good_client/A_Inc/projみたいに設定してもらえれば、フォルダ構造を維持したままシーンファイルを渡せば、別の環境でもシーンを容易に再現できる可能性が高まります。
-PROJ_ROOT = &amp;#39;Z:/proj&amp;#39; 日本でもNetflixの仕事が増えてきたせいか、やっとColorMangementが浸透してきましたね。Houdiniも他のソフト同様、OCIOの環境変数を設定してあげる必要があります。ACTIVE_VIEWSはなくてもいいです。VFXではシーケンスやショットごとでLutが違う場合があるので、OCIO_ACTIVE_VIEWSを変動出来るようにしてもいいかと思います。
-OCIO=&amp;#39;/proj/BurninigProj/tools/OCIO/will_be_beautiful.ocio&amp;#39; OCIO_ACTIVE_VIEWS=&amp;#39;Rec.709&amp;#39; ローカル変数の代表は、シーケンスとショット番号、フレームレンジとかでしょうか。
-SEQ = &amp;#39;seq_01&amp;#39; SHOT = &amp;#39;shot_003&amp;#39; P_START = 1001 P_END = 1032 さて、これらをどうやって全員に行き渡せるかですが、大きい会社ならランチャーがあると思うので、そこで設定してもいいです。
-小さい会社や個人の場合は、パッケージを使うといいでしょう。 https://www.sidefx.com/ja/docs/houdini/ref/plugins.html
-たとえば/proj/BurningProj/tools/houdiniというフォルダの中にプロジェクトのHDAやスクリプトを置き変数を定義するとします。
-/proj/BurningProj └── tools └── houdini └── otls └── packages └── scripts └── toolbar └── maya └── nuke まずメインのパッケージを作ります。これをpackagesフォルダのBurningProj.</description>
+      <author>Shohei Okazaki</author>
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2021-04-29/</guid>
+      <description>&lt;p&gt;いままで何回もHoudini Workflowをつくってきたので、どんなことをやっているか紹介したいと思います。&lt;/p&gt;
+&lt;p&gt;小規模な会社にいるからとか個人でやってるから、そんなの必要ないと考える人もいるかもしれませんが、そうは思いません。数人の会社で働いたことがありますが、確実にワークフローが少しでもないと良いパフォーマンスを出すことをできません。&lt;/p&gt;
+&lt;p&gt;大規模な会社には専任のTDがいてパイプラインがしっかりあり、色々便利なこともあります。反面、大きくなりすぎた会社ほど、やる気のない人や老害がたまり自由度がなくなり最新の流れにもついていけなくなったり、ワークフローを作るのに大工事したり、パイプラインにも手をいれなければいけないみたいなことも起こってしまいます。小規模だとパイプラインを作るのは難しいですが、ワークフローは自分たちの好きに作りやすいです。自分たちにあったものを構築できれば、小回りがきいて大きな所に負けないワークフローを構築しアドバンテージにすることも出来ます。&lt;/p&gt;
+&lt;p&gt;ワークフローは、TDの人やスクリプトをかける人が作るものだと考えるでしょうが、実際に作業するアーティスト主導で構築するべきです。なぜならそのワークフローを使うのは作業者であり、なにが必要なのかを知ってるのは作業者であるアーティストだからです。&lt;/p&gt;
+&lt;h2 id=&#34;パイプラインワークフロー&#34;&gt;パイプライン？　ワークフロー？&lt;/h2&gt;
+&lt;p&gt;そもそもパイプラインとワークフローの違いはなんなんでしょうか？&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; パイプラインは、別部署へのデータを送る時、たとえばアセットデータやアニメーションデータやレンダーイメージのパブリッシュなど &lt;/span&gt;
+ です。決められた場所かつ安全な場所にパブリッシュしたり、決まったフォーマットに変換したりします。また、ファイルの命名規則やチェック方法やShotgunとの連携もこちらの役割です。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; ワークフローは、アーティストがショット作業をする時に必要なルール・ツール &lt;/span&gt;
+ を用意しておくことです。&lt;/p&gt;
+&lt;p&gt;パイプラインはTDが担当しますが、ワークフローは出来る限りそのツールや流れを熟知した人が作るのに携わるのが良いと思います。そしてFXはPythonは書けて当たり前なので、TDにお前らどうせ自分たちで出来るからとか言われ、他の部署を先にやってからと後回しにされがちです。&lt;/p&gt;
+&lt;h2 id=&#34;目的&#34;&gt;目的&lt;/h2&gt;
+&lt;p&gt;まずは何のためにワークフローを作るかの目的をしかっり決めましょう。&lt;/p&gt;
+&lt;p&gt;私はいつもアーティストが絵作りだけに集中できる環境を作ることを目的にし、できるかぎりのことをするようにしています。&lt;/p&gt;
+&lt;p&gt;何を基準にツールやルールを作るかというと、基本この２つをベースに考えます。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; ヒューマンエラーをなくす &lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; 毎回同じことをしたくない &lt;/span&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;代表格は、キャッシュやレンダーの出力先を毎回入力することです。これはもはや人間のやることではありません。&lt;/p&gt;
+&lt;p&gt;チームで新しくワークフローを作る場合は、みんなの意見を聞いて不便なことや要望を洗い出してあげることも大事です。&lt;/p&gt;
+&lt;p&gt;チームにジュニアレベルの人やHoudiniに詳しくない人がいるとしたら、色んなレベルの人にもスムーズにいくルールを考える必要があるかもしれません。&lt;/p&gt;
+&lt;h2 id=&#34;環境変数&#34;&gt;環境変数&lt;/h2&gt;
+&lt;p&gt;まずプロジェクト固有の変数について考えましょう。変数は、
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; プロジェクト全体に適用されるグローバル変数と、シーケンスやショットごとに値が変わるローカル変数にわけられます。 &lt;/span&gt;
+&lt;/p&gt;
+&lt;p&gt;プロジェクト名やシーケンス名を定義しとくとフォルダの移動やアウトプット先を決めるのが楽になります。ただこの変数はパイプラインとして設定されてることが多いです。小規模な会社や個人では自身で設定してもいいと思います。これらを設定することによってどういうことが出来るかはあとで説明します。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PROJ = &amp;#39;BurningProj&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;他のソフトからAlembic等でデータを持ってきた時、シーンスケールを正しくしてあげる必要があります。なぜなら、Houdiniのシミュレーション系ノードのデフォルト値は、1Grid=1mを前提として値が設定されています。これにあわせてやるのが一番良いです。&lt;/p&gt;
+&lt;p&gt;大抵の場合はインポートしたものを0.1倍か0.01倍すればいいでしょうが、海外のクライアントからもらったデータはメートルでなくインチで作業してる場合があります。その場合は39.37で割る必要があります。覚えたくないですよね。なので、コレも変数にしておきましょう。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SCALE_FACTOR = 10
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;他には、レンダーサイズも変数にしてもいいかもしれません。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;RENDER_RES_X=1920
+RENDER_RES_Y=960
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;また、WinodwsやLinuxのプラットフォームが混在してる場合、マウントするところを変数にしたとき、少し便利になります。どいうことかというとWindowsは&lt;code&gt;Z:/proj/BuringProj&lt;/code&gt;がLinuxでは&lt;code&gt;/proj/BuringProj&lt;/code&gt;の場合、&lt;code&gt;$PROJ_ROOT/BuringProj&lt;/code&gt;という書き方に統一できます。協力会社によってはクライアントと同じドライブレターが使えないときは、協力会社に$PROJ_ROOTを&lt;code&gt;X:/good_client/A_Inc/proj&lt;/code&gt;みたいに設定してもらえれば、フォルダ構造を維持したままシーンファイルを渡せば、別の環境でもシーンを容易に再現できる可能性が高まります。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PROJ_ROOT = &amp;#39;Z:/proj&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;日本でもNetflixの仕事が増えてきたせいか、やっとColorMangementが浸透してきましたね。Houdiniも他のソフト同様、OCIOの環境変数を設定してあげる必要があります。ACTIVE_VIEWSはなくてもいいです。VFXではシーケンスやショットごとでLutが違う場合があるので、OCIO_ACTIVE_VIEWSを変動出来るようにしてもいいかと思います。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;OCIO=&amp;#39;/proj/BurninigProj/tools/OCIO/will_be_beautiful.ocio&amp;#39;
+OCIO_ACTIVE_VIEWS=&amp;#39;Rec.709&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ローカル変数の代表は、シーケンスとショット番号、フレームレンジとかでしょうか。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SEQ = &amp;#39;seq_01&amp;#39;
+SHOT = &amp;#39;shot_003&amp;#39;
+P_START = 1001
+P_END = 1032
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;さて、これらをどうやって全員に行き渡せるかですが、大きい会社ならランチャーがあると思うので、そこで設定してもいいです。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>最近のお気に入り - 1　「右クリック」</title>
-      <link>http://127.0.0.1:1313/FXHACK/posts/2018-03-06/</link>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2018-03-06/</link>
       <pubDate>Tue, 06 Mar 2018 12:00:18 +0900</pubDate>
-      
-      <guid>http://127.0.0.1:1313/FXHACK/posts/2018-03-06/</guid>
-      <description>大したことじゃないけど、最近のお気に入りを紹介するコーナ。 第一弾は右クリック。
-FXを作ってく上で、僕には2大裏テーマというものがあります。それは 「キーフレームを極力打たない」と「手の挙動範囲を極力少なくする」 です。今回は後者のために、必要なカスタマイズです。
-ノードのプリセットに入れればいいじゃんと言う人もいるかもしれないですが、あれはパラメータの並び順や位置のレイアウトも記憶しています。Houdiniはバージョンが変わると、パラメータのレイアウトが変わることなんてことは当たり前なので、バージョンごとにプリセットを更新する必要があり非常にめんどいのです。といわけで右クリックのメニューにサポートツールを追加して効率化を図っています。
-メニューの追加の仕方ですが、 ノードを右クリックした時にメニューを追加するには、OPmenu.xmlを編集します。 パラメータを右クリックした時にメニューを追加するには、PRAMmenu.xmlを編集します。
-基本的には、ここに書いてあるんで、読めばわかります。 http://www.sidefx.com/docs/houdini/basics/config_menus.html
-お題として、先日パベルさんのセミナーでDescriptive Parmの表示の仕方を習ったので、これをパラメータの右クリックに追加してみましょう。 Descriptive Parmとは、File Sopなどにある、Network View上でノードの名前の下にあるやつです。
-これを、表示されてないノードにも表示させるようにします。これで、いちいちノードを選択してパラメータを見なくても、重要なパラメータの値がNetwork View上で確認できるようになります。しかし、そのパラメータが何かのノードとリンクして、そのノードはクソ重い処理をしなければならないのなら、この値を表示するために、毎回時間がかかってしまうので、気をつけてください。
-最初に、Pythonでどうやるか確認しましょう。ヘルプを見るとノードのUserDataを変更すれば、いいようです。 http://www.sidefx.com/docs/houdini/network/badges.html#textbadges
-上の添付のようにMountainSopのElement Sizeを、Network Viewに表示させるには、Pythonはこんな感じ。
-node = hou.node(&amp;#39;/obj/geo1/mountain1&amp;#39;) parm_name = &amp;#39;elementsize&amp;#39; node.setUserData(&amp;#34;descriptiveparm&amp;#34;, parm_name) ノードと、Descriptive Parmになるパラメータの名前が必要ですね。
-必要なものがわかったので、実際の作業に入りましょう。まずはPythonファイルを作ります。ここでは、changeDescriptiveParm.pyという名前にして、Houdiniがインポートできる場所に保存します。
-import hou def doit(parms,type): parm = parms[0] parm_name = parm.name() node = parm.node() if type == &amp;#34;clear&amp;#34; parm_name = &amp;#34;&amp;#34; node.setUserData(&amp;#34;descriptiveparm&amp;#34;, parm_name)) 現在、右クリックしているパラメータが何かはparms=kwargs[&amp;quot;parms&amp;quot;]で取得します。parmsとあるとおり、リストとして値が返ってきます。選択してるパラメータは1つなので、parm = parms[0]。パラメータからノードの情報を得るには、単純にparm.node()。これで、必要な情報はすべて取得できたことになります。 Descriptive Parmをクリアしたい時もあるので、parm_nameを空にして、それを可能にしておきます。
-最後に、PARMmenu.xmlを編集しましょう。こうです。
-&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;menuDocument&amp;gt; &amp;lt;menu&amp;gt; &amp;lt;subMenu id=&amp;#34;changeDescriptiveParm&amp;#34;&amp;gt; &amp;lt;label&amp;gt;Change Descriptive Parm&amp;lt;/label&amp;gt; &amp;lt;scriptItem&amp;gt; &amp;lt;label&amp;gt;Set&amp;lt;/label&amp;gt; &amp;lt;scriptCode&amp;gt;&amp;lt;!</description>
+      <author>Shohei Okazaki</author>
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2018-03-06/</guid>
+      <description>&lt;!--  --&gt;
+
+
+
+
+  &lt;span style=&#34;color: firebrick;font-weight: bold;  background-color: transparent&#34;&gt; test &lt;/span&gt;
+
+&lt;iframe width=&#34;&#34; height=&#34;&#34; src=&#34;https://www.youtube.com/embed/&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;大したことじゃないけど、最近のお気に入りを紹介するコーナ。
+第一弾は右クリック。&lt;/p&gt;
+&lt;p&gt;FXを作ってく上で、僕には2大裏テーマというものがあります。それは 
+
+
+
+
+  &lt;span style=&#34;color: firebrick;font-weight: bold;  background-color: transparent&#34;&gt; 「キーフレームを極力打たない」と「手の挙動範囲を極力少なくする」 &lt;/span&gt;
+ です。今回は後者のために、必要なカスタマイズです。&lt;/p&gt;
+&lt;p&gt;ノードのプリセットに入れればいいじゃんと言う人もいるかもしれないですが、あれはパラメータの並び順や位置のレイアウトも記憶しています。Houdiniはバージョンが変わると、パラメータのレイアウトが変わることなんてことは当たり前なので、バージョンごとにプリセットを更新する必要があり非常にめんどいのです。といわけで右クリックのメニューにサポートツールを追加して効率化を図っています。&lt;/p&gt;
+&lt;p&gt;メニューの追加の仕方ですが、
+ノードを右クリックした時にメニューを追加するには、&lt;code&gt;OPmenu.xml&lt;/code&gt;を編集します。
+パラメータを右クリックした時にメニューを追加するには、&lt;code&gt;PRAMmenu.xml&lt;/code&gt;を編集します。&lt;/p&gt;
+&lt;p&gt;基本的には、ここに書いてあるんで、読めばわかります。
+&lt;a href=&#34;http://www.sidefx.com/docs/houdini/basics/config_menus.htm&#34;&gt;http://www.sidefx.com/docs/houdini/basics/config_menus.html&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;お題として、先日パベルさんのセミナーでDescriptive Parmの表示の仕方を習ったので、これをパラメータの右クリックに追加してみましょう。
+Descriptive Parmとは、File Sopなどにある、Network View上でノードの名前の下にあるやつです。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2018-03-06/blog_favorite01_001.png&#34; alt=&#34;img_01&#34;  /&gt;
+
+これを、表示されてないノードにも表示させるようにします。これで、いちいちノードを選択してパラメータを見なくても、重要なパラメータの値がNetwork View上で確認できるようになります。しかし、そのパラメータが何かのノードとリンクして、そのノードはクソ重い処理をしなければならないのなら、この値を表示するために、毎回時間がかかってしまうので、気をつけてください。&lt;/p&gt;
+&lt;p&gt;最初に、Pythonでどうやるか確認しましょう。ヘルプを見るとノードのUserDataを変更すれば、いいようです。
+&lt;a href=&#34;http://www.sidefx.com/docs/houdini/network/badges.html#textbadges&#34;&gt;http://www.sidefx.com/docs/houdini/network/badges.html#textbadges&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;上の添付のようにMountainSopのElement Sizeを、Network Viewに表示させるには、Pythonはこんな感じ。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; hou&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;node(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/obj/geo1/mountain1&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;parm_name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;elementsize&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;setUserData(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;descriptiveparm&amp;#34;&lt;/span&gt;, parm_name)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ノードと、Descriptive Parmになるパラメータの名前が必要ですね。&lt;/p&gt;
+&lt;p&gt;必要なものがわかったので、実際の作業に入りましょう。まずはPythonファイルを作ります。ここでは、changeDescriptiveParm.pyという名前にして、Houdiniがインポートできる場所に保存します。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; hou
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;doit&lt;/span&gt;(parms,type):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  parm &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; parms[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  parm_name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; parm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;name()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  node &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; parm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;node()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; type &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clear&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    parm_name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;setUserData(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;descriptiveparm&amp;#34;&lt;/span&gt;, parm_name))
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;現在、右クリックしているパラメータが何かは&lt;code&gt;parms=kwargs[&amp;quot;parms&amp;quot;]&lt;/code&gt;で取得します。&lt;code&gt;parms&lt;/code&gt;とあるとおり、リストとして値が返ってきます。選択してるパラメータは1つなので、&lt;code&gt;parm = parms[0]&lt;/code&gt;。パラメータからノードの情報を得るには、単純に&lt;code&gt;parm.node()&lt;/code&gt;。これで、必要な情報はすべて取得できたことになります。
+Descriptive Parmをクリアしたい時もあるので、&lt;code&gt;parm_name&lt;/code&gt;を空にして、それを可能にしておきます。&lt;/p&gt;</description>
     </item>
     
   </channel>

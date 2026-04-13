@@ -2,25 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Solaris on FX HACK</title>
-    <link>http://127.0.0.1:1313/FXHACK/en/tags/solaris/</link>
+    <link>https://ShoheiOkazaki.github.io/FXHACK/en/tags/solaris/</link>
     <description>Recent content in Solaris on FX HACK</description>
     <image>
-      <url>http://127.0.0.1:1313/FXHACK/profile.jpg</url>
-      <link>http://127.0.0.1:1313/FXHACK/profile.jpg</link>
+      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 05 Oct 2023 09:27:07 +0900</lastBuildDate><atom:link href="http://127.0.0.1:1313/FXHACK/en/tags/solaris/index.xml" rel="self" type="application/rss+xml" />
+    
+    <managingEditor>Shohei Okazaki</managingEditor>
+    <webMaster>Shohei Okazaki</webMaster>
+    
+    
+    
+    <lastBuildDate>Thu, 05 Oct 2023 09:27:07 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/en/tags/solaris/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Solaris] Importing HDA-Camera to LOP</title>
-      <link>http://127.0.0.1:1313/FXHACK/en/posts/2023-10-05/</link>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/en/posts/2023-10-05/</link>
       <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
-      
-      <guid>http://127.0.0.1:1313/FXHACK/en/posts/2023-10-05/</guid>
-      <description>Issue When importing your custom HDA camera into Solaris using SceneImportLOP, you can&amp;rsquo;t import it and it appear the waring.
-（Custom HDA camera is some thing like this.）
-The following warning appears. This may probably only appear in 19.5 or later. Solution Let&amp;rsquo;s go to the link that the waring said.
-We see the following statement at the beginning of the document. It seems that some work needs to be done to load the custom node into the LOP.</description>
+      <author>Shohei Okazaki</author>
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/en/posts/2023-10-05/</guid>
+      <description>&lt;h2 id=&#34;issue&#34;&gt;Issue&lt;/h2&gt;
+&lt;p&gt;When importing your custom HDA camera into Solaris using SceneImportLOP, you can&amp;rsquo;t import it and it appear the waring.&lt;/p&gt;
+&lt;p&gt;（Custom HDA camera is &lt;a href=&#34;../2021-04-29/#%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%8A%E3%81%84%E3%81%9F%E3%81%BB%E3%81%86%E3%81%8C%E3%81%84%E3%81%84%E3%83%8E%E3%83%BC%E3%83%89&#34;&gt;some thing like this&lt;/a&gt;.）&lt;/p&gt;
+&lt;p&gt;The following warning appears. This may probably only appear in 19.5 or later.
+
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2023-10-05/img/lop_waring.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;solution&#34;&gt;Solution&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s go to &lt;a href=&#34;https://www.sidefx.com/docs/houdini/hom/sceneimport_object_translator.html&#34;&gt;the link&lt;/a&gt; that the waring said.&lt;/p&gt;
+&lt;p&gt;We see the following statement at the beginning of the document. It seems that some work needs to be done to load the custom node into the LOP.&lt;/p&gt;</description>
     </item>
     
   </channel>

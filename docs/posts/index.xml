@@ -10,377 +10,957 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
+    
+    <managingEditor>Shohei Okazaki</managingEditor>
+    <webMaster>Shohei Okazaki</webMaster>
+    
+    
+    
     <lastBuildDate>Thu, 12 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://127.0.0.1:1313/FXHACK/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[PDG] Gathering USD Files</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2024-12-16/</link>
       <pubDate>Thu, 12 Dec 2024 00:00:00 +0000</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2024-12-16/</guid>
-      <description>皆さんはアウトソーシング先や他のベンダー会社にデータを共有する際、どのような手法を取っていますか？
-Houdiniならキャッシュやテクスチャをシーンファイルがある同じ階層に置いて、それぞれのファイルパスを$HIP始まりにする。もしくはLocal Variables $JOBを用いてファイルの保存場所を指定し、異なる環境で開いた際には作業者が変数の値を更新するのが一般的です。
-Nukeにおいては、Nukepediaや社内で開発したGathering toolを利用して、シーン内のRead/Writeノードが参照するファイルパスのデータを他の場所にコピーし、それらのノードのファイルパスを相対パスに変更することが多いです。
-では、USDを使う場合はどのように対応すればよいでしょうか？今回はPDGを使った話をしていきます。
-Sample File(20.5.410 py3.11): https://drive.google.com/file/d/1pkv1pYyNRrdOpoF50qxvsBc3HxAFyi5r/view?usp=drive_link
-USDアセット作成 まずSolarisで簡単なデータを作るとこから始めます。
-もうUSDは日本以外のとこではスタンダードになったと言っても過言ではないフォーマットです。ですので、簡単な説明は省きます。
-アセットを作ったことがない人は、このチュートリアルを見てください。 https://www.sidefx.com/tutorials/usd-asset-building-with-solaris/
-Component まずCompoent Builderを使って、2つのComponent、GridとVariantをもったRocksをつくります。
-Component Outputの出力先を、今後の説明を分かりやすくするために以下のように変更しておきます。 それぞれ、Save to Diskを押して、USDを作成します。
-$HIP/usd/components/`chs(&amp;#34;name&amp;#34;)`/v001/`chs(&amp;#34;filename&amp;#34;)` 保存先を見てみると、このようなフォルダ構造になっているかと思います。
-└── usd/ └── components/ └── grid/ └── v001/ └── grid.usd └── geo.usdc └── mtl.usdc └── payload.usdc └── textures/ └── bricks001_basecolor.png └── rocks/ └── v001/ └── rocks.usd └── geo.usdc └── mtl.usdc └── payload.usdc Gridはテクスチャは持っており、そのテクスチャは$HIP/texturesに保存してありましたが、usdが保存されているtexturesフォルダにコピーされています。 そして、GridというComponentのUsdを読み込んでみると、テクスチャパスは@./textures/bricks001_basecolor.png@になっています。絶対パスではなくでなく、相対パスになっています。
-Referenceで読み込んでるgrid.usdの中身にも相対パスが使われています
-#usda 1.0 ( defaultPrim = &amp;#34;grid&amp;#34; framesPerSecond = 24 metersPerUnit = 1 timeCodesPerSecond = 24 upAxis = &amp;#34;Y&amp;#34; ) def Xform &amp;#34;grid&amp;#34; ( prepend apiSchemas = [&amp;#34;GeomModelAPI&amp;#34;] assetInfo = { asset identifier = @.</description>
+      <description>&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;皆さんはアウトソーシング先や他のベンダー会社にデータを共有する際、どのような手法を取っていますか？&lt;/p&gt;
+&lt;p&gt;Houdiniならキャッシュやテクスチャをシーンファイルがある同じ階層に置いて、それぞれのファイルパスを$HIP始まりにする。もしくはLocal Variables $JOBを用いてファイルの保存場所を指定し、異なる環境で開いた際には作業者が変数の値を更新するのが一般的です。&lt;/p&gt;
+&lt;p&gt;Nukeにおいては、Nukepediaや社内で開発したGathering toolを利用して、シーン内のRead/Writeノードが参照するファイルパスのデータを他の場所にコピーし、それらのノードのファイルパスを相対パスに変更することが多いです。&lt;/p&gt;
+&lt;p&gt;では、USDを使う場合はどのように対応すればよいでしょうか？今回はPDGを使った話をしていきます。&lt;/p&gt;
+&lt;p&gt;Sample File(20.5.410 py3.11): &lt;a href=&#34;https://drive.google.com/file/d/1pkv1pYyNRrdOpoF50qxvsBc3HxAFyi5r/view?usp=drive_link&#34;&gt;https://drive.google.com/file/d/1pkv1pYyNRrdOpoF50qxvsBc3HxAFyi5r/view?usp=drive_link&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;usdアセット作成&#34;&gt;USDアセット作成&lt;/h2&gt;
+&lt;p&gt;まずSolarisで簡単なデータを作るとこから始めます。&lt;br&gt;
+もうUSDは日本以外のとこではスタンダードになったと言っても過言ではないフォーマットです。ですので、簡単な説明は省きます。&lt;/p&gt;
+&lt;p&gt;アセットを作ったことがない人は、このチュートリアルを見てください。
+&lt;a href=&#34;https://www.sidefx.com/tutorials/usd-asset-building-with-solaris/&#34;&gt;https://www.sidefx.com/tutorials/usd-asset-building-with-solaris/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;component&#34;&gt;Component&lt;/h3&gt;
+&lt;p&gt;まずCompoent Builderを使って、2つのComponent、GridとVariantをもったRocksをつくります。&lt;/p&gt;
+&lt;p&gt;Component Outputの出力先を、今後の説明を分かりやすくするために以下のように変更しておきます。
+それぞれ、Save to Diskを押して、USDを作成します。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$HIP/usd/components/`chs(&amp;#34;name&amp;#34;)`/v001/`chs(&amp;#34;filename&amp;#34;)`
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2024-12-16/img/imag_001.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;保存先を見てみると、このようなフォルダ構造になっているかと思います。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;└── usd/
+    └── components/
+        └── grid/
+            └── v001/
+                └── grid.usd
+                └── geo.usdc
+                └── mtl.usdc
+                └── payload.usdc
+                └── textures/
+                    └── bricks001_basecolor.png
+        └── rocks/
+            └── v001/
+                └── rocks.usd
+                └── geo.usdc
+                └── mtl.usdc
+                └── payload.usdc
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Gridはテクスチャは持っており、そのテクスチャは$HIP/texturesに保存してありましたが、usdが保存されているtexturesフォルダにコピーされています。
+そして、GridというComponentのUsdを読み込んでみると、テクスチャパスは@./textures/bricks001_basecolor.png@になっています。絶対パスではなくでなく、相対パスになっています。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2024-12-16/img/imag_002.png&#34; alt=&#34;img_02&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Referenceで読み込んでるgrid.usdの中身にも相対パスが使われています&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#usda 1.0
+(
+    defaultPrim = &amp;#34;grid&amp;#34;
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = &amp;#34;Y&amp;#34;
+)
+
+def Xform &amp;#34;grid&amp;#34; (
+    prepend apiSchemas = [&amp;#34;GeomModelAPI&amp;#34;]
+    assetInfo = {
+        asset identifier = @./grid.usd@
+        string name = &amp;#34;grid&amp;#34;
+        asset thumbnail = @./thumbnail.png@
+    }
+    prepend inherits = &amp;lt;/__class__/grid&amp;gt;
+    kind = &amp;#34;component&amp;#34;
+    prepend payload = @./payload.usdc@
+)
+{
+    float3[] extentsHint = [(-5, 0, -5), (5, 0, 5)]
+}
+
+class &amp;#34;__class__&amp;#34;
+{
+    class &amp;#34;grid&amp;#34;
+    {
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;これらはComponent Outputのなかにあるropの&lt;strong&gt;Output Processing&lt;/strong&gt;にて、処理がされています。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2024-12-16/img/imag_003.png&#34; alt=&#34;img_03&#34;  /&gt;
+&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>[Linux] 101</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2024-02-28/</link>
       <pubDate>Wed, 28 Feb 2024 00:00:00 +0000</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2024-02-28/</guid>
-      <description>Windows vs Linux Googleで「Houdini Windows vs Linux」と調べればいろいろな検証結果がでてきます。
-例えば杉村さんのBlogには、シミュレーションの比較があります。
-Linux vs Windows10パフォーマンス対決その１｜スギムラ マサヤ(sugiggy) またこちらの動画はMantraとKarmaのレンダリング比較してくれてます。
-10％ー30％はLinuxのほうが速いですね。 にしてもKarmaの速度に大きな差があるのは驚きですね！
-Linuxディストリビューション Linuxディストリビューションとは、ハードウェアとソフトウェアの間の通信を管理し、システムリソースを効率的に配分してくれるLinuxカーネルに加えて、ソフトウェアやユーティリティ、ユーザーインターフェースなどが組み込まれている、Linuxベースのオペレーティングシステムのバリエーションやバージョンのこと。
-ユーザーフレンドリーなUbuntuやLinux Mint、企業向けのRed Hat Enterprise Linux、高度なユーザー向けのArch Linuxなど、多種多様なバリエーションがあります。
-VFX/CG業界ではCentOSが主流 でした。しかし CentOSが2024年6月30日にサポート終了 になる、つまりアップデートやセキュリティパッチの更新がなくなることが発表されました。 ですのでCentOSを使ってた会社は Rockyに移行 してくとこもあるみたいです。
-ディストリビューション 特徴 Ubuntu ユーザーフレンドリーで初心者におすすめ。広範なソフトウェアサポート。 Debian 安定性とセキュリティに重点を置いている。多くのディストリビューションのベース。 Fedora 最新のテクノロジーを早期に採用。Red Hatによって支援されている。 CentOS Red Hat Enterprise Linuxをベースにした企業向けの無料ディストリビューション。 Arch Linux シンプルさとユーザーによる細かなカスタマイズを重視。 Linux Mint Ubuntuをベースに、使いやすさと美しいデスクトップ環境を提供。 Rocky Linux CentOSの代替として開発された、企業向けの安定したディストリビューション。 AlmaLinux CentOSの終了に伴い、そのコミュニティによって作成された無料のエンタープライズ級Linuxディストリビューション。 どのディストリビューションを選ぶかは、まず各ソフトのシステム要件をみてみましょう。
-Houdini:
-https://www.sidefx.com/ja/Support/system-requirements Nuke:
-https://www.foundry.com/products/nuke-family/requirements Unreal Engine:
-https://docs.unrealengine.com/5.3/en-US/hardware-and-software-specifications-for-unreal-engine/ Blender:
-https://blender.org/download/requirements/ Maya:
-https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/System-Requirements-for-Autodesk-Maya-2024.html やはりRockyを推していってますね。
-Mintをインストール！ Mintな理由 上記でVFX業界の主流はCentOSからRockyへ、ソフトウェアの対応もRockyに移行してるみたいなのに、なんでMintなのと思われるでしょう。 CentOSやRockyはRedHat系といわれますが、これらは初心者には難しいです。私自身も自宅でCentやFedoraを使ったことがありますが、かなり苦労しました。</description>
+      <description>&lt;h2 id=&#34;windows-vs-linux&#34;&gt;Windows vs Linux&lt;/h2&gt;
+&lt;p&gt;Googleで「&lt;a href=&#34;https://www.google.com/search?q=houdini&amp;#43;linux&amp;#43;vs&amp;#43;windows&#34;&gt;Houdini Windows vs Linux&lt;/a&gt;」と調べればいろいろな検証結果がでてきます。&lt;/p&gt;
+&lt;p&gt;例えば杉村さんのBlogには、シミュレーションの比較があります。&lt;br&gt;
+&lt;a href=&#34;https://note.com/sugiggy/n/n2528d8526ea7&#34; style=&#34;text-decoration: none; color: inherit;&#34;&gt;
+  &lt;div style=&#34;border: 2px solid #ccc; padding: 5px; display: flex; align-items: center; width: 500px;&#34;&gt;
+    &lt;img src=&#34;https://assets.st-note.com/production/uploads/images/10356571/rectangle_large_type_2_07771d6829d1ef58b309e2986a4a4205.jpeg?width=800&#34; style=&#34;width: auto; height: 140px; margin-right: 0px;&#34;&gt;
+    &lt;span&gt;Linux vs Windows10パフォーマンス対決その１｜スギムラ マサヤ(sugiggy)&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;またこちらの動画はMantraとKarmaのレンダリング比較してくれてます。&lt;br&gt;
+&lt;iframe width=&#34;640&#34; height=&#34;360&#34; src=&#34;https://www.youtube.com/embed/LCYHwXZIL8Q&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; 10％ー30％はLinuxのほうが速いですね。 &lt;/span&gt;
+&lt;br&gt;
+にしてもKarmaの速度に大きな差があるのは驚きですね！&lt;/p&gt;
+&lt;h2 id=&#34;linuxディストリビューション&#34;&gt;Linuxディストリビューション&lt;/h2&gt;
+&lt;p&gt;Linuxディストリビューションとは、ハードウェアとソフトウェアの間の通信を管理し、システムリソースを効率的に配分してくれるLinuxカーネルに加えて、ソフトウェアやユーティリティ、ユーザーインターフェースなどが組み込まれている、Linuxベースのオペレーティングシステムのバリエーションやバージョンのこと。&lt;/p&gt;
+&lt;p&gt;ユーザーフレンドリーなUbuntuやLinux Mint、企業向けのRed Hat Enterprise Linux、高度なユーザー向けのArch Linuxなど、多種多様なバリエーションがあります。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; VFX/CG業界ではCentOSが主流 &lt;/span&gt;
+でした。しかし
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; CentOSが2024年6月30日にサポート終了 &lt;/span&gt;
+になる、つまりアップデートやセキュリティパッチの更新がなくなることが発表されました。
+ですのでCentOSを使ってた会社は
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; Rockyに移行 &lt;/span&gt;
+してくとこもあるみたいです。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>[Solaris] HDAカメラのインポート</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2023-10-05/</link>
       <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2023-10-05/</guid>
-      <description>問題 SolarisにSceneImportLOPでカメラをインポートする際、自前のHDAカメラをインポートしようとするとワーニングがでてインポートできません。
-（自前のカメラとはこういうHDAです）
-以下のようなワーニングが表示されます。これはおそらく19.5以降でしか表示されないかもしれません。 解決策 まずは言われた通り、リンクに飛びましょう。
-以下のような記述が冒頭にありますね。カスタムノードをLOPに読み込むにはなにか作業が必要なようですね。
-Scene Import LOPが特定のHoudiniオブジェクトノードタイプをUSDに変換する方法をカスタマイズすることができます。 これは、特にカスタムノードタイプ(例えば、プロプライエタリなレンダラー関係のライトタイプやカメラタイプ)の変換に役立ちます。
-その後を読み続けると色々Pythonやら書いてありますね。でもちょっと長いので無視します。
-Houdiniはカスタムできるものについては、インストールフォルダにだいたいのものがバイナリになっていない状態で保存されてるので、それをコピーしてから始めるのが最短の道です。ということで以下のファイルを見てみましょう。
-インストールフォルダ/houdini/husdplugins/objtranslators/cam.py
-import hou import husd from pxr import UsdGeom class CameraTranslator(husd.objtranslator.Translator): def shouldTranslateNode(self): return True def primType(self): return &amp;#39;Camera&amp;#39; def populatePrim(self, prim, referenced_node_prim_paths, force_active): super(CameraTranslator, self).populatePrim(prim, referenced_node_prim_paths, force_active) cam = UsdGeom.Camera(prim) proj = self._node.parm(&amp;#39;projection&amp;#39;).evalAsString() if proj == &amp;#39;perspective&amp;#39;: cam.CreateProjectionAttr(&amp;#39;perspective&amp;#39;) elif proj == &amp;#39;ortho&amp;#39;: cam.CreateProjectionAttr(&amp;#39;orthographic&amp;#39;) # A few of the parameters need to be converted into 1/10 scene unit space stage = prim.</description>
+      <description>&lt;h2 id=&#34;問題&#34;&gt;問題&lt;/h2&gt;
+&lt;p&gt;SolarisにSceneImportLOPでカメラをインポートする際、自前のHDAカメラをインポートしようとするとワーニングがでてインポートできません。&lt;/p&gt;
+&lt;p&gt;（自前のカメラとは&lt;a href=&#34;../2021-04-29/#%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%8A%E3%81%84%E3%81%9F%E3%81%BB%E3%81%86%E3%81%8C%E3%81%84%E3%81%84%E3%83%8E%E3%83%BC%E3%83%89&#34;&gt;こういうHDA&lt;/a&gt;です）&lt;/p&gt;
+&lt;p&gt;以下のようなワーニングが表示されます。これはおそらく19.5以降でしか表示されないかもしれません。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2023-10-05/img/lop_waring.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;解決策&#34;&gt;解決策&lt;/h2&gt;
+&lt;p&gt;まずは言われた通り、&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/hom/sceneimport_object_translator.html&#34;&gt;リンク&lt;/a&gt;に飛びましょう。&lt;/p&gt;
+&lt;p&gt;以下のような記述が冒頭にありますね。カスタムノードをLOPに読み込むにはなにか作業が必要なようですね。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Scene Import LOPが特定のHoudiniオブジェクトノードタイプをUSDに変換する方法をカスタマイズすることができます。 これは、特にカスタムノードタイプ(例えば、プロプライエタリなレンダラー関係のライトタイプやカメラタイプ)の変換に役立ちます。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;その後を読み続けると色々Pythonやら書いてありますね。でもちょっと長いので無視します。&lt;/p&gt;
+&lt;p&gt;Houdiniはカスタムできるものについては、インストールフォルダにだいたいのものがバイナリになっていない状態で保存されてるので、それをコピーしてから始めるのが最短の道です。ということで以下のファイルを見てみましょう。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;インストールフォルダ/houdini/husdplugins/objtranslators/cam.py&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; hou
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; husd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; pxr &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; UsdGeom
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CameraTranslator&lt;/span&gt;(husd&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;objtranslator&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Translator):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;shouldTranslateNode&lt;/span&gt;(self):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;primType&lt;/span&gt;(self):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Camera&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;populatePrim&lt;/span&gt;(self, prim, referenced_node_prim_paths, force_active):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        super(CameraTranslator, self)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populatePrim(prim, referenced_node_prim_paths, force_active)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        cam &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; UsdGeom&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Camera(prim)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        proj &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;projection&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;evalAsString()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; proj &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;perspective&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateProjectionAttr(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;perspective&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; proj &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ortho&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateProjectionAttr(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orthographic&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# A few of the parameters need to be converted into 1/10 scene unit space&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        stage &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; prim&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;GetStage()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        factor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; husd&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;utils&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;convertFromMillimetersToCameraUnits(stage, &lt;span style=&#34;color:#ae81ff&#34;&gt;1.0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateFocalLengthAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;focal&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                          &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateFocusDistanceAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;focus&amp;#39;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateFStopAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;fstop&amp;#39;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateShutterOpenAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;shutter&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                          &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateShutterCloseAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;shutter&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                          &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateClippingRangeAttr(), [self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;near&amp;#39;&lt;/span&gt;), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;far&amp;#39;&lt;/span&gt;)])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# Aperture is a bit more complicated&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        aspect &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; float(self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;resy&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()) &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;resx&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        win_size &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;winsize&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; proj &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;perspective&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;# Start by grabbing a few values we&amp;#39;ll use to scale the attributes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            aperture &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;aperture&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateHorizontalApertureAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;aperture&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; win_size[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateVerticalApertureAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;aperture&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aspect &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; win_size[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateHorizontalApertureOffsetAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;win&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aperture &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateVerticalApertureOffsetAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;win&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aperture &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aspect &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; proj &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ortho&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;# Start by grabbing a few values we&amp;#39;ll use to scale the attributes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; hou&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;scaleToMKS(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;m1&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            orthowidth &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orthowidth&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eval()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateHorizontalApertureAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orthowidth&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; win_size[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateVerticalApertureAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parm(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;orthowidth&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aspect &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; win_size[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateHorizontalApertureOffsetAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;win&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; orthowidth &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;populateAttr(cam&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CreateVerticalApertureOffsetAttr(), self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;_node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parmTuple(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;win&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                              &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; value: value[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; orthowidth &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; sceneToMM &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; aspect &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; factor)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;registerTranslators&lt;/span&gt;(manager):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    manager&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;registerTranslator(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cam&amp;#39;&lt;/span&gt;, CameraTranslator)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;このファイルを適切な場所にコピーしましょう。ファイル名は適当でOKです。&lt;code&gt;$HOUDINIPATH/husdplugins/objtranslators/customCam.py&lt;/code&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Houdini Workflowについて</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2021-04-29/</link>
       <pubDate>Thu, 29 Apr 2021 12:27:07 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2021-04-29/</guid>
-      <description>いままで何回もHoudini Workflowをつくってきたので、どんなことをやっているか紹介したいと思います。
-小規模な会社にいるからとか個人でやってるから、そんなの必要ないと考える人もいるかもしれませんが、そうは思いません。数人の会社で働いたことがありますが、確実にワークフローが少しでもないと良いパフォーマンスを出すことをできません。
-大規模な会社には専任のTDがいてパイプラインがしっかりあり、色々便利なこともあります。反面、大きくなりすぎた会社ほど、やる気のない人や老害がたまり自由度がなくなり最新の流れにもついていけなくなったり、ワークフローを作るのに大工事したり、パイプラインにも手をいれなければいけないみたいなことも起こってしまいます。小規模だとパイプラインを作るのは難しいですが、ワークフローは自分たちの好きに作りやすいです。自分たちにあったものを構築できれば、小回りがきいて大きな所に負けないワークフローを構築しアドバンテージにすることも出来ます。
-ワークフローは、TDの人やスクリプトをかける人が作るものだと考えるでしょうが、実際に作業するアーティスト主導で構築するべきです。なぜならそのワークフローを使うのは作業者であり、なにが必要なのかを知ってるのは作業者であるアーティストだからです。
-パイプライン？　ワークフロー？ そもそもパイプラインとワークフローの違いはなんなんでしょうか？
-パイプラインは、別部署へのデータを送る時、たとえばアセットデータやアニメーションデータやレンダーイメージのパブリッシュなど です。決められた場所かつ安全な場所にパブリッシュしたり、決まったフォーマットに変換したりします。また、ファイルの命名規則やチェック方法やShotgunとの連携もこちらの役割です。
-ワークフローは、アーティストがショット作業をする時に必要なルール・ツール を用意しておくことです。
-パイプラインはTDが担当しますが、ワークフローは出来る限りそのツールや流れを熟知した人が作るのに携わるのが良いと思います。そしてFXはPythonは書けて当たり前なので、TDにお前らどうせ自分たちで出来るからとか言われ、他の部署を先にやってからと後回しにされがちです。
-目的 まずは何のためにワークフローを作るかの目的をしかっり決めましょう。
-私はいつもアーティストが絵作りだけに集中できる環境を作ることを目的にし、できるかぎりのことをするようにしています。
-何を基準にツールやルールを作るかというと、基本この２つをベースに考えます。
-ヒューマンエラーをなくす 毎回同じことをしたくない 代表格は、キャッシュやレンダーの出力先を毎回入力することです。これはもはや人間のやることではありません。
-チームで新しくワークフローを作る場合は、みんなの意見を聞いて不便なことや要望を洗い出してあげることも大事です。
-チームにジュニアレベルの人やHoudiniに詳しくない人がいるとしたら、色んなレベルの人にもスムーズにいくルールを考える必要があるかもしれません。
-環境変数 まずプロジェクト固有の変数について考えましょう。変数は、 プロジェクト全体に適用されるグローバル変数と、シーケンスやショットごとに値が変わるローカル変数にわけられます。 プロジェクト名やシーケンス名を定義しとくとフォルダの移動やアウトプット先を決めるのが楽になります。ただこの変数はパイプラインとして設定されてることが多いです。小規模な会社や個人では自身で設定してもいいと思います。これらを設定することによってどういうことが出来るかはあとで説明します。
-PROJ = &amp;#39;BurningProj&amp;#39; 他のソフトからAlembic等でデータを持ってきた時、シーンスケールを正しくしてあげる必要があります。なぜなら、Houdiniのシミュレーション系ノードのデフォルト値は、1Grid=1mを前提として値が設定されています。これにあわせてやるのが一番良いです。
-大抵の場合はインポートしたものを0.1倍か0.01倍すればいいでしょうが、海外のクライアントからもらったデータはメートルでなくインチで作業してる場合があります。その場合は39.37で割る必要があります。覚えたくないですよね。なので、コレも変数にしておきましょう。
-SCALE_FACTOR = 10 他には、レンダーサイズも変数にしてもいいかもしれません。
-RENDER_RES_X=1920 RENDER_RES_Y=960 また、WinodwsやLinuxのプラットフォームが混在してる場合、マウントするところを変数にしたとき、少し便利になります。どいうことかというとWindowsはZ:/proj/BuringProjがLinuxでは/proj/BuringProjの場合、$PROJ_ROOT/BuringProjという書き方に統一できます。協力会社によってはクライアントと同じドライブレターが使えないときは、協力会社に$PROJ_ROOTをX:/good_client/A_Inc/projみたいに設定してもらえれば、フォルダ構造を維持したままシーンファイルを渡せば、別の環境でもシーンを容易に再現できる可能性が高まります。
-PROJ_ROOT = &amp;#39;Z:/proj&amp;#39; 日本でもNetflixの仕事が増えてきたせいか、やっとColorMangementが浸透してきましたね。Houdiniも他のソフト同様、OCIOの環境変数を設定してあげる必要があります。ACTIVE_VIEWSはなくてもいいです。VFXではシーケンスやショットごとでLutが違う場合があるので、OCIO_ACTIVE_VIEWSを変動出来るようにしてもいいかと思います。
-OCIO=&amp;#39;/proj/BurninigProj/tools/OCIO/will_be_beautiful.ocio&amp;#39; OCIO_ACTIVE_VIEWS=&amp;#39;Rec.709&amp;#39; ローカル変数の代表は、シーケンスとショット番号、フレームレンジとかでしょうか。
-SEQ = &amp;#39;seq_01&amp;#39; SHOT = &amp;#39;shot_003&amp;#39; P_START = 1001 P_END = 1032 さて、これらをどうやって全員に行き渡せるかですが、大きい会社ならランチャーがあると思うので、そこで設定してもいいです。
-小さい会社や個人の場合は、パッケージを使うといいでしょう。 https://www.sidefx.com/ja/docs/houdini/ref/plugins.html
-たとえば/proj/BurningProj/tools/houdiniというフォルダの中にプロジェクトのHDAやスクリプトを置き変数を定義するとします。
-/proj/BurningProj └── tools └── houdini └── otls └── packages └── scripts └── toolbar └── maya └── nuke まずメインのパッケージを作ります。これをpackagesフォルダのBurningProj.</description>
+      <description>&lt;p&gt;いままで何回もHoudini Workflowをつくってきたので、どんなことをやっているか紹介したいと思います。&lt;/p&gt;
+&lt;p&gt;小規模な会社にいるからとか個人でやってるから、そんなの必要ないと考える人もいるかもしれませんが、そうは思いません。数人の会社で働いたことがありますが、確実にワークフローが少しでもないと良いパフォーマンスを出すことをできません。&lt;/p&gt;
+&lt;p&gt;大規模な会社には専任のTDがいてパイプラインがしっかりあり、色々便利なこともあります。反面、大きくなりすぎた会社ほど、やる気のない人や老害がたまり自由度がなくなり最新の流れにもついていけなくなったり、ワークフローを作るのに大工事したり、パイプラインにも手をいれなければいけないみたいなことも起こってしまいます。小規模だとパイプラインを作るのは難しいですが、ワークフローは自分たちの好きに作りやすいです。自分たちにあったものを構築できれば、小回りがきいて大きな所に負けないワークフローを構築しアドバンテージにすることも出来ます。&lt;/p&gt;
+&lt;p&gt;ワークフローは、TDの人やスクリプトをかける人が作るものだと考えるでしょうが、実際に作業するアーティスト主導で構築するべきです。なぜならそのワークフローを使うのは作業者であり、なにが必要なのかを知ってるのは作業者であるアーティストだからです。&lt;/p&gt;
+&lt;h2 id=&#34;パイプラインワークフロー&#34;&gt;パイプライン？　ワークフロー？&lt;/h2&gt;
+&lt;p&gt;そもそもパイプラインとワークフローの違いはなんなんでしょうか？&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; パイプラインは、別部署へのデータを送る時、たとえばアセットデータやアニメーションデータやレンダーイメージのパブリッシュなど &lt;/span&gt;
+ です。決められた場所かつ安全な場所にパブリッシュしたり、決まったフォーマットに変換したりします。また、ファイルの命名規則やチェック方法やShotgunとの連携もこちらの役割です。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; ワークフローは、アーティストがショット作業をする時に必要なルール・ツール &lt;/span&gt;
+ を用意しておくことです。&lt;/p&gt;
+&lt;p&gt;パイプラインはTDが担当しますが、ワークフローは出来る限りそのツールや流れを熟知した人が作るのに携わるのが良いと思います。そしてFXはPythonは書けて当たり前なので、TDにお前らどうせ自分たちで出来るからとか言われ、他の部署を先にやってからと後回しにされがちです。&lt;/p&gt;
+&lt;h2 id=&#34;目的&#34;&gt;目的&lt;/h2&gt;
+&lt;p&gt;まずは何のためにワークフローを作るかの目的をしかっり決めましょう。&lt;/p&gt;
+&lt;p&gt;私はいつもアーティストが絵作りだけに集中できる環境を作ることを目的にし、できるかぎりのことをするようにしています。&lt;/p&gt;
+&lt;p&gt;何を基準にツールやルールを作るかというと、基本この２つをベースに考えます。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; ヒューマンエラーをなくす &lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; 毎回同じことをしたくない &lt;/span&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;代表格は、キャッシュやレンダーの出力先を毎回入力することです。これはもはや人間のやることではありません。&lt;/p&gt;
+&lt;p&gt;チームで新しくワークフローを作る場合は、みんなの意見を聞いて不便なことや要望を洗い出してあげることも大事です。&lt;/p&gt;
+&lt;p&gt;チームにジュニアレベルの人やHoudiniに詳しくない人がいるとしたら、色んなレベルの人にもスムーズにいくルールを考える必要があるかもしれません。&lt;/p&gt;
+&lt;h2 id=&#34;環境変数&#34;&gt;環境変数&lt;/h2&gt;
+&lt;p&gt;まずプロジェクト固有の変数について考えましょう。変数は、
+
+
+
+
+  &lt;span style=&#34;color: gold;font-weight: bold;  background-color: transparent&#34;&gt; プロジェクト全体に適用されるグローバル変数と、シーケンスやショットごとに値が変わるローカル変数にわけられます。 &lt;/span&gt;
+&lt;/p&gt;
+&lt;p&gt;プロジェクト名やシーケンス名を定義しとくとフォルダの移動やアウトプット先を決めるのが楽になります。ただこの変数はパイプラインとして設定されてることが多いです。小規模な会社や個人では自身で設定してもいいと思います。これらを設定することによってどういうことが出来るかはあとで説明します。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PROJ = &amp;#39;BurningProj&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;他のソフトからAlembic等でデータを持ってきた時、シーンスケールを正しくしてあげる必要があります。なぜなら、Houdiniのシミュレーション系ノードのデフォルト値は、1Grid=1mを前提として値が設定されています。これにあわせてやるのが一番良いです。&lt;/p&gt;
+&lt;p&gt;大抵の場合はインポートしたものを0.1倍か0.01倍すればいいでしょうが、海外のクライアントからもらったデータはメートルでなくインチで作業してる場合があります。その場合は39.37で割る必要があります。覚えたくないですよね。なので、コレも変数にしておきましょう。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SCALE_FACTOR = 10
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;他には、レンダーサイズも変数にしてもいいかもしれません。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;RENDER_RES_X=1920
+RENDER_RES_Y=960
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;また、WinodwsやLinuxのプラットフォームが混在してる場合、マウントするところを変数にしたとき、少し便利になります。どいうことかというとWindowsは&lt;code&gt;Z:/proj/BuringProj&lt;/code&gt;がLinuxでは&lt;code&gt;/proj/BuringProj&lt;/code&gt;の場合、&lt;code&gt;$PROJ_ROOT/BuringProj&lt;/code&gt;という書き方に統一できます。協力会社によってはクライアントと同じドライブレターが使えないときは、協力会社に$PROJ_ROOTを&lt;code&gt;X:/good_client/A_Inc/proj&lt;/code&gt;みたいに設定してもらえれば、フォルダ構造を維持したままシーンファイルを渡せば、別の環境でもシーンを容易に再現できる可能性が高まります。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PROJ_ROOT = &amp;#39;Z:/proj&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;日本でもNetflixの仕事が増えてきたせいか、やっとColorMangementが浸透してきましたね。Houdiniも他のソフト同様、OCIOの環境変数を設定してあげる必要があります。ACTIVE_VIEWSはなくてもいいです。VFXではシーケンスやショットごとでLutが違う場合があるので、OCIO_ACTIVE_VIEWSを変動出来るようにしてもいいかと思います。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;OCIO=&amp;#39;/proj/BurninigProj/tools/OCIO/will_be_beautiful.ocio&amp;#39;
+OCIO_ACTIVE_VIEWS=&amp;#39;Rec.709&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ローカル変数の代表は、シーケンスとショット番号、フレームレンジとかでしょうか。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SEQ = &amp;#39;seq_01&amp;#39;
+SHOT = &amp;#39;shot_003&amp;#39;
+P_START = 1001
+P_END = 1032
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;さて、これらをどうやって全員に行き渡せるかですが、大きい会社ならランチャーがあると思うので、そこで設定してもいいです。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>FX的　Height Fieldの使い方</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2019-02-12/</link>
       <pubDate>Tue, 12 Feb 2019 09:30:42 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2019-02-12/</guid>
-      <description>今回は、Height Fieldです。 FXは、Height Fieldの恩恵は、あまりないと思いますが、個人的なFX的使い方を紹介します。
-サンプルファイルです。17.0.459で作成。
-Download
-Terrain Object Height Filedの実装にともないTerrain Object DOPにUse Heightfiledというオプションが追加されました。
-今までは、Particleと地面の詳細なコリジョン結果を得るには、このノードのVolumeに変換する所のオプションにてDivisionSizeをあげて高解像度にするか、StaticObjectをつかってSurface Collisionを使用したりしてました。どちらも、軽いものではありませんね。
-Height Filedは、どこかの軸が2000を超えてもなんてことありません。普通のVolumeのならめっちゃ重いですよね。これを使うなんて、さすがSideFX。
-さて実際の使い方は、Environment Modeler等が作ってくれた地形等を読み込み、HeightField ProjectでHeightFiledに変換します。
-シミュレーションの範囲を決めて、より効率的に作業するならHeightField Cropを使いましょう。 小さな石とかデブリがあったら、それごとProjectionしても、そこそこ使えます。 え、Displacement・Bumpを使ってたらどうするんだって？ Point CloudでUVを持ってきて、Textureをインポートして、 足し算。 それだとNormal考慮してないってか。インポートしたGeometryをSubdivisionをめっちゃかけて、SopでDisplacementするしかないですかね。
-Packでコレ使うと、めっちゃ重いからVolume Collision使わないで、普通にBulletでConcaveにしたほうが良いです。
-Boolean Cutter 続いては、別の使い方の紹介。BooleanのShatterに使ってみましょう。 そもそもBooleanを使う時の重要な点は、如何にエラーのないGeometryを作り出しレンダリングできるようにするかです。「エラー」とはManifold Topologyになっていないものが生成されたり、Alembicを使って他のツールにGeometryとしてインポートするときに起こりうる問題の要因のことを指します。Houdini内で完結する場合は、これらの問題があっても気にせずレンダリングできることが多々です。
-なぜBooleanに使うのか？それはHeightFiledの特徴が気に入ったからです。
-特徴1:軽い
-前述した通り挙動が軽いです。破壊の断面はディティールが欲しくなります。通常だったら、面を細かく分割してPointにNoiseをかけたりしますが、結構動作重いです。軽いは良いです。
-特徴2:Topology
-HeightFieldをPolygonにコンバートして、それをDisplacementした方向からTopoloyを見ると綺麗な格子状になっています。
-エラーTopologyを最も生成しやすい要因は、このNoiseのカッターを作ってる時です。GeometryのPointsに対して、強いNoiseをかけると、自身の面と干渉してしまいます。これは、あまり良くないです。 そして、綺麗なTopologyということは、ここからUVが作りやすいです。
-それでは、実際の手順の説明です。 基本的には普通よくあるやつと似てます。Point作ってHeightFiledのGridをコピーしてNoiseをかけます。 Noiseをかける前に対象Geometryより少し大きめなBoundigBoxを使ってCropしてあげれば、より効率が良くなります。 続いて、HeightFiledをMeshにコンバートし、UV ProjectでDisplacement方向からUVを転写。UV Layoutで一度整えます。このままだと高さが考慮されていないので、heightというPointAttrを使ってUVを調整します。
-Wrangleで縦横比をheihgtで乗算
-vector bsize = getbbox_size(0); float mult= bsize[0]/bsize[2]; @uv.y = point(0,&amp;#34;height&amp;#34;,@ptnum)*mult; 最後に、UV Layoutでもう一度整えておしまいです。
-Cutterの用意ができたら、あとは通常通りBooleanでShatterしましょう。
-その後は、Normal入れたり、
-Non-Manifoldを取り除くために、CleanかPolyDoctorで治しときましょう。エラーは出るときは出ます。
-ここまでUVがあれば、ModelerやLookDevにTexture・Shaderを作ってもらうために壊したものを戻しても、文句は言われないでしょう。きっと。
-ということで、今回は本来の用途とは違った使い方の紹介でした。
-他にも、こんな風に本来の目的とは違う使ってるよって方いましたら、ぜひ教えてください。</description>
+      <description>&lt;p&gt;今回は、Height Fieldです。
+FXはHeight Fieldの恩恵はあまりないと思いますが、個人的なFX的使い方を紹介します。&lt;/p&gt;
+&lt;p&gt;サンプルファイルです。17.0.459で作成。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/fxHack_20190211_heightfield.hipnc&#34;&gt;Download&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;terrain-object&#34;&gt;Terrain Object&lt;/h2&gt;
+&lt;p&gt;Height Filedの実装にともないTerrain Object DOPにUse Heightfiledというオプションが追加されました。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/blog_height_001.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;今までは、Particleと地面の詳細なコリジョン結果を得るには、このノードのVolumeに変換する所のオプションにてDivisionSizeをあげて高解像度にするか、StaticObjectをつかってSurface Collisionを使用したりしてました。どちらも、軽いものではありませんね。&lt;/p&gt;
+&lt;p&gt;Height Filedは、どこかの軸が2000を超えてもなんてことありません。普通のVolumeのならめっちゃ重いですよね。これを使うなんて、さすがSideFX。&lt;/p&gt;
+&lt;p&gt;さて実際の使い方は、Environment Modeler等が作ってくれた地形等を読み込み、HeightField ProjectでHeightFiledに変換します。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/blog_height_002.png&#34; alt=&#34;img_02&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/blog_height_003.gif&#34; alt=&#34;img_03&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;シミュレーションの範囲を決めて、より効率的に作業するならHeightField Cropを使いましょう。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/blog_height_004.gif&#34; alt=&#34;img_04&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;小さな石とかデブリがあったら、それごとProjectionしても、そこそこ使えます。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/blog_height_005.gif&#34; alt=&#34;img_05&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;え、Displacement・Bumpを使ってたらどうするんだって？
+Point CloudでUVを持ってきて、Textureをインポートして、 足し算。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/blog_height_006.png&#34; alt=&#34;img_06&#34;  /&gt;
+
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/blog_height_007.gif&#34; alt=&#34;img_07&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;それだとNormal考慮してないってか。インポートしたGeometryをSubdivisionをめっちゃかけて、SopでDisplacementするしかないですかね。&lt;/p&gt;
+&lt;p&gt;Packでコレ使うと、めっちゃ重いからVolume Collision使わないで、普通にBulletでConcaveにしたほうが良いです。&lt;/p&gt;
+&lt;h2 id=&#34;boolean-cutter&#34;&gt;Boolean Cutter&lt;/h2&gt;
+&lt;p&gt;続いては、別の使い方の紹介。BooleanのShatterに使ってみましょう。
+そもそもBooleanを使う時の重要な点は、如何にエラーのないGeometryを作り出しレンダリングできるようにするかです。「エラー」とはManifold Topologyになっていないものが生成されたり、Alembicを使って他のツールにGeometryとしてインポートするときに起こりうる問題の要因のことを指します。Houdini内で完結する場合は、これらの問題があっても気にせずレンダリングできることが多々です。&lt;/p&gt;
+&lt;p&gt;なぜBooleanに使うのか？それはHeightFiledの特徴が気に入ったからです。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;特徴1:軽い&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;前述した通り挙動が軽いです。破壊の断面はディティールが欲しくなります。通常だったら、面を細かく分割してPointにNoiseをかけたりしますが、結構動作重いです。軽いは良いです。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;特徴2:Topology&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;HeightFieldをPolygonにコンバートして、それをDisplacementした方向からTopoloyを見ると綺麗な格子状になっています。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/blog_height_008.png&#34; alt=&#34;img_08&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;エラーTopologyを最も生成しやすい要因は、このNoiseのカッターを作ってる時です。GeometryのPointsに対して、強いNoiseをかけると、自身の面と干渉してしまいます。これは、あまり良くないです。
+そして、綺麗なTopologyということは、ここからUVが作りやすいです。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;それでは、実際の手順の説明です。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/blog_height_010.png&#34; alt=&#34;img_10&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;基本的には普通よくあるやつと似てます。Point作ってHeightFiledのGridをコピーしてNoiseをかけます。
+Noiseをかける前に対象Geometryより少し大きめなBoundigBoxを使ってCropしてあげれば、より効率が良くなります。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/blog_height_009.gif&#34; alt=&#34;img_09&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;続いて、HeightFiledをMeshにコンバートし、UV ProjectでDisplacement方向からUVを転写。UV Layoutで一度整えます。このままだと高さが考慮されていないので、heightというPointAttrを使ってUVを調整します。&lt;/p&gt;
+&lt;p&gt;Wrangleで縦横比をheihgtで乗算&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vector bsize &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;getbbox_size&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;float&lt;/span&gt; mult&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; bsize[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;bsize[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;uv.y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;point&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;height&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;ptnum)&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;mult;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2019-02-12/blog_height_013.png&#34; alt=&#34;img_13&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;最後に、UV Layoutでもう一度整えておしまいです。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>最近のお気に入り - 1　「右クリック」</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2018-03-06/</link>
       <pubDate>Tue, 06 Mar 2018 12:00:18 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2018-03-06/</guid>
-      <description>大したことじゃないけど、最近のお気に入りを紹介するコーナ。 第一弾は右クリック。
-FXを作ってく上で、僕には2大裏テーマというものがあります。それは 「キーフレームを極力打たない」と「手の挙動範囲を極力少なくする」 です。今回は後者のために、必要なカスタマイズです。
-ノードのプリセットに入れればいいじゃんと言う人もいるかもしれないですが、あれはパラメータの並び順や位置のレイアウトも記憶しています。Houdiniはバージョンが変わると、パラメータのレイアウトが変わることなんてことは当たり前なので、バージョンごとにプリセットを更新する必要があり非常にめんどいのです。といわけで右クリックのメニューにサポートツールを追加して効率化を図っています。
-メニューの追加の仕方ですが、 ノードを右クリックした時にメニューを追加するには、OPmenu.xmlを編集します。 パラメータを右クリックした時にメニューを追加するには、PRAMmenu.xmlを編集します。
-基本的には、ここに書いてあるんで、読めばわかります。 http://www.sidefx.com/docs/houdini/basics/config_menus.html
-お題として、先日パベルさんのセミナーでDescriptive Parmの表示の仕方を習ったので、これをパラメータの右クリックに追加してみましょう。 Descriptive Parmとは、File Sopなどにある、Network View上でノードの名前の下にあるやつです。
-これを、表示されてないノードにも表示させるようにします。これで、いちいちノードを選択してパラメータを見なくても、重要なパラメータの値がNetwork View上で確認できるようになります。しかし、そのパラメータが何かのノードとリンクして、そのノードはクソ重い処理をしなければならないのなら、この値を表示するために、毎回時間がかかってしまうので、気をつけてください。
-最初に、Pythonでどうやるか確認しましょう。ヘルプを見るとノードのUserDataを変更すれば、いいようです。 http://www.sidefx.com/docs/houdini/network/badges.html#textbadges
-上の添付のようにMountainSopのElement Sizeを、Network Viewに表示させるには、Pythonはこんな感じ。
-node = hou.node(&amp;#39;/obj/geo1/mountain1&amp;#39;) parm_name = &amp;#39;elementsize&amp;#39; node.setUserData(&amp;#34;descriptiveparm&amp;#34;, parm_name) ノードと、Descriptive Parmになるパラメータの名前が必要ですね。
-必要なものがわかったので、実際の作業に入りましょう。まずはPythonファイルを作ります。ここでは、changeDescriptiveParm.pyという名前にして、Houdiniがインポートできる場所に保存します。
-import hou def doit(parms,type): parm = parms[0] parm_name = parm.name() node = parm.node() if type == &amp;#34;clear&amp;#34; parm_name = &amp;#34;&amp;#34; node.setUserData(&amp;#34;descriptiveparm&amp;#34;, parm_name)) 現在、右クリックしているパラメータが何かはparms=kwargs[&amp;quot;parms&amp;quot;]で取得します。parmsとあるとおり、リストとして値が返ってきます。選択してるパラメータは1つなので、parm = parms[0]。パラメータからノードの情報を得るには、単純にparm.node()。これで、必要な情報はすべて取得できたことになります。 Descriptive Parmをクリアしたい時もあるので、parm_nameを空にして、それを可能にしておきます。
-最後に、PARMmenu.xmlを編集しましょう。こうです。
-&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;menuDocument&amp;gt; &amp;lt;menu&amp;gt; &amp;lt;subMenu id=&amp;#34;changeDescriptiveParm&amp;#34;&amp;gt; &amp;lt;label&amp;gt;Change Descriptive Parm&amp;lt;/label&amp;gt; &amp;lt;scriptItem&amp;gt; &amp;lt;label&amp;gt;Set&amp;lt;/label&amp;gt; &amp;lt;scriptCode&amp;gt;&amp;lt;!</description>
+      <description>&lt;!--  --&gt;
+
+
+
+
+  &lt;span style=&#34;color: firebrick;font-weight: bold;  background-color: transparent&#34;&gt; test &lt;/span&gt;
+
+&lt;iframe width=&#34;&#34; height=&#34;&#34; src=&#34;https://www.youtube.com/embed/&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;大したことじゃないけど、最近のお気に入りを紹介するコーナ。
+第一弾は右クリック。&lt;/p&gt;
+&lt;p&gt;FXを作ってく上で、僕には2大裏テーマというものがあります。それは 
+
+
+
+
+  &lt;span style=&#34;color: firebrick;font-weight: bold;  background-color: transparent&#34;&gt; 「キーフレームを極力打たない」と「手の挙動範囲を極力少なくする」 &lt;/span&gt;
+ です。今回は後者のために、必要なカスタマイズです。&lt;/p&gt;
+&lt;p&gt;ノードのプリセットに入れればいいじゃんと言う人もいるかもしれないですが、あれはパラメータの並び順や位置のレイアウトも記憶しています。Houdiniはバージョンが変わると、パラメータのレイアウトが変わることなんてことは当たり前なので、バージョンごとにプリセットを更新する必要があり非常にめんどいのです。といわけで右クリックのメニューにサポートツールを追加して効率化を図っています。&lt;/p&gt;
+&lt;p&gt;メニューの追加の仕方ですが、
+ノードを右クリックした時にメニューを追加するには、&lt;code&gt;OPmenu.xml&lt;/code&gt;を編集します。
+パラメータを右クリックした時にメニューを追加するには、&lt;code&gt;PRAMmenu.xml&lt;/code&gt;を編集します。&lt;/p&gt;
+&lt;p&gt;基本的には、ここに書いてあるんで、読めばわかります。
+&lt;a href=&#34;http://www.sidefx.com/docs/houdini/basics/config_menus.htm&#34;&gt;http://www.sidefx.com/docs/houdini/basics/config_menus.html&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;お題として、先日パベルさんのセミナーでDescriptive Parmの表示の仕方を習ったので、これをパラメータの右クリックに追加してみましょう。
+Descriptive Parmとは、File Sopなどにある、Network View上でノードの名前の下にあるやつです。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2018-03-06/blog_favorite01_001.png&#34; alt=&#34;img_01&#34;  /&gt;
+
+これを、表示されてないノードにも表示させるようにします。これで、いちいちノードを選択してパラメータを見なくても、重要なパラメータの値がNetwork View上で確認できるようになります。しかし、そのパラメータが何かのノードとリンクして、そのノードはクソ重い処理をしなければならないのなら、この値を表示するために、毎回時間がかかってしまうので、気をつけてください。&lt;/p&gt;
+&lt;p&gt;最初に、Pythonでどうやるか確認しましょう。ヘルプを見るとノードのUserDataを変更すれば、いいようです。
+&lt;a href=&#34;http://www.sidefx.com/docs/houdini/network/badges.html#textbadges&#34;&gt;http://www.sidefx.com/docs/houdini/network/badges.html#textbadges&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;上の添付のようにMountainSopのElement Sizeを、Network Viewに表示させるには、Pythonはこんな感じ。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; hou&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;node(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/obj/geo1/mountain1&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;parm_name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;elementsize&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;setUserData(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;descriptiveparm&amp;#34;&lt;/span&gt;, parm_name)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ノードと、Descriptive Parmになるパラメータの名前が必要ですね。&lt;/p&gt;
+&lt;p&gt;必要なものがわかったので、実際の作業に入りましょう。まずはPythonファイルを作ります。ここでは、changeDescriptiveParm.pyという名前にして、Houdiniがインポートできる場所に保存します。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; hou
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;doit&lt;/span&gt;(parms,type):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  parm &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; parms[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  parm_name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; parm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;name()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  node &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; parm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;node()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; type &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clear&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    parm_name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;setUserData(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;descriptiveparm&amp;#34;&lt;/span&gt;, parm_name))
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;現在、右クリックしているパラメータが何かは&lt;code&gt;parms=kwargs[&amp;quot;parms&amp;quot;]&lt;/code&gt;で取得します。&lt;code&gt;parms&lt;/code&gt;とあるとおり、リストとして値が返ってきます。選択してるパラメータは1つなので、&lt;code&gt;parm = parms[0]&lt;/code&gt;。パラメータからノードの情報を得るには、単純に&lt;code&gt;parm.node()&lt;/code&gt;。これで、必要な情報はすべて取得できたことになります。
+Descriptive Parmをクリアしたい時もあるので、&lt;code&gt;parm_name&lt;/code&gt;を空にして、それを可能にしておきます。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>[Deadline] Add Extra Version</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2017-09-13/</link>
       <pubDate>Wed, 13 Sep 2017 11:00:53 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2017-09-13/</guid>
-      <description>時々、悩んでる人がいたので、Deadlineネタを１つ。
-どんなソフトでも、マイナーアップデートは簡単にできますが、メジャーアップデートは、プロジェクトの兼ね合いや自社Plugin/Toolの影響で、そうは容易くできません。アップグレードの金を出すのに渋って更新してないのでなく、ただ単にめんどくさいという理由で更新されてなかったら、担当者のケツを蹴っ飛ばして更新してもらいましょう。
-いろんな理由でDeadlineのバージョンが古すぎて、最新のHoudiniのバージョン使用できないという人もいるでしょう。今回は、そんな人向けへの裏ワザを紹介します。
-※この記事は、Deadline Client Version: 9.0.6.1の元、作成しています。
-Configure Plugins まずは、 Configure Pluginsに任意のバージョンを追加して、Pathをセットできるようにしましょう。
-以下のファイルを探しだして、[Houdini16_Hython_Executable]の次に追加します。 $DEADLINE_REPOSITORY/plugins/Houdini/houdini.param
-[Houdini17_Hython_Executable] Label=Houdini 17 Hython Executable Category=Render Executables CategoryOrder=0 Type=multilinemultifilename Index=8 Default=C:\Program Files\Side Effects Software\Houdini 17.0.000\bin\Hython.exe;C:\Program Files (x86)\Side Effects Software\Houdini 17.0.000\bin\Hython.exe;/Applications/Houdini/Houdini17.0.000/Frameworks/Houdini.framework/Versions/17.0.000/Resources/bin/hython Description=The path to the hython executable. It can be found in the Houdini bin folder. そうすると、Configure Pluginsをみてみると追加されています。簡単ですね。各自インストールフォルダを指定してあげてください。 Distribute Sim使う人は、Sim Trackerも追加しときましょう。（HQueue使う人ってどれくらいるんだろう？使わないよね？）
-Buildを指定したいなら、Houdini16.5.123_Hython_Executableみたいに作ることも可能です。 Mantraも同じ要領でやればできます。
-Houdini Submission Submission WindowのVersion指定メニューに、任意のバージョンを足すには、以下のpythonを変更します。 $DEADLINE_REPOSITORY/scripts/Submission/HoudiniSubmission.py 以下のラインを探しだして、任意のバージョンを追加してください。
-scriptDialog.AddComboControlToGrid(&amp;#34;VersionBox&amp;#34;,&amp;#34;ComboControl&amp;#34;,&amp;#34;14&amp;#34;,(&amp;#34;9&amp;#34;,&amp;#34;10&amp;#34;,&amp;#34;11&amp;#34;,&amp;#34;12&amp;#34;,&amp;#34;13&amp;#34;,&amp;#34;14&amp;#34;,&amp;#34;15&amp;#34;,&amp;#34;16&amp;#34;,&amp;#34;17&amp;#34;,), 5, 1) これだけです。 Deadlineは結構いいよ 以上の手順を踏めば、投げられるようになったと思いますが、 Deadlineはバッチ処理をする前に、いくつかのプロセスを処理してるので、あまりにも古いバージョンを使用してる場合は、ノードのパラメータ名が変わっていたり、対応してないかもしれません。 そんな時は、$DEADLINE_REPOSITORY/plugins/Houdini/hrender_dl.pyをなんとかなります。</description>
+      <description>&lt;p&gt;時々、悩んでる人がいたので、Deadlineネタを１つ。&lt;/p&gt;
+&lt;p&gt;どんなソフトでも、マイナーアップデートは簡単にできますが、メジャーアップデートは、プロジェクトの兼ね合いや自社Plugin/Toolの影響で、そうは容易くできません。アップグレードの金を出すのに渋って更新してないのでなく、ただ単にめんどくさいという理由で更新されてなかったら、担当者のケツを蹴っ飛ばして更新してもらいましょう。&lt;/p&gt;
+&lt;p&gt;いろんな理由でDeadlineのバージョンが古すぎて、最新のHoudiniのバージョン使用できないという人もいるでしょう。今回は、そんな人向けへの裏ワザを紹介します。&lt;/p&gt;
+&lt;p&gt;※この記事は、Deadline Client Version: 9.0.6.1の元、作成しています。&lt;/p&gt;
+&lt;h2 id=&#34;configure-plugins&#34;&gt;Configure Plugins&lt;/h2&gt;
+&lt;p&gt;まずは、 Configure Pluginsに任意のバージョンを追加して、Pathをセットできるようにしましょう。&lt;/p&gt;
+&lt;p&gt;以下のファイルを探しだして、[Houdini16_Hython_Executable]の次に追加します。
+&lt;code&gt;$DEADLINE_REPOSITORY/plugins/Houdini/houdini.param&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[Houdini17_Hython_Executable]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Label=Houdini 17 Hython Executable
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Category=Render Executables
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;CategoryOrder=0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Type=multilinemultifilename
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Index=8
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Default=C:\Program Files\Side Effects Software\Houdini 17.0.000\bin\Hython.exe;C:\Program Files (x86)\Side Effects Software\Houdini 17.0.000\bin\Hython.exe;/Applications/Houdini/Houdini17.0.000/Frameworks/Houdini.framework/Versions/17.0.000/Resources/bin/hython
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Description=The path to the hython executable. It can be found in the Houdini bin folder.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;そうすると、Configure Pluginsをみてみると追加されています。簡単ですね。各自インストールフォルダを指定してあげてください。 Distribute Sim使う人は、Sim Trackerも追加しときましょう。（HQueue使う人ってどれくらいるんだろう？使わないよね？）&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2017-09-13/blog_deadline_01_001.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Buildを指定したいなら、Houdini16.5.123_Hython_Executableみたいに作ることも可能です。
+Mantraも同じ要領でやればできます。&lt;/p&gt;
+&lt;h2 id=&#34;houdini-submission&#34;&gt;Houdini Submission&lt;/h2&gt;
+&lt;p&gt;Submission WindowのVersion指定メニューに、任意のバージョンを足すには、以下のpythonを変更します。 &lt;code&gt;$DEADLINE_REPOSITORY/scripts/Submission/HoudiniSubmission.py&lt;/code&gt;  以下のラインを探しだして、任意のバージョンを追加してください。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;scriptDialog&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;AddComboControlToGrid(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;VersionBox&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ComboControl&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;14&amp;#34;&lt;/span&gt;,(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;9&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;10&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;11&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;12&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;13&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;14&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;15&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;16&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;17&amp;#34;&lt;/span&gt;,), &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これだけです。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2017-09-13/blog_deadline_01_002.png&#34; alt=&#34;img_02&#34;  /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;deadlineは結構いいよ&#34;&gt;Deadlineは結構いいよ&lt;/h2&gt;
+&lt;p&gt;以上の手順を踏めば、投げられるようになったと思いますが、 Deadlineはバッチ処理をする前に、いくつかのプロセスを処理してるので、あまりにも古いバージョンを使用してる場合は、ノードのパラメータ名が変わっていたり、対応してないかもしれません。
+そんな時は、&lt;code&gt;$DEADLINE_REPOSITORY/plugins/Houdini/hrender_dl.py&lt;/code&gt;をなんとかなります。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Kill Houdini</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2017-06-19/</link>
       <pubDate>Mon, 19 Jun 2017 11:00:53 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2017-06-19/</guid>
-      <description>今回の話は、Linuxユーザのためだけですので、あしからず。
-なにか間違った値を入れてしまったりして、メモリが右肩上がりに上昇し、メモリをフルに使いきり、パソコンが動かなくなるということは、時々あるでしょう。会社のマシンは128GBですが、まれになります。 そんなときは、 CUIモードで対処したり、同僚のマシンから操作してもらったり、泣く泣く電源を落としたりと、みなさんもこんな経験はたくさんあるでしょう。 残念ながら、いろいろセーブしてなくて、「ごめんなさい」を連呼しながらEscを連打しても、ダメなときはダメです。
-そうなる前に、問題のプロセスを強制的に終了させましょう。 というわけで、今回はBashを調べてみました。基本Linuxで仕事してますが、Bashやコマンドは避けてきたので、何か間違ってる点や、もっといい方法がありましたら教えてください。
-プロセス一覧から探しだして、kill まずは、ベーシック。 プロセスを表示するコマンドはps。 みなさんは、どういうオプション使っているかはわかりませんが、自分はいつもこれ
-ps aux 端末内外のプロセスを表示して、CPUとメモリの使用量も表示させる。
-さらに、Houdiniのプロセスだけを表示させる
-ps aux | grep houdini-bin 表示された結果から、見つけた対象のプロセスIDを殺す。
-kill -SEGV 123456 このSEGVは、ホント助かりますよね。Windowsにはないらしいですが、可哀想に。
-これで、プロセスが死に、$houdini_tmpのなかに、シーンファイルが、保存される。まっ、たまに保存が失敗することがありますが。
-さて、ここまでは普通の手順。もう少し、賢くやってみましょう。
-すべてのHoudiniプロセスを、kill まずは、今あるHoudiniのプロセスすべてをKillします。
-kill -SEGV `ps aux | grep [h]oudini-bin | tr -s &amp;#39; &amp;#39; | cut -d &amp;#39; &amp;#39; -f 2` houdini-binは、houdiniの立ち上げ方によって、名前変わるので、各自変えてください。ちなみにhoudini-bin はターミナルで、houdini_sourceをセットし、houdiniとタイプし起動したら、そうなります。 なので、それらを考慮するなら、複数指定しときましょう
-grep -e [h]oudini-bin -e [h]indie-bin []を使う理由は、プロセスにgrep自身が表示されないようにするためです。
-ps aux | grep [h]oudini-bin 実行すると、こんな感じのものが返ってくると思います。 shohei 9042 4.7 1.5 5985364 2067844 ? Ssl 10:54 11:17 /opt/hfs16.</description>
+      <description>&lt;p&gt;今回の話は、Linuxユーザのためだけですので、あしからず。&lt;/p&gt;
+&lt;p&gt;なにか間違った値を入れてしまったりして、メモリが右肩上がりに上昇し、メモリをフルに使いきり、パソコンが動かなくなるということは、時々あるでしょう。会社のマシンは128GBですが、まれになります。
+そんなときは、 CUIモードで対処したり、同僚のマシンから操作してもらったり、泣く泣く電源を落としたりと、みなさんもこんな経験はたくさんあるでしょう。
+残念ながら、いろいろセーブしてなくて、「ごめんなさい」を連呼しながらEscを連打しても、ダメなときはダメです。&lt;/p&gt;
+&lt;p&gt;そうなる前に、問題のプロセスを強制的に終了させましょう。
+というわけで、今回はBashを調べてみました。基本Linuxで仕事してますが、Bashやコマンドは避けてきたので、何か間違ってる点や、もっといい方法がありましたら教えてください。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;プロセス一覧から探しだしてkill&#34;&gt;プロセス一覧から探しだして、kill&lt;/h3&gt;
+&lt;p&gt;まずは、ベーシック。
+プロセスを表示するコマンドはps。
+みなさんは、どういうオプション使っているかはわかりませんが、自分はいつもこれ&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ps aux
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;端末内外のプロセスを表示して、CPUとメモリの使用量も表示させる。&lt;/p&gt;
+&lt;p&gt;さらに、Houdiniのプロセスだけを表示させる&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-Shell&#34; data-lang=&#34;Shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ps aux | grep houdini-bin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;表示された結果から、見つけた対象のプロセスIDを殺す。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-Shell&#34; data-lang=&#34;Shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kill -SEGV &lt;span style=&#34;color:#ae81ff&#34;&gt;123456&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;このSEGVは、ホント助かりますよね。Windowsにはないらしいですが、可哀想に。&lt;/p&gt;
+&lt;p&gt;これで、プロセスが死に、$houdini_tmpのなかに、シーンファイルが、保存される。まっ、たまに保存が失敗することがありますが。&lt;/p&gt;
+&lt;p&gt;さて、ここまでは普通の手順。もう少し、賢くやってみましょう。&lt;/p&gt;
+&lt;h2 id=&#34;すべてのhoudiniプロセスをkill&#34;&gt;すべてのHoudiniプロセスを、kill&lt;/h2&gt;
+&lt;p&gt;まずは、今あるHoudiniのプロセスすべてをKillします。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-Shell&#34; data-lang=&#34;Shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kill -SEGV &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;ps aux | grep &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;h&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;oudini-bin | tr -s &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt; | cut -d &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt; -f 2&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;houdini-binは、houdiniの立ち上げ方によって、名前変わるので、各自変えてください。ちなみにhoudini-bin はターミナルで、houdini_sourceをセットし、houdiniとタイプし起動したら、そうなります。
+なので、それらを考慮するなら、複数指定しときましょう&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-Shell&#34; data-lang=&#34;Shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;grep -e &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;h&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;oudini-bin -e &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;h&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;indie-bin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;[]を使う理由は、プロセスにgrep自身が表示されないようにするためです。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-Shell&#34; data-lang=&#34;Shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ps aux | grep &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;h&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;oudini-bin 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;実行すると、こんな感じのものが返ってくると思います。
+&lt;code&gt;shohei    9042  4.7  1.5 5985364 2067844 ?     Ssl  10:54  11:17 /opt/hfs16.0/bin/houdini-bin shohei   24231  0.4  0.4 1385564 544956 ?      Ssl  Jun05  11:00 /opt/hfs16.0/bin/houdini-bin&lt;/code&gt;
+分かりづらいかもしれせんが、連続したスペースがあります。これだと不便です。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>H16についてのメモ</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2017-03-29/</link>
       <pubDate>Wed, 29 Mar 2017 15:50:27 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2017-03-29/</guid>
-      <description>New Network Editor さて、賛否両論ありそうなこれ。見た目は可愛くなりましたね。 そして描画速度も速くなりました。Pythonでノードを何千と作ったり、AlembicのHierarchyを保持して展開するときなど、大きな差が出そうです。
-あのノードの形、可愛くないから使いたくないとか、デフォルトを変えたいって人はいるでしょう。僕はノードを組む上での自分なりのルールがあるためノードの色が最初から付いているのは非常に不便でデフォルトを変更してます。
-そこで、どうやってカスタマイズするかを紹介します。
-書き方は、インストール先の$HFS/houdini/OPcustomizeに記述されてるので覗いてみてください。
-Sample
-文頭がopdefaultcolorで始まるのが色の設定。 文頭がopdefaultshapeで始まるのが形の設定。 では、$HOME/houdini16.0/OPcustomizeというテキストを作って編集してみましょう。
-まず形から変更してみましょう。 SopのMergeを丸にするには
-opdefaultshape Sop merge circle 形の種類ってヘルプのどこかに書いてあるんですかね？5分位探してなかったのであきらめました。 そこでPythonで選択したのノードの形を取得してみます。
-import hou n = hou.selectedNodes()[0] ns = n.userData(&amp;#39;nodeshape&amp;#39;) ds = n.type().defaultShape() print(ns, ds) userDataに入ってるのは、NetworkViewで変えた形で、defaultShapeは名の通りです。
-続いて色です。個人的に勝手にノードに色がつくのはうっとおしかったため、すべての色の設定をクリアしました。
-opdefaultcolor -c これで、Houdini Pathの順番で、このファイルより前で設定されたopdefaultcolorはClearされます。 形の設定をクリアするには、同じく-cです
-opdefaultshape -c 色をつけるには
-opdefaultcolor Sop rop_geometry &amp;#39;RGB 0.451 0.369 0.796&amp;#39; ノードの名称、色とか形を調べるのはメンドイんで、ノードを選択して実行すれば分かるようにして、作業しました。
-import hou ns = hou.selectedNodes() for n in ns: nn = n.type().nameWithCategory() cd = n.color() ds = n.type().defaultShape() us = n.</description>
+      <description>&lt;h2 id=&#34;new-network-editor&#34;&gt;New Network Editor&lt;/h2&gt;
+&lt;p&gt;さて、賛否両論ありそうなこれ。見た目は可愛くなりましたね。
+そして描画速度も速くなりました。Pythonでノードを何千と作ったり、AlembicのHierarchyを保持して展開するときなど、大きな差が出そうです。&lt;/p&gt;
+&lt;p&gt;あのノードの形、可愛くないから使いたくないとか、デフォルトを変えたいって人はいるでしょう。僕はノードを組む上での自分なりのルールがあるためノードの色が最初から付いているのは非常に不便でデフォルトを変更してます。&lt;/p&gt;
+&lt;p&gt;そこで、どうやってカスタマイズするかを紹介します。&lt;/p&gt;
+&lt;p&gt;書き方は、インストール先の$HFS/houdini/OPcustomizeに記述されてるので覗いてみてください。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://127.0.0.1:1313/FXHACK/posts/2017-03-29/OPcustomize&#34;&gt;Sample&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;文頭がopdefaultcolorで始まるのが色の設定。 文頭がopdefaultshapeで始まるのが形の設定。
+では、$HOME/houdini16.0/OPcustomizeというテキストを作って編集してみましょう。&lt;/p&gt;
+&lt;p&gt;まず形から変更してみましょう。
+SopのMergeを丸にするには&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;opdefaultshape Sop merge circle
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;形の種類ってヘルプのどこかに書いてあるんですかね？5分位探してなかったのであきらめました。
+そこでPythonで選択したのノードの形を取得してみます。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; hou
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;n  &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; hou&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;selectedNodes()[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ns &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;userData(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;nodeshape&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ds &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;type()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;defaultShape() 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(ns, ds)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;userDataに入ってるのは、NetworkViewで変えた形で、defaultShapeは名の通りです。&lt;/p&gt;
+&lt;p&gt;続いて色です。個人的に勝手にノードに色がつくのはうっとおしかったため、すべての色の設定をクリアしました。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;opdefaultcolor -c
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;これで、Houdini Pathの順番で、このファイルより前で設定されたopdefaultcolorはClearされます。
+形の設定をクリアするには、同じく-cです&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;opdefaultshape -c
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;色をつけるには&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;opdefaultcolor Sop  rop_geometry &amp;#39;RGB 0.451 0.369 0.796&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ノードの名称、色とか形を調べるのはメンドイんで、ノードを選択して実行すれば分かるようにして、作業しました。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; hou
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ns  &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; hou&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;selectedNodes()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; ns:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    nn &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;type()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nameWithCategory()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    cd &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;color()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ds &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;type()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;defaultShape()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    us &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;userData(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;nodeshape&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print( &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Name:&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;, Color:&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;, Defalut Shape:&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;, User Shape:&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; (nn, cd, ds, us) )
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;なんで、こんなことをしたかというと、例えば、チーム内で「このノードの色はこういう条件の時のみ使用しよう。」とか「このノードの形は書き出しを意味する。」とか決めておけば、他の人の複雑なシーンファイルを渡されても、どのノードが重要なのかとか何をしてるのか、わかりやすくなっておすすめです。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Wrangleを使おう 3 - Replace ForLoop</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2016-12-10/</link>
       <pubDate>Sat, 10 Dec 2016 10:00:44 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2016-12-10/</guid>
-      <description>久しぶりのWrangle回です。
-個人的にHoudiniにおいて、よく使う必需ノードは、For LoopとAttribute Promoteです。これらがないと仕事ができません。もちろんWrangleも絶対使います。
-特にFor LoopはHoudiniを象徴するようなノードだと勝手に思ってます。ある処理を考え、それを他のものにも同様な処理を施す。まさにProceduralに作業する上で必要不可欠なものです。
-しかし！ForLoopは処理に時間がかる時が大半です。なぜなら、 すべてのノードがマルチスレッド処理されるわけではありませんし、１つ１つのピースやグループを同時にではなく、順番に処理するため遅くなってしまいます 。
-シンプルな例を元に解説していきます。
-Sample File : wrangle_03.hiplc (15.5.607 linux-x86_64-gcc4.8)
-Voronoiで割った1つ1つのピースのサイズを測ろうと思います。あまりにも小さいピースはSimulationに参加させない様にさせるとか、大きいやつはもう一回砕こうとかで使うことがありますね。
-ピースのサイズを求めるために、まずMeasureで個々のPrimitiveの面積か体積を測ります。続いて、For Loopで各ピースごとが持っている各Primitive面積の総和を出します。これが、ピースのサイズとなります。
-本題です。Wrangleでやってみます。
-nuniqueval() uniqueval() findattribvalcount() findattribval() この関数がミソなんでHelpは読んでください。
-string piece_attr = &amp;#34;name&amp;#34;; int num_piece_attr = nuniqueval(@OpInput1, &amp;#34;prim&amp;#34;, piece_attr); addattrib(0,&amp;#34;prim&amp;#34;,&amp;#34;area_sum&amp;#34;,0.0); for(int i = 0; i &amp;lt; num_piece_attr; i++){ string uq_val = uniqueval(@OpInput1, &amp;#34;prim&amp;#34;, piece_attr,i); int num_prim_piece = findattribvalcount(@OpInput1, &amp;#34;prim&amp;#34;, piece_attr,uq_val); int prim_piece,ii =0; float per_area,area_sum =0.0; for(ii=0; ii&amp;lt; num_prim_piece; ii++){ prim_piece = findattribval(@OpInput1,&amp;#34;prim&amp;#34;,piece_attr,uq_val,ii); per_area = prim(0,&amp;#34;area&amp;#34;,prim_piece); area_sum += per_area; } for(ii=0; ii&amp;lt; num_prim_piece; ii++){ prim_piece = findattribval(@OpInput1,&amp;#34;prim&amp;#34;,piece_attr,uq_val,ii); setattrib(0, &amp;#34;prim&amp;#34;, &amp;#34;area_sum&amp;#34;, prim_piece, 0, area_sum, &amp;#34;set&amp;#34;); } } For Loopでやった処理を分解しながら説明していきます。Run OverはDetailです。</description>
+      <description>&lt;!--  --&gt;
+
+
+
+
+  &lt;span style=&#34;color: firebrick;font-weight: bold;  background-color: transparent&#34;&gt; test &lt;/span&gt;
+
+&lt;p&gt;久しぶりのWrangle回です。&lt;/p&gt;
+&lt;p&gt;個人的にHoudiniにおいて、よく使う必需ノードは、For LoopとAttribute Promoteです。これらがないと仕事ができません。もちろんWrangleも絶対使います。&lt;/p&gt;
+&lt;p&gt;特にFor LoopはHoudiniを象徴するようなノードだと勝手に思ってます。ある処理を考え、それを他のものにも同様な処理を施す。まさにProceduralに作業する上で必要不可欠なものです。&lt;/p&gt;
+&lt;p&gt;しかし！ForLoopは処理に時間がかる時が大半です。なぜなら、
+
+
+
+
+  &lt;span style=&#34;color: firebrick;font-weight: bold;  background-color: transparent&#34;&gt; すべてのノードがマルチスレッド処理されるわけではありませんし、１つ１つのピースやグループを同時にではなく、順番に処理するため遅くなってしまいます &lt;/span&gt;
+。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;シンプルな例を元に解説していきます。&lt;/p&gt;
+&lt;p&gt;Sample File : &lt;a href=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-12-10/wrangle_03.hiplc&#34;&gt;wrangle_03.hiplc&lt;/a&gt; (15.5.607 linux-x86_64-gcc4.8)&lt;/p&gt;
+&lt;p&gt;Voronoiで割った1つ1つのピースのサイズを測ろうと思います。あまりにも小さいピースはSimulationに参加させない様にさせるとか、大きいやつはもう一回砕こうとかで使うことがありますね。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-12-10/blog_wrangle3_006.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;ピースのサイズを求めるために、まずMeasureで個々のPrimitiveの面積か体積を測ります。続いて、For Loopで各ピースごとが持っている各Primitive面積の総和を出します。これが、ピースのサイズとなります。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-12-10/blog_w3_001.png&#34; alt=&#34;img_02&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;本題です。Wrangleでやってみます。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;nuniqueval()&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;uniqueval()&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;findattribvalcount()&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;findattribval()&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;この関数がミソなんでHelpは読んでください。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; piece_attr = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num_piece_attr = nuniqueval(@OpInput1, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;prim&amp;#34;&lt;/span&gt;, piece_attr);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;addattrib(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;prim&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;area_sum&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;0.0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i = &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i &amp;lt; num_piece_attr; i++){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; uq_val = uniqueval(@OpInput1, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;prim&amp;#34;&lt;/span&gt;, piece_attr,i);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num_prim_piece = findattribvalcount(@OpInput1, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;prim&amp;#34;&lt;/span&gt;, piece_attr,uq_val);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; prim_piece,ii =&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;float&lt;/span&gt; per_area,area_sum =&lt;span style=&#34;color:#ae81ff&#34;&gt;0.0&lt;/span&gt;;        
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(ii=&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; ii&amp;lt; num_prim_piece; ii++){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        prim_piece = findattribval(@OpInput1,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;prim&amp;#34;&lt;/span&gt;,piece_attr,uq_val,ii);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        per_area = prim(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;area&amp;#34;&lt;/span&gt;,prim_piece);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        area_sum +=   per_area;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(ii=&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; ii&amp;lt; num_prim_piece; ii++){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        prim_piece = findattribval(@OpInput1,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;prim&amp;#34;&lt;/span&gt;,piece_attr,uq_val,ii);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        setattrib(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;prim&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;area_sum&amp;#34;&lt;/span&gt;, prim_piece, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, area_sum, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;set&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For Loopでやった処理を分解しながら説明していきます。Run OverはDetailです。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Time Dependent Cook : YES? or NO?</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2016-08-07/</link>
       <pubDate>Sun, 07 Aug 2016 08:42:33 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2016-08-07/</guid>
-      <description>お久しぶりです。そこそこ忙しくて、ブログを書くのを怠ってました。 今回の内容はビギナー向けですが、非常に重要な考え方なので紹介しようと思います。Time Dependent Cookについてです。
-Time Dependentという言葉は、Houdiniを使ってないと聞き慣れないかもしれませんし、気にしたこともないかもしれません。
-サンプルファイル (Fedora21, Houdini15.0.393, linux-x86_64-gcc4.8)
-What is Time Dependent？ ではTime Dependentとはなんでしょうか？直訳すると「時間に依存」です。
-[Time Dependent Cook:Yes]はフレームが変わるとcookする。逆にNoの場合は、 時間に依存してない。つまり、フレームが変わってもcookしません。 1回cookすれば、それを使いまわします。単純な話、レンジが100Fの場合でYesなら100回cookします。Noなら1回のcookですみます。
-これを気にせずアセットを作るなんてことは、トーシロー、素人です。一昨日来やがれ。言い過ぎました。
-このTime Dependent Cookの情報をどうやって知るかというと、ノードをミドルクリックすれば一番下に出てきます。SOP、DOP、OBJ、COP、CHOP、SHOP、ROP全てのノードで出てきます。（ん？ROPのTime Dependent Cookってなんでしょうね？）
-また、会社の人に教えてもらいましたが、ノードを光らせてどのノードがそうなのかを識別させることもできます。
-どうして重要なのか？ 続いて、活用方法を紹介したいと思います。Houdini始めたら誰しもが使うScatterを使って解説します。 例えば、この歩いている人間にPointを発生させたいとします。普通にScatterすると毎フレーム違う場所に発生してしまいます。これを回避するには、ScatterのパラメータにあるGenerateをIn Texture Spaceにします。一気に処理が重くなりますね
-パラメータを変えるまでは120fps出ていたのに、 10fpsも出なくなってしまいました。致命的ですね。
-速くするにはScatterするのを1回だけにして、後からPositionを動かせばいいのです。TimeShiftでScatterのソースを止めます。そして、ScatterのOutput Attributesから2つを有効にします。これはScatterしたPrim NumberとUVを保存してくれます。 保持したら、最近ついた新しいノードをつかいます。Attribute Interpolateです。1st InputにScatterしたPointをさして、2nd Inputに動いてる人をさすだけPointが動きます。
-Attribute Interpolateなかったころ、どうやっていたかというとVopのPrimitive Attributeを使っていました。ちなみにですが、sourceのPrim NumとUVはIntersect Vopでもとれます。
-Pointが動いたということで、どれくらい速くなってか試してみましょう。一番最後にTrail Sopをさして、Compute Velocityをvを計算させてみます。毎フレームScatterする場所が違うと、vもおかしな値が入ってしまうので、正確に動作しているかも判断できます。
-では、Scatterを毎フレーム計算させた場合です。
-続いて、1FだけScatterしたものです。
-一目瞭然ですね。処理も速いですし、Velocityもうまく計算されています。
-Attribute Interpolateを使うと速くなるよということが言いたかったわけではありません。何が言いたかったかというと、重い処理を極力少なくすれば速くなるよということです。
-それを判断する材料の1つがTime Dependent Cookということです。
-特になにかしらのエミッターを作るときに、非常にお世話になります。シミュレーションは重いです。エミッターも重いとなるとトライアンドエラーの回数が減ってしまいます。
-まとめ 出来る限り重い処理を少なくするためにはどうすればよいか。
-今回の例だと 「動いているものにScatterして、Point群を動かす」を「Scatterして動いているものにくっつけ、Point群を動かす」 に変えました。言葉の並び替えみたいなようなものですが、この考え方が重要です。頭の中で、今ある仕組みを文にして、並び替えてみてください。
-ただ単純にノードをつなぐ順番を変えるだけでも、速くなるかもしれません。Performance MonitorやTime Dependentを表示させて、どこがネックになっているか見てみましょう。
-今作っている仕組みには、これ使えないなと思ってるあなた！本当にそうでしょうか？固定観念を捨てて、違った角度から考えてみてはいかがでしょうか？なぜなら、あなたが使ってるソフトはHoudiniなんです。限界を作ってるのはあなた自身かもしれません。信じるか信じないかはアナタ次第です！笑</description>
+      <description>&lt;p&gt;お久しぶりです。そこそこ忙しくて、ブログを書くのを怠ってました。
+今回の内容はビギナー向けですが、非常に重要な考え方なので紹介しようと思います。Time Dependent Cookについてです。&lt;/p&gt;
+&lt;p&gt;Time Dependentという言葉は、Houdiniを使ってないと聞き慣れないかもしれませんし、気にしたこともないかもしれません。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-08-07/fxhack_TimeDpendentCook.hiplc&#34;&gt;サンプルファイル&lt;/a&gt; (Fedora21, Houdini15.0.393, linux-x86_64-gcc4.8)&lt;/p&gt;
+&lt;h2 id=&#34;what-is-time-dependent&#34;&gt;What is Time Dependent？&lt;/h2&gt;
+&lt;p&gt;ではTime Dependentとはなんでしょうか？直訳すると「時間に依存」です。&lt;/p&gt;
+&lt;p&gt;[Time Dependent Cook:Yes]はフレームが変わるとcookする。逆にNoの場合は、
+
+
+
+
+  &lt;span style=&#34;color: firebrick;font-weight: bold;  background-color: transparent&#34;&gt; 時間に依存してない。つまり、フレームが変わってもcookしません。 &lt;/span&gt;
+ 1回cookすれば、それを使いまわします。単純な話、レンジが100Fの場合でYesなら100回cookします。Noなら1回のcookですみます。&lt;/p&gt;
+&lt;p&gt;これを気にせずアセットを作るなんてことは、トーシロー、素人です。一昨日来やがれ。言い過ぎました。&lt;/p&gt;
+&lt;p&gt;このTime Dependent Cookの情報をどうやって知るかというと、ノードをミドルクリックすれば一番下に出てきます。SOP、DOP、OBJ、COP、CHOP、SHOP、ROP全てのノードで出てきます。（ん？ROPのTime Dependent Cookってなんでしょうね？）&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-08-07/blog_TD_001.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;また、会社の人に教えてもらいましたが、ノードを光らせてどのノードがそうなのかを識別させることもできます。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-08-07/blog_TD_002.png&#34; alt=&#34;img_02&#34;  /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;どうして重要なのか&#34;&gt;どうして重要なのか？&lt;/h2&gt;
+&lt;p&gt;続いて、活用方法を紹介したいと思います。Houdini始めたら誰しもが使うScatterを使って解説します。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-08-07/blog_TD_005.png&#34; alt=&#34;img_05&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-08-07/blog_TD_003.gif&#34; alt=&#34;img_03&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;例えば、この歩いている人間にPointを発生させたいとします。普通にScatterすると毎フレーム違う場所に発生してしまいます。これを回避するには、ScatterのパラメータにあるGenerateをIn Texture Spaceにします。一気に処理が重くなりますね&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-08-07/blog_TD_004.gif&#34; alt=&#34;img_04&#34;  /&gt;
+
+パラメータを変えるまでは120fps出ていたのに、 10fpsも出なくなってしまいました。致命的ですね。&lt;/p&gt;
+&lt;p&gt;速くするにはScatterするのを1回だけにして、後からPositionを動かせばいいのです。TimeShiftでScatterのソースを止めます。そして、ScatterのOutput Attributesから2つを有効にします。これはScatterしたPrim NumberとUVを保存してくれます。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-08-07/blog_TD_006.png&#34; alt=&#34;img_06&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;保持したら、最近ついた新しいノードをつかいます。Attribute Interpolateです。1st InputにScatterしたPointをさして、2nd Inputに動いてる人をさすだけPointが動きます。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-08-07/blog_TD_007.png&#34; alt=&#34;img_07&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Attribute Interpolateなかったころ、どうやっていたかというとVopのPrimitive Attributeを使っていました。ちなみにですが、sourceのPrim NumとUVはIntersect Vopでもとれます。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-08-07/blog_TD_008.png&#34; alt=&#34;img_08&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Pointが動いたということで、どれくらい速くなってか試してみましょう。一番最後にTrail Sopをさして、Compute Velocityをvを計算させてみます。毎フレームScatterする場所が違うと、vもおかしな値が入ってしまうので、正確に動作しているかも判断できます。&lt;/p&gt;
+&lt;p&gt;では、Scatterを毎フレーム計算させた場合です。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-08-07/blog_TD_009.gif&#34; alt=&#34;img_09&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;続いて、1FだけScatterしたものです。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2016-08-07/blog_TD_010.gif&#34; alt=&#34;img_10&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;一目瞭然ですね。処理も速いですし、Velocityもうまく計算されています。&lt;/p&gt;
+&lt;p&gt;Attribute Interpolateを使うと速くなるよということが言いたかったわけではありません。何が言いたかったかというと、重い処理を極力少なくすれば速くなるよということです。&lt;/p&gt;
+&lt;p&gt;それを判断する材料の1つがTime Dependent Cookということです。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>[RnD] Pyro with Vorticity</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2015-11-07/</link>
       <pubDate>Sat, 07 Nov 2015 13:43:24 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2015-11-07/</guid>
-      <description>レゾをそんなに高くしなくても、手軽にコントロールでき、形を崩しいい感じのShapeを作るを目的にしたRnD
-Houdini歴5年目にして、やっとSopレベルもそこそこになってきたので、最近Dopに力を入れ始めました。データの流れを考えながら構築していったり、Sopでの知識は必ず役に立ちますし、データを可視化できるので、今までもっていたMicroSolverに対する苦手意識がなくなりました。
-FumeやらPhoenix FDにvorticityというのがついてるのに、Pyroにはないのとお思いの方、朗報です。
-自分で作れます。
-あのプラグイン達はBlackboxになっているので、どのような手法をとっているかは伺えしれませんが、結果的によければOKです。
-普通に煙をエミットするとのっぺりとした部分ができてしまいます。 これを崩すにはTubulenceをかけたり、Pyroの場合はDisturbanceを使ったりします。Turbulenceの使い方を間違えると、エミットしてから時間が立っているとこにも強くかかってしまうと、ダサい煙になってしまいます。また、Disturbanceも強くかけ過ぎると、ボロボロになってしまいます。コントロールが難しいです。
-Vimeoにあげた動画の、最初の煙はエミットされてからすぐに、モコモコしてるのが分かると思います。これが、求めていたものです。コントロールも結構簡単です。
-作り方は、、、いくつかのMicroSolverとSop Solverの組み合わせですｗ Vorticleを作って、渦度が高くないところも高くして影響を与えるみたいなことをしてます。 （Divergenceをいじってもこんな結果ができるはずです。）
-手軽に自分で作れるこそが、Houdiniの強み</description>
+      <description>&lt;div style=&#34;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;&#34;&gt;
+  &lt;iframe
+    src=&#34;https://player.vimeo.com/video/144945053&#34;
+    style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;border:0;&#34;
+    allow=&#34;autoplay; fullscreen; picture-in-picture&#34;
+    allowfullscreen
+    loading=&#34;lazy&#34;
+    title=&#34;Vimeo video 144945053&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;レゾをそんなに高くしなくても、手軽にコントロールでき、形を崩しいい感じのShapeを作るを目的にしたRnD&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Houdini歴5年目にして、やっとSopレベルもそこそこになってきたので、最近Dopに力を入れ始めました。データの流れを考えながら構築していったり、Sopでの知識は必ず役に立ちますし、データを可視化できるので、今までもっていたMicroSolverに対する苦手意識がなくなりました。&lt;/p&gt;
+&lt;p&gt;FumeやらPhoenix FDにvorticityというのがついてるのに、Pyroにはないのとお思いの方、朗報です。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;自分で作れます。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;あのプラグイン達はBlackboxになっているので、どのような手法をとっているかは伺えしれませんが、結果的によければOKです。&lt;/p&gt;
+&lt;p&gt;普通に煙をエミットするとのっぺりとした部分ができてしまいます。 これを崩すにはTubulenceをかけたり、Pyroの場合はDisturbanceを使ったりします。Turbulenceの使い方を間違えると、エミットしてから時間が立っているとこにも強くかかってしまうと、ダサい煙になってしまいます。また、Disturbanceも強くかけ過ぎると、ボロボロになってしまいます。コントロールが難しいです。&lt;/p&gt;
+&lt;p&gt;Vimeoにあげた動画の、最初の煙はエミットされてからすぐに、モコモコしてるのが分かると思います。これが、求めていたものです。コントロールも結構簡単です。&lt;/p&gt;
+&lt;p&gt;作り方は、、、いくつかのMicroSolverとSop Solverの組み合わせですｗ
+Vorticleを作って、渦度が高くないところも高くして影響を与えるみたいなことをしてます。
+（Divergenceをいじってもこんな結果ができるはずです。）&lt;/p&gt;
+&lt;p&gt;手軽に自分で作れるこそが、Houdiniの強み&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Volume Displacement</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2015-07-16/</link>
       <pubDate>Sun, 19 Jul 2015 00:54:08 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2015-07-16/</guid>
-      <description>Cloud Noise シミュレーションをせずにVolumeを何かしら編集するエレメントといったら雲や霧だと思います。
-エフェクトの人で雲を作るときに、ネット検索で引っかかり一回は目にしたことであろう、この論文http://magnuswrenninge.com/productionvolumerendering, Resolution Independent Volumes 何やら、難しそうですね。てか4年(2011)も前なんですね。
-個人的な見解ですが、H13?から用意されたCloud Noise Sopはこれを元に作られていると見ています。理由は中を見ればわかります。
-Surfaceの場合、DisplacementはNormal方向に対して、ポジションをオフセットします。となると、VolumeのNormalを計算する必要があります。つまりGradientを用意します。
-Density VolumeをPolygonにしてからSigned Distance Field(SDF)を作っています。SDFは表面までの距離を記録しています。これをVolume VopでVolume Gradientを使って読み込んだSDFから勾配を計算し、このVector方向にDisplacementしています。	SOPでもVDB AnalysisかVolume Analysisを使って勾配のVector Fieldを作れます。
-DisplacementによってVolumeが膨らむことを考慮して、2でBounding Boxを大きくしています。
-Noiseを生成しています。 NoiseはForを使って、最初のNoiseより少し小さなNoiseを足していくようなことを繰り返すことによって複雑なNoiseを作り出しています。あとはAdvectionもありますね。
-論文で紹介されているやり方に似ていると思いませんか？
-中を覗いてみることによって、細かいところは理解できなかったとしても、VolumeにDisplacementする大枠はつかめたのではないでしょうか？ SDFからGradientを計算し、その方向にNoiseで作った値をDisplacementするという流れです。次に、この考えを応用してみます。
-Pyro Displacement VolumeのDisplacementの方法がわかったところで、続いてシミュレーションしたVolumeに対しての方法を紹介します。
-前述の方法は静止しているPに対してNoiseをかけていました。今回は シミュレーションされたVolumeに対して処理を施します。PにNoiseをかけると煙の動きとあいません。Maya Fluidだと煙の進行方向と動きのスピードに合わせて、Noiseのオフセットにキーを打つみたいなことをした経験があるかたもいるかもしれませんが、そんなことはしません。
-restが必要です。他のソフトではP_refとか言われていますね。
-rest Filedを作るにはいくつか設定が必要です。Smoke ObjectとSolverに設定すべき項目があるので設定します。
-ヘルプによるとRest Fieldは、流体の位置を追跡するフィールドと解説されています。また、Dual Restは長いシミュレーションの時に有効で、異なる開始フレームで始まる2つのrestができて、その2つをブレンドして使います。そして、Detailアトリビュートにrest_ratioとrest2_ratioの2つが追加されます。VopまたはShader内で読むときは、restとrest2をMixでまぜbaisにratioを入れてあげます。
-最後にSDFも用意しておきましょう。
-ここまで用意できれば、後はrestを元にNoiseを作ってDisplacementするだけです。SOPでやるかShaderでやるかは、アナタ次第です。
-ちなみにShaderでやる場合は、Pyro Shaderを参考にすると良いです。 上の動画はBasic Smokeを元に作りました。
-How to set rest(hip)
-おまけ。Compress Volume Cache とあるセミナーで、キャッシュサイズの節約法みたいな話がでていたみたいなんで、ここでも触れてみたいとおもいます。といっても、これまた用意されているOTLとノードの解説なんで、手抜き感が否めないですが、意外と知らない方が多いので紹介します。
-ShelfからPyroを組んでる人は、Dop I/O SOPを使ってキャッシュをとってる人がいるかもしれません。そのSOPにCompressionタブがあり、これを使います。これはVolume Compressノードの値を逃しているだけです。 このノードは基本的に、以下の画像の赤枠をいじればよいかと思います。Compress設定は、レンダリングに影響が出ない範囲で、最適な値を各自見つけてください。
-ちょうど2年前に比較したデータですが、Compressをすることでサイズが半分くらいになり、ディスクへの書き込み時間も減っています。 余談ですが、この表はWindowsとLinuxを比べることを目的にしたものです。どちらが速いかはわかりますよね。
-また、多くのVolumeなんちゃらSOPはVDBに対応していません。VDBのデータを16bitにしたい場合は、PrimitiveのVolume&amp;gt;VDBにWrite 16-Bit Floatsというオプションにチェックを入れます。
-まとめ 今回の内容は、SideFxが用意したOTLの解説みたいになってしまいました。Houdiniのアセットは、ブラックボックスになっているところが少ないので中の仕組みを見ることも、編集して自分用にカスタマイズできます。当たり前ですが仕事で使うには、遅かったりコントロールが難しかったり、クオリティが出にくいことがあるので、中を見たり編集する行為は必然です。
-Sigrapphのようなところで発表された技術も、Cloud Noise Sopのように既存のノードを組み合わせるだけで一部を再現できることがあります。Mayaやプラグインのアップデートを待たないと何もできないと手をこまねいているより、新しい技術を観て取り入れるチャレンジをすれば色んな発見をし、可能性が広がるかもしれません。</description>
+      <description>&lt;h2 id=&#34;cloud-noise&#34;&gt;Cloud Noise&lt;/h2&gt;
+&lt;p&gt;シミュレーションをせずにVolumeを何かしら編集するエレメントといったら雲や霧だと思います。&lt;/p&gt;
+&lt;p&gt;エフェクトの人で雲を作るときに、ネット検索で引っかかり一回は目にしたことであろう、この論文&lt;a href=&#34;http://magnuswrenninge.com/productionvolumerendering&#34;&gt;http://magnuswrenninge.com/productionvolumerendering&lt;/a&gt;, &lt;a href=&#34;https://people.cs.clemson.edu/~jtessen/reports/papers_files/RIV.pdf&#34;&gt;Resolution Independent Volumes&lt;/a&gt; 何やら、難しそうですね。てか4年(2011)も前なんですね。&lt;/p&gt;
+&lt;p&gt;個人的な見解ですが、H13?から用意された&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/sop/cloudnoise.html&#34;&gt;Cloud Noise Sop&lt;/a&gt;はこれを元に作られていると見ています。理由は中を見ればわかります。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-07-16/blog_04_001.png&#34; alt=&#34;img_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Surfaceの場合、DisplacementはNormal方向に対して、ポジションをオフセットします。となると、VolumeのNormalを計算する必要があります。つまりGradientを用意します。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Density VolumeをPolygonにしてからSigned Distance Field(SDF)を作っています。SDFは表面までの距離を記録しています。これをVolume Vopで&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/vop/volumegradientfile.html&#34;&gt;Volume Gradientを&lt;/a&gt;使って読み込んだSDFから勾配を計算し、このVector方向にDisplacementしています。	SOPでも&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/sop/vdbanalysis.html&#34;&gt;VDB Analysis&lt;/a&gt;か&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/sop/volumeanalysis.html&#34;&gt;Volume Analysis&lt;/a&gt;を使って勾配のVector Fieldを作れます。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-07-16/blog_04_007.png&#34; alt=&#34;img_02&#34;  /&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;DisplacementによってVolumeが膨らむことを考慮して、2でBounding Boxを大きくしています。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Noiseを生成しています。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-07-16/blog_04_008.png&#34; alt=&#34;img_02&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;NoiseはForを使って、最初のNoiseより少し小さなNoiseを足していくようなことを繰り返すことによって複雑なNoiseを作り出しています。あとはAdvectionもありますね。&lt;/p&gt;
+&lt;p&gt;論文で紹介されているやり方に似ていると思いませんか？&lt;/p&gt;
+&lt;p&gt;中を覗いてみることによって、細かいところは理解できなかったとしても、VolumeにDisplacementする大枠はつかめたのではないでしょうか？
+SDFからGradientを計算し、その方向にNoiseで作った値をDisplacementするという流れです。次に、この考えを応用してみます。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;pyro-displacement&#34;&gt;Pyro Displacement&lt;/h2&gt;
+&lt;iframe width=&#34;&#34; height=&#34;&#34; src=&#34;https://www.youtube.com/embed/&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;VolumeのDisplacementの方法がわかったところで、続いてシミュレーションしたVolumeに対しての方法を紹介します。&lt;/p&gt;
+&lt;p&gt;前述の方法は静止しているPに対してNoiseをかけていました。今回は シミュレーションされたVolumeに対して処理を施します。PにNoiseをかけると煙の動きとあいません。Maya Fluidだと煙の進行方向と動きのスピードに合わせて、Noiseのオフセットにキーを打つみたいなことをした経験があるかたもいるかもしれませんが、そんなことはしません。&lt;/p&gt;
+&lt;p&gt;restが必要です。他のソフトではP_refとか言われていますね。&lt;/p&gt;
+&lt;p&gt;rest Filedを作るにはいくつか設定が必要です。&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/dop/smokeobject.html&#34;&gt;Smoke Object&lt;/a&gt;と&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/dop/smokesolver.html&#34;&gt;Solver&lt;/a&gt;に設定すべき項目があるので設定します。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-07-16/blog_04_005.png&#34; alt=&#34;img_03&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;ヘルプによるとRest Fieldは、流体の位置を追跡するフィールドと解説されています。また、Dual Restは長いシミュレーションの時に有効で、異なる開始フレームで始まる2つのrestができて、その2つをブレンドして使います。そして、Detailアトリビュートにrest_ratioとrest2_ratioの2つが追加されます。VopまたはShader内で読むときは、restとrest2をMixでまぜbaisにratioを入れてあげます。&lt;/p&gt;
+&lt;p&gt;最後にSDFも用意しておきましょう。&lt;/p&gt;
+&lt;p&gt;ここまで用意できれば、後はrestを元にNoiseを作ってDisplacementするだけです。SOPでやるかShaderでやるかは、アナタ次第です。&lt;/p&gt;
+&lt;p&gt;ちなみにShaderでやる場合は、Pyro Shaderを参考にすると良いです。
+上の動画はBasic Smokeを元に作りました。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-07-16/blog_04_009.png&#34; alt=&#34;img_04&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-07-16/rest_ratio.hiplc&#34;&gt;How to set rest(hip)&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;おまけcompress-volume-cache&#34;&gt;おまけ。Compress Volume Cache&lt;/h2&gt;
+&lt;p&gt;とあるセミナーで、キャッシュサイズの節約法みたいな話がでていたみたいなんで、ここでも触れてみたいとおもいます。といっても、これまた用意されているOTLとノードの解説なんで、手抜き感が否めないですが、意外と知らない方が多いので紹介します。&lt;/p&gt;
+&lt;p&gt;ShelfからPyroを組んでる人は、Dop I/O SOPを使ってキャッシュをとってる人がいるかもしれません。そのSOPにCompressionタブがあり、これを使います。これはVolume Compressノードの値を逃しているだけです。
+このノードは基本的に、以下の画像の赤枠をいじればよいかと思います。Compress設定は、レンダリングに影響が出ない範囲で、最適な値を各自見つけてください。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Dynamically Fractured Object</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2015-05-03/</link>
       <pubDate>Sat, 02 May 2015 12:04:32 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2015-05-03/</guid>
-      <description>FXらしく少し見栄えの良いものを紹介します。
-破壊です。といっても、激しいやつではありません。
-破壊をするときは、Pre-Fractureしてからシミュレーションをかける事が大半だとも思いますが、何かしらのトリガーによって自動的に破壊が起こる仕組みを作ってみます。
-今回のトリガーさんはImpactです。何かしらが対象物に当たり、ある一定以上の衝撃を受けた部分を壊していきます。 （昔からshelfにRBDで似たようなのができるボタンがあったと思いますが、使ったことないのでよく知りません。）
-簡単なところやパラメータに関しての説明はしませんので、hipファイルを見ながら、ブログを読んでいただけるとありがたいです。
-シーンファイル(Houdini14.0.291-gcc4.8 Fedora20)
-そもそもRBD Packed Objectを使ったことない人は、これからの説明を理解することは困難だと思うので、日本語字幕も付いているH13 Masterclass | Bulletを見ることをおすすめします。
-Emit Pack Objects このチュートリアルの19:30くらいからのPackエミットを使って、破壊を引き起こす飛んでくる物体をつくります。しかし、チュートリアルのままだと、エミットの量が倍になってしまいます。この問題は、RBD Packed Objectが複数あると起こっていしまいます。
-上の画像のように白い柱と赤いボックスは、別々のRBD Packed Objectです。この2つがGeometryというデータを持っているため、SopSolverが両方に処理を行ってしまいます。なのでエミットの量も2倍になっています。
-問題を解決するには、片方だけに処理が行われるようにしなければいけません。 Empty Data DOPで任意のDataを作り、Enable Solver DOPで作ったDataに対してのみ作用するようにします。(ここの使い方が正しいかは、あまり自信がないです)
-これで意図する結果が得られました。 Get Impact Attributes 続いて、Impactの情報を取得するために、Impact Analysis DOPを使います。これはImpactの時間や強さ、法線、ぶつかったオブジェクトのOBJID等を取得できます。
-このImpactの情報を元にFractureしていきます。 初めに衝撃を受けたピースの判定をします。Impactの情報の中にはimpactobjectとimpactprimnumがあります
-impactobjectは$OBJIDのことで、impactprimnumはPackのPrimitive Numberです。 このimpactprimnumをArrayアトリビュートに格納します。
-int numpoints = npoints(0); i[]@_impactList; for(int i=0; i&amp;lt;numpoints; i++){ int prinum = point(0,&amp;#34;impactprimnum&amp;#34;,i); append(@_impactList,prinum); } Arrayの中に重複した値がある場合がありますが、今回は問題にならないので無視します。 H14からArrayをアトリビュートに保存できるようになりましたが、すごい便利ですね。
-Vopを使ってprimnumがこのArrayの中にある値と同じときに、任意のGroupに入るようにしています。
-Dynamic Fracturing 後は、このGroupに入ったピースをUnpackして壊してくだけです。
-砕いた後に、packed objectに戻しますが、nameアトリビューを重複しないように修正します。nameはコンストレイントでは必ず使用されるので注意して扱う必要があります。また、RBD Packed Objectの中にあるcreate_or_overwrite_attributesをみてシミュレーションに必要なアトリビュートを設定しておきましょう。最後に、砕く前のvなどのアトリビューを移しておくと、それらの値を継承したまま新たな破片が生まれることになります。
-このままだと無限に割れ続けてしまうので、ある一定の状態になったものは割れないようにしといたほうが良いです。例えば、ピースがある一定以下のサイズになった場合とか、割れる最大回数を指定しておくとかです。
-さらにコンストレインを毎フレーム更新すると、より見栄えが良くなっていくと思います。最初のムービーはPin Constraintを毎フレーム生成しています。 書くの疲れてきたしGW中なので諸事情により、これらの説明等は割愛させていただきます。</description>
+      <description>&lt;p&gt;FXらしく少し見栄えの良いものを紹介します。&lt;/p&gt;
+&lt;p&gt;破壊です。といっても、激しいやつではありません。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-05-03/77d45b6d5d121864.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;破壊をするときは、Pre-Fractureしてからシミュレーションをかける事が大半だとも思いますが、何かしらのトリガーによって自動的に破壊が起こる仕組みを作ってみます。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;今回のトリガーさんはImpactです。何かしらが対象物に当たり、ある一定以上の衝撃を受けた部分を壊していきます。
+（昔からshelfにRBDで似たようなのができるボタンがあったと思いますが、使ったことないのでよく知りません。）&lt;/p&gt;
+&lt;p&gt;簡単なところやパラメータに関しての説明はしませんので、hipファイルを見ながら、ブログを読んでいただけるとありがたいです。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-05-03/dynamically_fracturing_blog.hiplc&#34;&gt;&lt;strong&gt;シーンファイル&lt;/strong&gt;&lt;/a&gt;(Houdini14.0.291-gcc4.8  Fedora20)&lt;/p&gt;
+&lt;p&gt;そもそもRBD Packed Objectを使ったことない人は、これからの説明を理解することは困難だと思うので、日本語字幕も付いている&lt;a href=&#34;https://www.sidefx.com/ja/tutorials/h13-masterclass-bullet/&#34;&gt;&lt;strong&gt;H13 Masterclass | Bullet&lt;/strong&gt;&lt;/a&gt;を見ることをおすすめします。&lt;/p&gt;
+&lt;h2 id=&#34;emit-pack-objects&#34;&gt;Emit Pack Objects&lt;/h2&gt;
+&lt;p&gt;このチュートリアルの19:30くらいからのPackエミットを使って、破壊を引き起こす飛んでくる物体をつくります。しかし、チュートリアルのままだと、エミットの量が倍になってしまいます。この問題は、RBD Packed Objectが複数あると起こっていしまいます。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-05-03/blog_03_002.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;上の画像のように白い柱と赤いボックスは、別々のRBD Packed Objectです。この2つがGeometryというデータを持っているため、SopSolverが両方に処理を行ってしまいます。なのでエミットの量も2倍になっています。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-05-03/blog_03_004.png&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;問題を解決するには、片方だけに処理が行われるようにしなければいけません。
+&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/dop/emptydata.html&#34;&gt;Empty Data DOP&lt;/a&gt;で任意のDataを作り、&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/dop/enablesolver.html&#34;&gt;Enable Solver DOP&lt;/a&gt;で作ったDataに対してのみ作用するようにします。(&lt;del&gt;ここの使い方が正しいかは、あまり自信がないです&lt;/del&gt;)&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-05-03/blog_03_005.png&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;これで意図する結果が得られました。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-05-03/blog_03_001.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;get-impact-attributes&#34;&gt;Get Impact Attributes&lt;/h2&gt;
+&lt;p&gt;続いて、Impactの情報を取得するために、&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/dop/impactanalysis.html&#34;&gt;Impact Analysis DOP&lt;/a&gt;を使います。これはImpactの時間や強さ、法線、ぶつかったオブジェクトのOBJID等を取得できます。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-05-03/blog_03_003.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;このImpactの情報を元にFractureしていきます。
+初めに衝撃を受けたピースの判定をします。Impactの情報の中には&lt;code&gt;impactobject&lt;/code&gt;と&lt;code&gt;impactprimnum&lt;/code&gt;があります&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-05-03/blog_03_006.png&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;impactobject&lt;/code&gt;は$OBJIDのことで、&lt;code&gt;impactprimnum&lt;/code&gt;はPackのPrimitive Numberです。
+このimpactprimnumをArrayアトリビュートに格納します。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; numpoints = npoints(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;i[]@_impactList;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i=&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i&amp;lt;numpoints; i++){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; prinum = point(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;impactprimnum&amp;#34;&lt;/span&gt;,i);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    append(@_impactList,prinum);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Arrayの中に重複した値がある場合がありますが、今回は問題にならないので無視します。
+H14からArrayをアトリビュートに保存できるようになりましたが、すごい便利ですね。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-05-03/blog_03_007.png&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Vopを使ってprimnumがこのArrayの中にある値と同じときに、任意のGroupに入るようにしています。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-05-03/blog_03_008.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Wrangleを使おう 2.5</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2015-03-02/</link>
       <pubDate>Mon, 02 Mar 2015 02:53:32 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2015-03-02/</guid>
-      <description>一個書き忘れてたことがあったので、さらっと。
-数学定数、円周率(π)・自然対数の底(e)・黄金比(φ/τ)とか、時々使うけど漠然としか値を覚えていない奴らがいます。正確な値を知るために毎回、調べるのは億劫です。
-例えば、Wrangleで初めに#include &amp;lt;math.h&amp;gt;と書けば、以降このノード内ではM_PIが3.1415926の値を持っていることになります。
-#include &amp;lt;math.h&amp;gt; f@_check = M_PI; なにが起こっているかというと、$HH/vex/includeにmath.hというファイルがあります。そのファイルの中で、定義されたものを読み込んでいます。この他にもあるので中を見てみてください。
-このファイルは自分で作ることもできます。例えば黄金比を呼び出したい場合。
-#define PHI 1.61803 これを、HOUDINI_PATHに設定している場所のvex/includeに.h形式で保存するか、HOUDINI_VEX_PATHに登録しているところに保存すれば、これ以降、読み込むことができます。
-#include &amp;lt;test.h&amp;gt; f@_check = PHI; 決められたところに保存しなくても、test.hのところを/home/user/test.hとパスを入れても呼び出すこともできます。</description>
+      <description>&lt;p&gt;一個書き忘れてたことがあったので、さらっと。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E6%95%B0%E5%AD%A6%E5%AE%9A%E6%95%B0&#34;&gt;数学定数&lt;/a&gt;、円周率(π)・自然対数の底(e)・黄金比(φ/τ)とか、時々使うけど漠然としか値を覚えていない奴らがいます。正確な値を知るために毎回、調べるのは億劫です。&lt;/p&gt;
+&lt;p&gt;例えば、Wrangleで初めに#include &amp;lt;math.h&amp;gt;と書けば、以降このノード内ではM_PIが3.1415926の値を持っていることになります。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;math.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;f&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;_check &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; M_PI;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;なにが起こっているかというと、$HH/vex/includeにmath.hというファイルがあります。そのファイルの中で、定義されたものを読み込んでいます。この他にもあるので中を見てみてください。&lt;/p&gt;
+&lt;p&gt;このファイルは自分で作ることもできます。例えば黄金比を呼び出したい場合。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define PHI 1.61803
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これを、HOUDINI_PATHに設定している場所のvex/includeに.h形式で保存するか、HOUDINI_VEX_PATHに登録しているところに保存すれば、これ以降、読み込むことができます。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;test.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;f&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;_check &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; PHI;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;決められたところに保存しなくても、test.hのところを/home/user/test.hとパスを入れても呼び出すこともできます。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Wrangleを使おう 2</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2015-03-01/</link>
       <pubDate>Sun, 01 Mar 2015 11:40:54 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2015-03-01/</guid>
-      <description>Wrangleは、アトリビュートを作ったり編集するだけでなく、Pointを作ったりPrimitiveを作ったりもできます。初心者向けのチュートリアルで時々みるPointSopを使って、Pを編集してるやつをWrangleで置き換えてみます。こんなやつです。 まずラインの作り方 line sopできますが、wrangleでやってみます。ただの直線を作るときに、わざわざwrangleでやる必要はないかと思いますが、近くのpoint同士を結びつけるときなど普通にやろうとすると、めんどくさい時に重宝するので覚えときましょう。
-int res = 10; float height = 5.0; int line = addprim(0, &amp;#34;polyline&amp;#34;); for(int i=0; i&amp;lt;res; i++){ vector pos =set(1, height/(res-1)*i, 0); int cp = addpoint(0,pos); addvertex(0, line, cp); } 長さ(height)とポイント数(res)を決めてあげて、これらのポイントを結んでラインを作ります。なぜ、Vertexを作る必要があるかというと、Primitiveを構成するにはVertexが必要です。Pointではありません。Help: ジオメトリの作成
-もちろん、Vopでもつくれます。 ラインが作れたら、各Pointの位置を編集するだけです。簡単ですね。
-int res = 100; float rad = 3; float height = 5; float freq = 10; int line = addprim(0, &amp;#34;polyline&amp;#34;); for (int i = 0; i &amp;lt; res; i++){ vector pos; pos.</description>
+      <description>&lt;p&gt;Wrangleは、アトリビュートを作ったり編集するだけでなく、Pointを作ったりPrimitiveを作ったりもできます。初心者向けのチュートリアルで時々みるPointSopを使って、Pを編集してるやつをWrangleで置き換えてみます。こんなやつです。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-03-01/blog_02_001.png&#34; alt=&#34;group_sop&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;まずラインの作り方
+line sopできますが、wrangleでやってみます。ただの直線を作るときに、わざわざwrangleでやる必要はないかと思いますが、近くのpoint同士を結びつけるときなど普通にやろうとすると、めんどくさい時に重宝するので覚えときましょう。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; res      = &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;float&lt;/span&gt; height = &lt;span style=&#34;color:#ae81ff&#34;&gt;5.0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; line = addprim(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;polyline&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i=&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i&amp;lt;res; i++){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    vector pos =&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, height/(res-&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)*i, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; cp = addpoint(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,pos);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    addvertex(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, line, cp);    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;長さ(height)とポイント数(res)を決めてあげて、これらのポイントを結んでラインを作ります。なぜ、Vertexを作る必要があるかというと、Primitiveを構成するにはVertexが必要です。Pointではありません。&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/vex/snippets.html#%E3%82%B7-%E3%82%AA%E3%83%A1%E3%83%88%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90&#34;&gt;Help: ジオメトリの作成&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;もちろん、Vopでもつくれます。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;http://127.0.0.1:1313/FXHACK/posts/2015-03-01/blog_02_002.png&#34; alt=&#34;group_sop&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;ラインが作れたら、各Pointの位置を編集するだけです。簡単ですね。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;   res    = &lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;float&lt;/span&gt; rad    = &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;float&lt;/span&gt; height = &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;float&lt;/span&gt; freq   = &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; line = addprim(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;polyline&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i = &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i &amp;lt; res; i++){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    vector pos;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pos.x = sin(radians(i) * freq) * rad;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pos.y = height / (res-&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) * i;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pos.z = cos(radians(i) * freq) * rad;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; cp = addpoint(geoself(),pos);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    addvertex(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, line, cp); 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;1つ気をつけないといけないのは、エクスプレッションのsin/cos/tanは&lt;strong&gt;Degree&lt;/strong&gt;、Vexは&lt;em&gt;&lt;strong&gt;Radian&lt;/strong&gt;&lt;/em&gt;なので変換が必要です。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Wrangleを使おう 1</title>
       <link>http://127.0.0.1:1313/FXHACK/posts/2015-02-18/</link>
       <pubDate>Wed, 18 Feb 2015 13:59:47 +0900</pubDate>
-      
+      <author>Shohei Okazaki</author>
       <guid>http://127.0.0.1:1313/FXHACK/posts/2015-02-18/</guid>
       <description>&lt;p&gt;12.5から搭載されたWrangleですが、結構避けてる人が多い印象です。&lt;/p&gt;
 &lt;p&gt;せっかくノードベースでやってるのに、&lt;del&gt;イライラする&lt;/del&gt;MayaのExpressionを思い出させられて避けてるのかもしれません。&lt;/p&gt;

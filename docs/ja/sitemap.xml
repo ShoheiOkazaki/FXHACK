@@ -126,9 +126,29 @@
   </url><url>
     <loc>http://127.0.0.1:1313/FXHACK/posts/2019-02-12/</loc>
     <lastmod>2019-02-12T09:30:42+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://127.0.0.1:1313/FXHACK/en/posts/2019-02-12/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://127.0.0.1:1313/FXHACK/posts/2019-02-12/"
+                />
   </url><url>
     <loc>http://127.0.0.1:1313/FXHACK/tags/heightfield/</loc>
     <lastmod>2019-02-12T09:30:42+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://127.0.0.1:1313/FXHACK/en/tags/heightfield/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://127.0.0.1:1313/FXHACK/tags/heightfield/"
+                />
   </url><url>
     <loc>http://127.0.0.1:1313/FXHACK/tags/sop/</loc>
     <lastmod>2019-02-12T09:30:42+09:00</lastmod>
@@ -145,6 +165,16 @@
   </url><url>
     <loc>http://127.0.0.1:1313/FXHACK/tags/tips/</loc>
     <lastmod>2019-02-12T09:30:42+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://127.0.0.1:1313/FXHACK/en/tags/tips/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://127.0.0.1:1313/FXHACK/tags/tips/"
+                />
   </url><url>
     <loc>http://127.0.0.1:1313/FXHACK/posts/2018-03-06/</loc>
     <lastmod>2018-03-06T12:00:18+09:00</lastmod>

@@ -7,7 +7,7 @@ draft: false
 
 
 今回は、Height Fieldです。
-FXは、Height Fieldの恩恵は、あまりないと思いますが、個人的なFX的使い方を紹介します。
+FXはHeight Fieldの恩恵はあまりないと思いますが、個人的なFX的使い方を紹介します。
 
 サンプルファイルです。17.0.459で作成。
 

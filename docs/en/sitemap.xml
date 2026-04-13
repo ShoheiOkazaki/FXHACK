@@ -106,6 +106,58 @@
                 href="http://127.0.0.1:1313/FXHACK/en/tags/workflow/"
                 />
   </url><url>
+    <loc>http://127.0.0.1:1313/FXHACK/en/tags/heightfield/</loc>
+    <lastmod>2019-02-12T09:30:42+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://127.0.0.1:1313/FXHACK/tags/heightfield/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://127.0.0.1:1313/FXHACK/en/tags/heightfield/"
+                />
+  </url><url>
+    <loc>http://127.0.0.1:1313/FXHACK/en/posts/2019-02-12/</loc>
+    <lastmod>2019-02-12T09:30:42+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://127.0.0.1:1313/FXHACK/posts/2019-02-12/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://127.0.0.1:1313/FXHACK/en/posts/2019-02-12/"
+                />
+  </url><url>
+    <loc>http://127.0.0.1:1313/FXHACK/en/tags/sop/</loc>
+    <lastmod>2019-02-12T09:30:42+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://127.0.0.1:1313/FXHACK/tags/sop/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://127.0.0.1:1313/FXHACK/en/tags/sop/"
+                />
+  </url><url>
+    <loc>http://127.0.0.1:1313/FXHACK/en/tags/tips/</loc>
+    <lastmod>2019-02-12T09:30:42+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://127.0.0.1:1313/FXHACK/tags/tips/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://127.0.0.1:1313/FXHACK/en/tags/tips/"
+                />
+  </url><url>
     <loc>http://127.0.0.1:1313/FXHACK/en/tags/101/</loc>
     <lastmod>2015-03-01T11:40:54+09:00</lastmod>
     <xhtml:link
@@ -117,19 +169,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://127.0.0.1:1313/FXHACK/en/tags/101/"
-                />
-  </url><url>
-    <loc>http://127.0.0.1:1313/FXHACK/en/tags/sop/</loc>
-    <lastmod>2015-03-01T11:40:54+09:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="http://127.0.0.1:1313/FXHACK/tags/sop/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://127.0.0.1:1313/FXHACK/en/tags/sop/"
                 />
   </url><url>
     <loc>http://127.0.0.1:1313/FXHACK/en/posts/2015-03-01/</loc>

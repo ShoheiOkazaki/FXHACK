@@ -2,40 +2,85 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Pack on FX HACK</title>
-    <link>http://127.0.0.1:1313/FXHACK/tags/pack/</link>
+    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/pack/</link>
     <description>Recent content in Pack on FX HACK</description>
     <image>
-      <url>http://127.0.0.1:1313/FXHACK/profile.jpg</url>
-      <link>http://127.0.0.1:1313/FXHACK/profile.jpg</link>
+      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 02 May 2015 12:04:32 +0900</lastBuildDate><atom:link href="http://127.0.0.1:1313/FXHACK/tags/pack/index.xml" rel="self" type="application/rss+xml" />
+    
+    <managingEditor>Shohei Okazaki</managingEditor>
+    <webMaster>Shohei Okazaki</webMaster>
+    
+    
+    
+    <lastBuildDate>Sat, 02 May 2015 12:04:32 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/pack/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dynamically Fractured Object</title>
-      <link>http://127.0.0.1:1313/FXHACK/posts/2015-05-03/</link>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/</link>
       <pubDate>Sat, 02 May 2015 12:04:32 +0900</pubDate>
-      
-      <guid>http://127.0.0.1:1313/FXHACK/posts/2015-05-03/</guid>
-      <description>FXらしく少し見栄えの良いものを紹介します。
-破壊です。といっても、激しいやつではありません。
-破壊をするときは、Pre-Fractureしてからシミュレーションをかける事が大半だとも思いますが、何かしらのトリガーによって自動的に破壊が起こる仕組みを作ってみます。
-今回のトリガーさんはImpactです。何かしらが対象物に当たり、ある一定以上の衝撃を受けた部分を壊していきます。 （昔からshelfにRBDで似たようなのができるボタンがあったと思いますが、使ったことないのでよく知りません。）
-簡単なところやパラメータに関しての説明はしませんので、hipファイルを見ながら、ブログを読んでいただけるとありがたいです。
-シーンファイル(Houdini14.0.291-gcc4.8 Fedora20)
-そもそもRBD Packed Objectを使ったことない人は、これからの説明を理解することは困難だと思うので、日本語字幕も付いているH13 Masterclass | Bulletを見ることをおすすめします。
-Emit Pack Objects このチュートリアルの19:30くらいからのPackエミットを使って、破壊を引き起こす飛んでくる物体をつくります。しかし、チュートリアルのままだと、エミットの量が倍になってしまいます。この問題は、RBD Packed Objectが複数あると起こっていしまいます。
-上の画像のように白い柱と赤いボックスは、別々のRBD Packed Objectです。この2つがGeometryというデータを持っているため、SopSolverが両方に処理を行ってしまいます。なのでエミットの量も2倍になっています。
-問題を解決するには、片方だけに処理が行われるようにしなければいけません。 Empty Data DOPで任意のDataを作り、Enable Solver DOPで作ったDataに対してのみ作用するようにします。(ここの使い方が正しいかは、あまり自信がないです)
-これで意図する結果が得られました。 Get Impact Attributes 続いて、Impactの情報を取得するために、Impact Analysis DOPを使います。これはImpactの時間や強さ、法線、ぶつかったオブジェクトのOBJID等を取得できます。
-このImpactの情報を元にFractureしていきます。 初めに衝撃を受けたピースの判定をします。Impactの情報の中にはimpactobjectとimpactprimnumがあります
-impactobjectは$OBJIDのことで、impactprimnumはPackのPrimitive Numberです。 このimpactprimnumをArrayアトリビュートに格納します。
-int numpoints = npoints(0); i[]@_impactList; for(int i=0; i&amp;lt;numpoints; i++){ int prinum = point(0,&amp;#34;impactprimnum&amp;#34;,i); append(@_impactList,prinum); } Arrayの中に重複した値がある場合がありますが、今回は問題にならないので無視します。 H14からArrayをアトリビュートに保存できるようになりましたが、すごい便利ですね。
-Vopを使ってprimnumがこのArrayの中にある値と同じときに、任意のGroupに入るようにしています。
-Dynamic Fracturing 後は、このGroupに入ったピースをUnpackして壊してくだけです。
-砕いた後に、packed objectに戻しますが、nameアトリビューを重複しないように修正します。nameはコンストレイントでは必ず使用されるので注意して扱う必要があります。また、RBD Packed Objectの中にあるcreate_or_overwrite_attributesをみてシミュレーションに必要なアトリビュートを設定しておきましょう。最後に、砕く前のvなどのアトリビューを移しておくと、それらの値を継承したまま新たな破片が生まれることになります。
-このままだと無限に割れ続けてしまうので、ある一定の状態になったものは割れないようにしといたほうが良いです。例えば、ピースがある一定以下のサイズになった場合とか、割れる最大回数を指定しておくとかです。
-さらにコンストレインを毎フレーム更新すると、より見栄えが良くなっていくと思います。最初のムービーはPin Constraintを毎フレーム生成しています。 書くの疲れてきたしGW中なので諸事情により、これらの説明等は割愛させていただきます。</description>
+      <author>Shohei Okazaki</author>
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/</guid>
+      <description>&lt;p&gt;FXらしく少し見栄えの良いものを紹介します。&lt;/p&gt;
+&lt;p&gt;破壊です。といっても、激しいやつではありません。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/77d45b6d5d121864.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;破壊をするときは、Pre-Fractureしてからシミュレーションをかける事が大半だとも思いますが、何かしらのトリガーによって自動的に破壊が起こる仕組みを作ってみます。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;今回のトリガーさんはImpactです。何かしらが対象物に当たり、ある一定以上の衝撃を受けた部分を壊していきます。
+（昔からshelfにRBDで似たようなのができるボタンがあったと思いますが、使ったことないのでよく知りません。）&lt;/p&gt;
+&lt;p&gt;簡単なところやパラメータに関しての説明はしませんので、hipファイルを見ながら、ブログを読んでいただけるとありがたいです。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/dynamically_fracturing_blog.hiplc&#34;&gt;&lt;strong&gt;シーンファイル&lt;/strong&gt;&lt;/a&gt;(Houdini14.0.291-gcc4.8  Fedora20)&lt;/p&gt;
+&lt;p&gt;そもそもRBD Packed Objectを使ったことない人は、これからの説明を理解することは困難だと思うので、日本語字幕も付いている&lt;a href=&#34;https://www.sidefx.com/ja/tutorials/h13-masterclass-bullet/&#34;&gt;&lt;strong&gt;H13 Masterclass | Bullet&lt;/strong&gt;&lt;/a&gt;を見ることをおすすめします。&lt;/p&gt;
+&lt;h2 id=&#34;emit-pack-objects&#34;&gt;Emit Pack Objects&lt;/h2&gt;
+&lt;p&gt;このチュートリアルの19:30くらいからのPackエミットを使って、破壊を引き起こす飛んでくる物体をつくります。しかし、チュートリアルのままだと、エミットの量が倍になってしまいます。この問題は、RBD Packed Objectが複数あると起こっていしまいます。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_002.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;上の画像のように白い柱と赤いボックスは、別々のRBD Packed Objectです。この2つがGeometryというデータを持っているため、SopSolverが両方に処理を行ってしまいます。なのでエミットの量も2倍になっています。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_004.png&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;問題を解決するには、片方だけに処理が行われるようにしなければいけません。
+&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/dop/emptydata.html&#34;&gt;Empty Data DOP&lt;/a&gt;で任意のDataを作り、&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/dop/enablesolver.html&#34;&gt;Enable Solver DOP&lt;/a&gt;で作ったDataに対してのみ作用するようにします。(&lt;del&gt;ここの使い方が正しいかは、あまり自信がないです&lt;/del&gt;)&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_005.png&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;これで意図する結果が得られました。
+
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_001.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;get-impact-attributes&#34;&gt;Get Impact Attributes&lt;/h2&gt;
+&lt;p&gt;続いて、Impactの情報を取得するために、&lt;a href=&#34;https://www.sidefx.com/ja/docs/houdini/nodes/dop/impactanalysis.html&#34;&gt;Impact Analysis DOP&lt;/a&gt;を使います。これはImpactの時間や強さ、法線、ぶつかったオブジェクトのOBJID等を取得できます。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_003.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;このImpactの情報を元にFractureしていきます。
+初めに衝撃を受けたピースの判定をします。Impactの情報の中には&lt;code&gt;impactobject&lt;/code&gt;と&lt;code&gt;impactprimnum&lt;/code&gt;があります&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_006.png&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;impactobject&lt;/code&gt;は$OBJIDのことで、&lt;code&gt;impactprimnum&lt;/code&gt;はPackのPrimitive Numberです。
+このimpactprimnumをArrayアトリビュートに格納します。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; numpoints = npoints(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;i[]@_impactList;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i=&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i&amp;lt;numpoints; i++){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; prinum = point(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;impactprimnum&amp;#34;&lt;/span&gt;,i);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    append(@_impactList,prinum);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Arrayの中に重複した値がある場合がありますが、今回は問題にならないので無視します。
+H14からArrayをアトリビュートに保存できるようになりましたが、すごい便利ですね。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_007.png&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Vopを使ってprimnumがこのArrayの中にある値と同じときに、任意のGroupに入るようにしています。&lt;/p&gt;
+&lt;p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;https://ShoheiOkazaki.github.io/FXHACK/posts/2015-05-03/blog_03_008.gif&#34; alt=&#34;pack_emit_01&#34;  /&gt;
+&lt;/p&gt;</description>
     </item>
     
   </channel>

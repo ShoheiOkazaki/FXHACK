@@ -2,30 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>RnD on FX HACK</title>
-    <link>http://127.0.0.1:1313/FXHACK/tags/rnd/</link>
+    <link>https://ShoheiOkazaki.github.io/FXHACK/tags/rnd/</link>
     <description>Recent content in RnD on FX HACK</description>
     <image>
-      <url>http://127.0.0.1:1313/FXHACK/profile.jpg</url>
-      <link>http://127.0.0.1:1313/FXHACK/profile.jpg</link>
+      <url>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</url>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 07 Nov 2015 13:43:24 +0900</lastBuildDate><atom:link href="http://127.0.0.1:1313/FXHACK/tags/rnd/index.xml" rel="self" type="application/rss+xml" />
+    
+    <managingEditor>Shohei Okazaki</managingEditor>
+    <webMaster>Shohei Okazaki</webMaster>
+    
+    
+    
+    <lastBuildDate>Sat, 07 Nov 2015 13:43:24 +0900</lastBuildDate><atom:link href="https://ShoheiOkazaki.github.io/FXHACK/tags/rnd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[RnD] Pyro with Vorticity</title>
-      <link>http://127.0.0.1:1313/FXHACK/posts/2015-11-07/</link>
+      <link>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-11-07/</link>
       <pubDate>Sat, 07 Nov 2015 13:43:24 +0900</pubDate>
-      
-      <guid>http://127.0.0.1:1313/FXHACK/posts/2015-11-07/</guid>
-      <description>レゾをそんなに高くしなくても、手軽にコントロールでき、形を崩しいい感じのShapeを作るを目的にしたRnD
-Houdini歴5年目にして、やっとSopレベルもそこそこになってきたので、最近Dopに力を入れ始めました。データの流れを考えながら構築していったり、Sopでの知識は必ず役に立ちますし、データを可視化できるので、今までもっていたMicroSolverに対する苦手意識がなくなりました。
-FumeやらPhoenix FDにvorticityというのがついてるのに、Pyroにはないのとお思いの方、朗報です。
-自分で作れます。
-あのプラグイン達はBlackboxになっているので、どのような手法をとっているかは伺えしれませんが、結果的によければOKです。
-普通に煙をエミットするとのっぺりとした部分ができてしまいます。 これを崩すにはTubulenceをかけたり、Pyroの場合はDisturbanceを使ったりします。Turbulenceの使い方を間違えると、エミットしてから時間が立っているとこにも強くかかってしまうと、ダサい煙になってしまいます。また、Disturbanceも強くかけ過ぎると、ボロボロになってしまいます。コントロールが難しいです。
-Vimeoにあげた動画の、最初の煙はエミットされてからすぐに、モコモコしてるのが分かると思います。これが、求めていたものです。コントロールも結構簡単です。
-作り方は、、、いくつかのMicroSolverとSop Solverの組み合わせですｗ Vorticleを作って、渦度が高くないところも高くして影響を与えるみたいなことをしてます。 （Divergenceをいじってもこんな結果ができるはずです。）
-手軽に自分で作れるこそが、Houdiniの強み</description>
+      <author>Shohei Okazaki</author>
+      <guid>https://ShoheiOkazaki.github.io/FXHACK/posts/2015-11-07/</guid>
+      <description>&lt;div style=&#34;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;&#34;&gt;
+  &lt;iframe
+    src=&#34;https://player.vimeo.com/video/144945053&#34;
+    style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;border:0;&#34;
+    allow=&#34;autoplay; fullscreen; picture-in-picture&#34;
+    allowfullscreen
+    loading=&#34;lazy&#34;
+    title=&#34;Vimeo video 144945053&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;レゾをそんなに高くしなくても、手軽にコントロールでき、形を崩しいい感じのShapeを作るを目的にしたRnD&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Houdini歴5年目にして、やっとSopレベルもそこそこになってきたので、最近Dopに力を入れ始めました。データの流れを考えながら構築していったり、Sopでの知識は必ず役に立ちますし、データを可視化できるので、今までもっていたMicroSolverに対する苦手意識がなくなりました。&lt;/p&gt;
+&lt;p&gt;FumeやらPhoenix FDにvorticityというのがついてるのに、Pyroにはないのとお思いの方、朗報です。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;自分で作れます。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;あのプラグイン達はBlackboxになっているので、どのような手法をとっているかは伺えしれませんが、結果的によければOKです。&lt;/p&gt;
+&lt;p&gt;普通に煙をエミットするとのっぺりとした部分ができてしまいます。 これを崩すにはTubulenceをかけたり、Pyroの場合はDisturbanceを使ったりします。Turbulenceの使い方を間違えると、エミットしてから時間が立っているとこにも強くかかってしまうと、ダサい煙になってしまいます。また、Disturbanceも強くかけ過ぎると、ボロボロになってしまいます。コントロールが難しいです。&lt;/p&gt;
+&lt;p&gt;Vimeoにあげた動画の、最初の煙はエミットされてからすぐに、モコモコしてるのが分かると思います。これが、求めていたものです。コントロールも結構簡単です。&lt;/p&gt;
+&lt;p&gt;作り方は、、、いくつかのMicroSolverとSop Solverの組み合わせですｗ
+Vorticleを作って、渦度が高くないところも高くして影響を与えるみたいなことをしてます。
+（Divergenceをいじってもこんな結果ができるはずです。）&lt;/p&gt;
+&lt;p&gt;手軽に自分で作れるこそが、Houdiniの強み&lt;/p&gt;</description>
     </item>
     
   </channel>
