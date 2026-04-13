@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Python on FX HACK</title>
-    <link>http://localhost:1313/FXHACK/tags/python/</link>
+    <link>http://127.0.0.1:1313/FXHACK/tags/python/</link>
     <description>Recent content in Python on FX HACK</description>
     <image>
-      <url>http://localhost:1313/FXHACK/profile.jpg</url>
-      <link>http://localhost:1313/FXHACK/profile.jpg</link>
+      <url>http://127.0.0.1:1313/FXHACK/profile.jpg</url>
+      <link>http://127.0.0.1:1313/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 05 Oct 2023 09:27:07 +0900</lastBuildDate><atom:link href="http://localhost:1313/FXHACK/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Oct 2023 09:27:07 +0900</lastBuildDate><atom:link href="http://127.0.0.1:1313/FXHACK/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Solaris] HDAカメラのインポート</title>
-      <link>http://localhost:1313/FXHACK/posts/2023-10-05/</link>
+      <link>http://127.0.0.1:1313/FXHACK/posts/2023-10-05/</link>
       <pubDate>Thu, 05 Oct 2023 09:27:07 +0900</pubDate>
       
-      <guid>http://localhost:1313/FXHACK/posts/2023-10-05/</guid>
+      <guid>http://127.0.0.1:1313/FXHACK/posts/2023-10-05/</guid>
       <description>問題 SolarisにSceneImportLOPでカメラをインポートする際、自前のHDAカメラをインポートしようとするとワーニングがでてインポートできません。
 （自前のカメラとはこういうHDAです）
 以下のようなワーニングが表示されます。これはおそらく19.5以降でしか表示されないかもしれません。 解決策 まずは言われた通り、リンクに飛びましょう。
@@ -30,10 +30,10 @@ import hou import husd from pxr import UsdGeom class CameraTranslator(husd.objtr
     
     <item>
       <title>Houdini Workflowについて</title>
-      <link>http://localhost:1313/FXHACK/posts/2021-04-29/</link>
+      <link>http://127.0.0.1:1313/FXHACK/posts/2021-04-29/</link>
       <pubDate>Thu, 29 Apr 2021 12:27:07 +0900</pubDate>
       
-      <guid>http://localhost:1313/FXHACK/posts/2021-04-29/</guid>
+      <guid>http://127.0.0.1:1313/FXHACK/posts/2021-04-29/</guid>
       <description>いままで何回もHoudini Workflowをつくってきたので、どんなことをやっているか紹介したいと思います。
 小規模な会社にいるからとか個人でやってるから、そんなの必要ないと考える人もいるかもしれませんが、そうは思いません。数人の会社で働いたことがありますが、確実にワークフローが少しでもないと良いパフォーマンスを出すことをできません。
 大規模な会社には専任のTDがいてパイプラインがしっかりあり、色々便利なこともあります。反面、大きくなりすぎた会社ほど、やる気のない人や老害がたまり自由度がなくなり最新の流れにもついていけなくなったり、ワークフローを作るのに大工事したり、パイプラインにも手をいれなければいけないみたいなことも起こってしまいます。小規模だとパイプラインを作るのは難しいですが、ワークフローは自分たちの好きに作りやすいです。自分たちにあったものを構築できれば、小回りがきいて大きな所に負けないワークフローを構築しアドバンテージにすることも出来ます。
@@ -48,7 +48,7 @@ import hou import husd from pxr import UsdGeom class CameraTranslator(husd.objtr
 ヒューマンエラーをなくす 毎回同じことをしたくない 代表格は、キャッシュやレンダーの出力先を毎回入力することです。これはもはや人間のやることではありません。
 チームで新しくワークフローを作る場合は、みんなの意見を聞いて不便なことや要望を洗い出してあげることも大事です。
 チームにジュニアレベルの人やHoudiniに詳しくない人がいるとしたら、色んなレベルの人にもスムーズにいくルールを考える必要があるかもしれません。
-環境変数 まずプロジェクト固有の変数について考えましょう。変数は、プロジェクト全体に適用されるグローバル変数と、シーケンスやショットごとに値が変わるローカル変数にわけられます。 プロジェクト名やシーケンス名を定義しとくとフォルダの移動やアウトプット先を決めるのが楽になります。ただこの変数はパイプラインとして設定されてることが多いです。小規模な会社や個人では自身で設定してもいいと思います。これらを設定することによってどういうことが出来るかはあとで説明します。
+環境変数 まずプロジェクト固有の変数について考えましょう。変数は、 プロジェクト全体に適用されるグローバル変数と、シーケンスやショットごとに値が変わるローカル変数にわけられます。 プロジェクト名やシーケンス名を定義しとくとフォルダの移動やアウトプット先を決めるのが楽になります。ただこの変数はパイプラインとして設定されてることが多いです。小規模な会社や個人では自身で設定してもいいと思います。これらを設定することによってどういうことが出来るかはあとで説明します。
 PROJ = &amp;#39;BurningProj&amp;#39; 他のソフトからAlembic等でデータを持ってきた時、シーンスケールを正しくしてあげる必要があります。なぜなら、Houdiniのシミュレーション系ノードのデフォルト値は、1Grid=1mを前提として値が設定されています。これにあわせてやるのが一番良いです。
 大抵の場合はインポートしたものを0.1倍か0.01倍すればいいでしょうが、海外のクライアントからもらったデータはメートルでなくインチで作業してる場合があります。その場合は39.37で割る必要があります。覚えたくないですよね。なので、コレも変数にしておきましょう。
 SCALE_FACTOR = 10 他には、レンダーサイズも変数にしてもいいかもしれません。
@@ -63,10 +63,10 @@ SEQ = &amp;#39;seq_01&amp;#39; SHOT = &amp;#39;shot_003&amp;#39; P_START = 1001 
     
     <item>
       <title>最近のお気に入り - 1　「右クリック」</title>
-      <link>http://localhost:1313/FXHACK/posts/2018-03-06/</link>
+      <link>http://127.0.0.1:1313/FXHACK/posts/2018-03-06/</link>
       <pubDate>Tue, 06 Mar 2018 12:00:18 +0900</pubDate>
       
-      <guid>http://localhost:1313/FXHACK/posts/2018-03-06/</guid>
+      <guid>http://127.0.0.1:1313/FXHACK/posts/2018-03-06/</guid>
       <description>大したことじゃないけど、最近のお気に入りを紹介するコーナ。 第一弾は右クリック。
 FXを作ってく上で、僕には2大裏テーマというものがあります。それは 「キーフレームを極力打たない」と「手の挙動範囲を極力少なくする」 です。今回は後者のために、必要なカスタマイズです。
 ノードのプリセットに入れればいいじゃんと言う人もいるかもしれないですが、あれはパラメータの並び順や位置のレイアウトも記憶しています。Houdiniはバージョンが変わると、パラメータのレイアウトが変わることなんてことは当たり前なので、バージョンごとにプリセットを更新する必要があり非常にめんどいのです。といわけで右クリックのメニューにサポートツールを追加して効率化を図っています。
@@ -85,10 +85,10 @@ import hou def doit(parms,type): parm = parms[0] parm_name = parm.name() node = 
     
     <item>
       <title>[Deadline] Add Extra Version</title>
-      <link>http://localhost:1313/FXHACK/posts/2017-09-13/</link>
+      <link>http://127.0.0.1:1313/FXHACK/posts/2017-09-13/</link>
       <pubDate>Wed, 13 Sep 2017 11:00:53 +0900</pubDate>
       
-      <guid>http://localhost:1313/FXHACK/posts/2017-09-13/</guid>
+      <guid>http://127.0.0.1:1313/FXHACK/posts/2017-09-13/</guid>
       <description>時々、悩んでる人がいたので、Deadlineネタを１つ。
 どんなソフトでも、マイナーアップデートは簡単にできますが、メジャーアップデートは、プロジェクトの兼ね合いや自社Plugin/Toolの影響で、そうは容易くできません。アップグレードの金を出すのに渋って更新してないのでなく、ただ単にめんどくさいという理由で更新されてなかったら、担当者のケツを蹴っ飛ばして更新してもらいましょう。
 いろんな理由でDeadlineのバージョンが古すぎて、最新のHoudiniのバージョン使用できないという人もいるでしょう。今回は、そんな人向けへの裏ワザを紹介します。
@@ -103,10 +103,10 @@ scriptDialog.AddComboControlToGrid(&amp;#34;VersionBox&amp;#34;,&amp;#34;ComboCo
     
     <item>
       <title>H16についてのメモ</title>
-      <link>http://localhost:1313/FXHACK/posts/2017-03-29/</link>
+      <link>http://127.0.0.1:1313/FXHACK/posts/2017-03-29/</link>
       <pubDate>Wed, 29 Mar 2017 15:50:27 +0900</pubDate>
       
-      <guid>http://localhost:1313/FXHACK/posts/2017-03-29/</guid>
+      <guid>http://127.0.0.1:1313/FXHACK/posts/2017-03-29/</guid>
       <description>New Network Editor さて、賛否両論ありそうなこれ。見た目は可愛くなりましたね。 そして描画速度も速くなりました。Pythonでノードを何千と作ったり、AlembicのHierarchyを保持して展開するときなど、大きな差が出そうです。
 あのノードの形、可愛くないから使いたくないとか、デフォルトを変えたいって人はいるでしょう。僕はノードを組む上での自分なりのルールがあるためノードの色が最初から付いているのは非常に不便でデフォルトを変更してます。
 そこで、どうやってカスタマイズするかを紹介します。

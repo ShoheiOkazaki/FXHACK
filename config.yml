@@ -8,9 +8,6 @@ theme: PaperMod
 
 defaultContentLanguage: ja
 
-plugins:
- - jekyll-sitemap
-
 enableEmoji: true
 enableRobotsTXT: true
 
@@ -71,11 +68,11 @@ params:
   assets:
     # disableHLJS: true # to disable highlight.js
     # disableFingerprinting: true
-    favicon: "Thinking_Face_Emoji_large.png"
-    favicon16x16: "Thinking_Face_Emoji_large.png"
-    favicon32x32: "Thinking_Face_Emoji_large.png"
-    apple_touch_icon: "Thinking_Face_Emoji_large.png"
-    safari_pinned_tab: "Thinking_Face_Emoji_large.png"
+    favicon: "site-icon.png"
+    favicon16x16: "site-icon.png"
+    favicon32x32: "site-icon.png"
+    apple_touch_icon: "site-icon.png"
+    safari_pinned_tab: "site-icon.svg"
 
   label:
     text: "HOME"
@@ -118,7 +115,7 @@ params:
     hiddenInSingle: true # hide on single page
 
   editPost:
-    URL: "https://github.com/ShoheiOkazaki/FXHACK/content"
+    URL: "https://github.com/ShoheiOkazaki/FXHACK/edit/main/content"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
@@ -150,7 +147,3 @@ menu:
       name: Tags
       url: tags/
       weight: 25
-    - identifier: Wiki
-      name: Wiki
-      url: Wiki/
-      weight: 40

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PDG on FX HACK</title>
+    <link>http://127.0.0.1:1313/FXHACK/tags/pdg/</link>
+    <description>Recent content in PDG on FX HACK</description>
+    <image>
+      <url>http://127.0.0.1:1313/FXHACK/profile.jpg</url>
+      <link>http://127.0.0.1:1313/FXHACK/profile.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Thu, 12 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://127.0.0.1:1313/FXHACK/tags/pdg/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[PDG] Gathering USD Files</title>
+      <link>http://127.0.0.1:1313/FXHACK/posts/2024-12-16/</link>
+      <pubDate>Thu, 12 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://127.0.0.1:1313/FXHACK/posts/2024-12-16/</guid>
+      <description>皆さんはアウトソーシング先や他のベンダー会社にデータを共有する際、どのような手法を取っていますか？
+Houdiniならキャッシュやテクスチャをシーンファイルがある同じ階層に置いて、それぞれのファイルパスを$HIP始まりにする。もしくはLocal Variables $JOBを用いてファイルの保存場所を指定し、異なる環境で開いた際には作業者が変数の値を更新するのが一般的です。
+Nukeにおいては、Nukepediaや社内で開発したGathering toolを利用して、シーン内のRead/Writeノードが参照するファイルパスのデータを他の場所にコピーし、それらのノードのファイルパスを相対パスに変更することが多いです。
+では、USDを使う場合はどのように対応すればよいでしょうか？今回はPDGを使った話をしていきます。
+Sample File(20.5.410 py3.11): https://drive.google.com/file/d/1pkv1pYyNRrdOpoF50qxvsBc3HxAFyi5r/view?usp=drive_link
+USDアセット作成 まずSolarisで簡単なデータを作るとこから始めます。
+もうUSDは日本以外のとこではスタンダードになったと言っても過言ではないフォーマットです。ですので、簡単な説明は省きます。
+アセットを作ったことがない人は、このチュートリアルを見てください。 https://www.sidefx.com/tutorials/usd-asset-building-with-solaris/
+Component まずCompoent Builderを使って、2つのComponent、GridとVariantをもったRocksをつくります。
+Component Outputの出力先を、今後の説明を分かりやすくするために以下のように変更しておきます。 それぞれ、Save to Diskを押して、USDを作成します。
+$HIP/usd/components/`chs(&amp;#34;name&amp;#34;)`/v001/`chs(&amp;#34;filename&amp;#34;)` 保存先を見てみると、このようなフォルダ構造になっているかと思います。
+└── usd/ └── components/ └── grid/ └── v001/ └── grid.usd └── geo.usdc └── mtl.usdc └── payload.usdc └── textures/ └── bricks001_basecolor.png └── rocks/ └── v001/ └── rocks.usd └── geo.usdc └── mtl.usdc └── payload.usdc Gridはテクスチャは持っており、そのテクスチャは$HIP/texturesに保存してありましたが、usdが保存されているtexturesフォルダにコピーされています。 そして、GridというComponentのUsdを読み込んでみると、テクスチャパスは@./textures/bricks001_basecolor.png@になっています。絶対パスではなくでなく、相対パスになっています。
+Referenceで読み込んでるgrid.usdの中身にも相対パスが使われています
+#usda 1.0 ( defaultPrim = &amp;#34;grid&amp;#34; framesPerSecond = 24 metersPerUnit = 1 timeCodesPerSecond = 24 upAxis = &amp;#34;Y&amp;#34; ) def Xform &amp;#34;grid&amp;#34; ( prepend apiSchemas = [&amp;#34;GeomModelAPI&amp;#34;] assetInfo = { asset identifier = @.</description>
+    </item>
+    
+  </channel>
+</rss>

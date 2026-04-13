@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">FX HACK icon</title>
+  <desc id="desc">A dark square icon with the letters FX.</desc>
+  <rect width="256" height="256" rx="40" fill="#101418" />
+  <path d="M56 62h146v26H86v33h98v26H86v47H56V62Z" fill="#f4f1ea" />
+  <path d="m144 62 24 41 24-41h34l-39 62 41 70h-34l-26-46-26 46h-34l42-68-40-64h34Z" fill="#d6a663" />
+</svg>

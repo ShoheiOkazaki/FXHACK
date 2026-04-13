@@ -2,185 +2,185 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/FXHACK/en/posts/2023-10-05/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/posts/2023-10-05/</loc>
     <lastmod>2023-10-05T09:27:07+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/posts/2023-10-05/"
+                href="http://127.0.0.1:1313/FXHACK/posts/2023-10-05/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/posts/2023-10-05/"
+                href="http://127.0.0.1:1313/FXHACK/en/posts/2023-10-05/"
                 />
   </url><url>
-    <loc>http://localhost:1313/FXHACK/en/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/</loc>
     <lastmod>2023-10-05T09:27:07+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/"
+                href="http://127.0.0.1:1313/FXHACK/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/"
+                href="http://127.0.0.1:1313/FXHACK/en/"
                 />
   </url><url>
-    <loc>http://localhost:1313/FXHACK/en/tags/houdini/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/tags/houdini/</loc>
     <lastmod>2023-10-05T09:27:07+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/tags/houdini/"
+                href="http://127.0.0.1:1313/FXHACK/tags/houdini/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/tags/houdini/"
+                href="http://127.0.0.1:1313/FXHACK/en/tags/houdini/"
                 />
   </url><url>
-    <loc>http://localhost:1313/FXHACK/en/posts/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/posts/</loc>
     <lastmod>2023-10-05T09:27:07+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/posts/"
+                href="http://127.0.0.1:1313/FXHACK/posts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/posts/"
+                href="http://127.0.0.1:1313/FXHACK/en/posts/"
                 />
   </url><url>
-    <loc>http://localhost:1313/FXHACK/en/tags/python/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/tags/python/</loc>
     <lastmod>2023-10-05T09:27:07+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/tags/python/"
+                href="http://127.0.0.1:1313/FXHACK/tags/python/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/tags/python/"
+                href="http://127.0.0.1:1313/FXHACK/en/tags/python/"
                 />
   </url><url>
-    <loc>http://localhost:1313/FXHACK/en/tags/solaris/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/tags/solaris/</loc>
     <lastmod>2023-10-05T09:27:07+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/tags/solaris/"
+                href="http://127.0.0.1:1313/FXHACK/tags/solaris/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/tags/solaris/"
+                href="http://127.0.0.1:1313/FXHACK/en/tags/solaris/"
                 />
   </url><url>
-    <loc>http://localhost:1313/FXHACK/en/tags/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/tags/</loc>
     <lastmod>2023-10-05T09:27:07+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/tags/"
+                href="http://127.0.0.1:1313/FXHACK/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/tags/"
+                href="http://127.0.0.1:1313/FXHACK/en/tags/"
                 />
   </url><url>
-    <loc>http://localhost:1313/FXHACK/en/tags/workflow/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/tags/workflow/</loc>
     <lastmod>2023-10-05T09:27:07+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/tags/workflow/"
+                href="http://127.0.0.1:1313/FXHACK/tags/workflow/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/tags/workflow/"
+                href="http://127.0.0.1:1313/FXHACK/en/tags/workflow/"
                 />
   </url><url>
-    <loc>http://localhost:1313/FXHACK/en/tags/101/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/tags/101/</loc>
     <lastmod>2015-03-01T11:40:54+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/tags/101/"
+                href="http://127.0.0.1:1313/FXHACK/tags/101/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/tags/101/"
+                href="http://127.0.0.1:1313/FXHACK/en/tags/101/"
                 />
   </url><url>
-    <loc>http://localhost:1313/FXHACK/en/tags/sop/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/tags/sop/</loc>
     <lastmod>2015-03-01T11:40:54+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/tags/sop/"
+                href="http://127.0.0.1:1313/FXHACK/tags/sop/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/tags/sop/"
+                href="http://127.0.0.1:1313/FXHACK/en/tags/sop/"
                 />
   </url><url>
-    <loc>http://localhost:1313/FXHACK/en/posts/2015-03-01/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/posts/2015-03-01/</loc>
     <lastmod>2015-03-01T11:40:54+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/posts/2015-03-01/"
+                href="http://127.0.0.1:1313/FXHACK/posts/2015-03-01/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/posts/2015-03-01/"
+                href="http://127.0.0.1:1313/FXHACK/en/posts/2015-03-01/"
                 />
   </url><url>
-    <loc>http://localhost:1313/FXHACK/en/tags/wrangle/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/tags/wrangle/</loc>
     <lastmod>2015-03-01T11:40:54+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/tags/wrangle/"
+                href="http://127.0.0.1:1313/FXHACK/tags/wrangle/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/tags/wrangle/"
+                href="http://127.0.0.1:1313/FXHACK/en/tags/wrangle/"
                 />
   </url><url>
-    <loc>http://localhost:1313/FXHACK/en/posts/2015-02-18/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/posts/2015-02-18/</loc>
     <lastmod>2015-02-18T13:59:47+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/posts/2015-02-18/"
+                href="http://127.0.0.1:1313/FXHACK/posts/2015-02-18/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/posts/2015-02-18/"
+                href="http://127.0.0.1:1313/FXHACK/en/posts/2015-02-18/"
                 />
   </url><url>
-    <loc>http://localhost:1313/FXHACK/en/categories/</loc>
+    <loc>http://127.0.0.1:1313/FXHACK/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/FXHACK/categories/"
+                href="http://127.0.0.1:1313/FXHACK/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/FXHACK/en/categories/"
+                href="http://127.0.0.1:1313/FXHACK/en/categories/"
                 />
   </url>
 </urlset>

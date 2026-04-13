@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Vex on FX HACK</title>
-    <link>http://localhost:1313/FXHACK/tags/vex/</link>
+    <link>http://127.0.0.1:1313/FXHACK/tags/vex/</link>
     <description>Recent content in Vex on FX HACK</description>
     <image>
-      <url>http://localhost:1313/FXHACK/profile.jpg</url>
-      <link>http://localhost:1313/FXHACK/profile.jpg</link>
+      <url>http://127.0.0.1:1313/FXHACK/profile.jpg</url>
+      <link>http://127.0.0.1:1313/FXHACK/profile.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 10 Dec 2016 10:00:44 +0900</lastBuildDate><atom:link href="http://localhost:1313/FXHACK/tags/vex/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Dec 2016 10:00:44 +0900</lastBuildDate><atom:link href="http://127.0.0.1:1313/FXHACK/tags/vex/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wrangleを使おう 3 - Replace ForLoop</title>
-      <link>http://localhost:1313/FXHACK/posts/2016-12-10/</link>
+      <link>http://127.0.0.1:1313/FXHACK/posts/2016-12-10/</link>
       <pubDate>Sat, 10 Dec 2016 10:00:44 +0900</pubDate>
       
-      <guid>http://localhost:1313/FXHACK/posts/2016-12-10/</guid>
+      <guid>http://127.0.0.1:1313/FXHACK/posts/2016-12-10/</guid>
       <description>久しぶりのWrangle回です。
 個人的にHoudiniにおいて、よく使う必需ノードは、For LoopとAttribute Promoteです。これらがないと仕事ができません。もちろんWrangleも絶対使います。
 特にFor LoopはHoudiniを象徴するようなノードだと勝手に思ってます。ある処理を考え、それを他のものにも同様な処理を施す。まさにProceduralに作業する上で必要不可欠なものです。
-しかし！ForLoopは処理に時間がかる時が大半です。なぜなら、すべてのノードがマルチスレッド処理されるわけではありませんし、１つ１つのピースやグループを同時にではなく、順番に処理するため遅くなってしまいます 。
+しかし！ForLoopは処理に時間がかる時が大半です。なぜなら、 すべてのノードがマルチスレッド処理されるわけではありませんし、１つ１つのピースやグループを同時にではなく、順番に処理するため遅くなってしまいます 。
 シンプルな例を元に解説していきます。
 Sample File : wrangle_03.hiplc (15.5.607 linux-x86_64-gcc4.8)
 Voronoiで割った1つ1つのピースのサイズを測ろうと思います。あまりにも小さいピースはSimulationに参加させない様にさせるとか、大きいやつはもう一回砕こうとかで使うことがありますね。

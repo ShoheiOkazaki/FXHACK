@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">FX HACK profile image</title>
+  <desc id="desc">A banner image with the text FX HACK and the subtitle No Procedural No FX.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#101418" />
+      <stop offset="100%" stop-color="#202a34" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="940" cy="180" r="120" fill="#d6a663" fill-opacity="0.18" />
+  <circle cx="1040" cy="420" r="170" fill="#f4f1ea" fill-opacity="0.08" />
+  <text x="100" y="275" fill="#f4f1ea" font-family="Georgia, serif" font-size="110" font-weight="700">FX HACK</text>
+  <text x="100" y="355" fill="#d6a663" font-family="Arial, sans-serif" font-size="42">No Procedural No FX.</text>
+  <text x="100" y="455" fill="#c9d1d9" font-family="Arial, sans-serif" font-size="32">Shohei Okazaki</text>
+</svg>
